@@ -1,0 +1,61 @@
+steps:
+  # Frontend
+  - name: 'node'
+    entrypoint: yarn
+    args: ['install']
+    dir: 'packages/rd-frontend'
+  - name: node
+    entrypoint: yarn
+    args: ['run', 'create-env']
+    env:
+      - 'REACT_APP_SERVICE_URL=${_REACT_APP_SERVICE_URL}'
+      - 'REACT_APP_CAS_AUTH_URL=${_REACT_APP_CAS_AUTH_URL}'
+      - 'REACT_APP_BACKEND_AUTH_URL=${_REACT_APP_BACKEND_AUTH_URL}'
+      - 'REACT_APP_GQL_URL=${_REACT_APP_GQL_URL}'
+      - 'REACT_APP_WS_URL=${_REACT_APP_WS_URL}'
+      - 'REACT_APP_TOKEN_NAME=${_REACT_APP_TOKEN_NAME}'
+    dir: 'packages/rd-frontend'
+  - name: node
+    entrypoint: yarn
+    args: ['run', 'build']
+    dir: 'packages/rd-frontend'
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy']
+    dir: 'packages/rd-frontend'
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy', 'dispatch.yaml']
+    dir: 'packages/rd-frontend'
+    # Backend
+  - name: node
+    entrypoint: yarn
+    args: ['install']
+    dir: 'packages/RiceDiscuss-backend'
+  - name: node
+    entrypoint: yarn
+    args: ['run', 'create-env']
+    env:
+      - 'CLIENT_TOKEN_SECRET=${_CLIENT_TOKEN_SECRET}'
+      - 'MONGODB_CONNECTION_URL=${_MONGODB_CONNECTION_URL}'
+      - 'SERVICE_URL=${_SERVICE_URL}'
+      - 'DEV_PORT=${_DEV_PORT}'
+      - 'ALLOWED_ORIGINS=${_ALLOWED_ORIGINS}'
+      - 'CAS_VALIDATE_URL=${_CAS_VALIDATE_URL}'
+      - 'COLLEGES=${_COLLEGES}'
+      - 'MAJORS=${_MAJORS}'
+      - 'MINORS=${_MINORS}'
+      - 'NODE_ENV=${_NODE_ENV}'
+      - 'TOKEN_EXPIRE_TIME=${_TOKEN_EXPIRE_TIME}'
+      - 'MAX_REPORTS=${_MAX_REPORTS}'
+      - 'AWS_ACCESS_KEY_ID=${_AWS_ACCESS_KEY_ID}'
+      - 'AWS_SECRET=${_AWS_SECRET}'
+      - 'BUCKET=${_BUCKET}'
+      - 'REGION=${_REGION}'
+      - 'NODE_ENV=${_NODE_ENV}'
+    dir: 'packages/RiceDiscuss-backend'
+  - name: node
+    entrypoint: yarn
+    args: ['run', 'build']
+    dir: 'packages/RiceDiscuss-backend'
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy']
+    dir: 'packages/RiceDiscuss-backend'
