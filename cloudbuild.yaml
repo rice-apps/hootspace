@@ -1,31 +1,5 @@
 steps:
-  # Frontend
-  - name: 'node'
-    entrypoint: yarn
-    args: ['install']
-    dir: 'packages/rd-frontend'
-  - name: node
-    entrypoint: yarn
-    args: ['run', 'create-env']
-    env:
-      - 'REACT_APP_SERVICE_URL=${_REACT_APP_SERVICE_URL}'
-      - 'REACT_APP_CAS_AUTH_URL=${_REACT_APP_CAS_AUTH_URL}'
-      - 'REACT_APP_BACKEND_AUTH_URL=${_REACT_APP_BACKEND_AUTH_URL}'
-      - 'REACT_APP_GQL_URL=${_REACT_APP_GQL_URL}'
-      - 'REACT_APP_WS_URL=${_REACT_APP_WS_URL}'
-      - 'REACT_APP_TOKEN_NAME=${_REACT_APP_TOKEN_NAME}'
-    dir: 'packages/rd-frontend'
-  - name: node
-    entrypoint: yarn
-    args: ['run', 'build']
-    dir: 'packages/rd-frontend'
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'deploy']
-    dir: 'packages/rd-frontend'
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'deploy', 'dispatch.yaml']
-    dir: 'packages/rd-frontend'
-    # Backend
+  # Backend
   - name: node
     entrypoint: yarn
     args: ['install']
@@ -58,3 +32,29 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy']
     dir: 'packages/RiceDiscuss-backend'
+  # Frontend
+  - name: 'node'
+    entrypoint: yarn
+    args: ['install']
+    dir: 'packages/rd-frontend'
+  - name: node
+    entrypoint: yarn
+    args: ['run', 'create-env']
+    env:
+      - 'REACT_APP_SERVICE_URL=${_REACT_APP_SERVICE_URL}'
+      - 'REACT_APP_CAS_AUTH_URL=${_REACT_APP_CAS_AUTH_URL}'
+      - 'REACT_APP_BACKEND_AUTH_URL=${_REACT_APP_BACKEND_AUTH_URL}'
+      - 'REACT_APP_GQL_URL=${_REACT_APP_GQL_URL}'
+      - 'REACT_APP_WS_URL=${_REACT_APP_WS_URL}'
+      - 'REACT_APP_TOKEN_NAME=${_REACT_APP_TOKEN_NAME}'
+    dir: 'packages/rd-frontend'
+  - name: node
+    entrypoint: yarn
+    args: ['run', 'build']
+    dir: 'packages/rd-frontend'
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy']
+    dir: 'packages/rd-frontend'
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy', 'dispatch.yaml']
+    dir: 'packages/rd-frontend'
