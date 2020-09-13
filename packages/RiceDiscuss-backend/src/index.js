@@ -13,7 +13,7 @@ import { CLIENT_TOKEN_SECRET, DEV_PORT, ALLOWED_ORIGINS } from './config'
 
 const app = express().use(
   cors({
-    origin: ALLOWED_ORIGINS,
+    origin: "*",
     credentials: true
   })
 )
