@@ -553,7 +553,7 @@ function WritePost (props) {
             Title:
             <TitleBox onChange={e => setTitle(e.target.value.trim())} />
             {datePossibilities[postType] || datePossibilities.default}
-            {locationJobInfo[postType] || locationJobInfo.default} 
+            {locationJobInfo[postType] || locationJobInfo.default}
           </TitleWrapper>
           <BodyWrapper>
             <RichIcons>

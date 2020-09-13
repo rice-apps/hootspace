@@ -20,9 +20,7 @@ import {
   EditableTextBlock
 } from './Profile.styles'
 
-import {
-  ExitButton,
-} from './WritePost.styles'
+import { ExitButton } from './WritePost.styles'
 
 import EditUrl from '../images/edit.svg'
 import { Navigate, useNavigate } from 'react-router-dom'
@@ -138,7 +136,6 @@ const ProfilePane = props => {
       setEmail(document.getElementById('email').innerText)
     }
   }
-
 
   // const handleUserChange = useCallback(e => {
   //   setUsername(e.target.value)

@@ -150,21 +150,18 @@ function CommentChunk (props) {
           <ReplyStart
             onClick={e => {
               e.preventDefault()
-              toggleReply();
+              toggleReply()
               switchModal()
             }}
           >
-            {isReplyOpen ? (
-              <text>Cancel</text>
-            ) : (
-              <text>Reply</text>
-            )}
+            {isReplyOpen ? <text>Cancel</text> : <text>Reply</text>}
           </ReplyStart>
         )}
 
-        <CountDiv style={{fontSize:"1.8vh"}}>
+        <CountDiv style={{ fontSize: '1.8vh' }}>
           {props.comment.upvotes.length - props.comment.downvotes.length}
-          {props.comment.upvotes.length - props.comment.downvotes.length === 1 ? (
+          {props.comment.upvotes.length - props.comment.downvotes.length ===
+          1 ? (
             <text> hoot</text>
           ) : (
             <text> hoots</text>
@@ -190,7 +187,7 @@ function CommentChunk (props) {
         {/* TODO delete top level comment -> delete its replies */}
         {/* sometimesssss the refresh still doesnt delete */}
 
-        {(props.comment.creator.username === userInfo.username) && (
+        {props.comment.creator.username === userInfo.username && (
           <DeleteButton
             onClick={e => {
               e.preventDefault()
@@ -207,7 +204,10 @@ function CommentChunk (props) {
         )}
 
         <TimestampDiv>
-          <TimeAgo date={props.comment.date_created} style={{fontSize:"1.8vh"}}/>
+          <TimeAgo
+            date={props.comment.date_created}
+            style={{ fontSize: '1.8vh' }}
+          />
         </TimestampDiv>
       </CommentMenu>
 
@@ -242,9 +242,7 @@ function CommentChunk (props) {
               }
             }}
           >
-            <ReplyButtonText>
-              Post Reply
-            </ReplyButtonText>
+            <ReplyButtonText>Post Reply</ReplyButtonText>
           </PostReplyButton>
         </ReplyArea>
       )}

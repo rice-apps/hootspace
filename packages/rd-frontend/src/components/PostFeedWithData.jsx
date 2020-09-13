@@ -113,7 +113,7 @@ function PostFeedWithData () {
   }
 
   const closeModal = () => {
-    setShowProfile(false);
+    setShowProfile(false)
   }
 
   return (
@@ -235,7 +235,7 @@ function PostFeedWithData () {
               }
             />
           </PostFeedContainer>
-          <ProfilePane show={showProfile} closeModal = {closeModal}/>
+          <ProfilePane show={showProfile} closeModal={closeModal} />
         </FeedProfileContainer>
       </Background>
     </>

@@ -61,10 +61,7 @@ import {
   CommentInput,
   CommentButton
 } from './PostFull.styles'
-import {
-  BoldedSpan,
-  NormalSpan
-} from './PostChunk.styles'
+import { BoldedSpan, NormalSpan } from './PostChunk.styles'
 import { COMMENT_CREATED } from '../graphql/Subscriptions'
 import CommentChunk from './CommentChunk'
 
@@ -249,18 +246,18 @@ function PostFull () {
     workplace: thePost.workplace ? thePost.workplace : '',
     startTime: thePost.start ? thePost.start : '',
     endTime: thePost.end ? thePost.end : '',
-    deadline: thePost.deadline ? thePost.deadline: ''
+    deadline: thePost.deadline ? thePost.deadline : ''
   }
 
-  const isPaid = thePost.isPaid;
-  let paidString = ""
-  if (typeof isPaid === 'boolean'){
-    paidString = isPaid === true ? "Yes" : "No"
+  const isPaid = thePost.isPaid
+  let paidString = ''
+  if (typeof isPaid === 'boolean') {
+    paidString = isPaid === true ? 'Yes' : 'No'
   }
-  const isClosed = thePost.isClosed;
-  let closedString = ""
-  if (typeof isClosed === 'boolean'){
-    closedString = isClosed === true ? "Yes" : "No"
+  const isClosed = thePost.isClosed
+  let closedString = ''
+  if (typeof isClosed === 'boolean') {
+    closedString = isClosed === true ? 'Yes' : 'No'
   }
 
   const jobSpecifics = {
@@ -268,41 +265,70 @@ function PostFull () {
     isClosed: closedString
   }
 
-  const months = [ "January", "February", "March", "April", "May", "June", 
-  "July", "August", "September", "October", "November", "December" ];
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ]
   //maybe we should put N/A if it wasn't specified hmm...
-  let postDescriptor = [];
-  if (calEvent.startTime.length > 0){
-    const startDate = calEvent.startTime.split('T')[0];
+  let postDescriptor = []
+  if (calEvent.startTime.length > 0) {
+    const startDate = calEvent.startTime.split('T')[0]
     const formattedDate = startDate.split('-')
-    const month = months[parseInt(formattedDate[1], 10) - 1];
+    const month = months[parseInt(formattedDate[1], 10) - 1]
     postDescriptor.push(
-      <NormalSpan><BoldedSpan>From: </BoldedSpan>{month + ' ' + formattedDate[2] + ", " + formattedDate[0] + `      `}</NormalSpan>
+      <NormalSpan>
+        <BoldedSpan>From: </BoldedSpan>
+        {month + ' ' + formattedDate[2] + ', ' + formattedDate[0] + `      `}
+      </NormalSpan>
     )
   }
-  if (calEvent.endTime.length > 0 || calEvent.deadline.length > 0){
-    const until = calEvent.endTime.length > 0 ? calEvent.endTime : calEvent.deadline;
-    const endDate = until.split('T')[0];
+  if (calEvent.endTime.length > 0 || calEvent.deadline.length > 0) {
+    const until =
+      calEvent.endTime.length > 0 ? calEvent.endTime : calEvent.deadline
+    const endDate = until.split('T')[0]
     const formattedDate = endDate.split('-')
-    const month = months[parseInt(formattedDate[1], 10) - 1];
+    const month = months[parseInt(formattedDate[1], 10) - 1]
     postDescriptor.push(
-      <NormalSpan><BoldedSpan>End: </BoldedSpan>{month + ' ' + formattedDate[2] + ", " + formattedDate[0] + `      `}</NormalSpan>
+      <NormalSpan>
+        <BoldedSpan>End: </BoldedSpan>
+        {month + ' ' + formattedDate[2] + ', ' + formattedDate[0] + `      `}
+      </NormalSpan>
     )
   }
-  if (calEvent.location.length > 0 || calEvent.workplace.length > 0){
-    const place = calEvent.location.length > 0 ? calEvent.location : calEvent.workplace;
+  if (calEvent.location.length > 0 || calEvent.workplace.length > 0) {
+    const place =
+      calEvent.location.length > 0 ? calEvent.location : calEvent.workplace
     postDescriptor.push(
-      <NormalSpan><BoldedSpan>Location: </BoldedSpan>{place}</NormalSpan>
+      <NormalSpan>
+        <BoldedSpan>Location: </BoldedSpan>
+        {place}
+      </NormalSpan>
     )
   }
-  if (jobSpecifics.isPaid.length > 0){
+  if (jobSpecifics.isPaid.length > 0) {
     postDescriptor.push(
-      <NormalSpan><BoldedSpan>Paid: </BoldedSpan>{jobSpecifics.isPaid}</NormalSpan>
+      <NormalSpan>
+        <BoldedSpan>Paid: </BoldedSpan>
+        {jobSpecifics.isPaid}
+      </NormalSpan>
     )
   }
-  if (jobSpecifics.isClosed.length > 0){
+  if (jobSpecifics.isClosed.length > 0) {
     postDescriptor.push(
-      <NormalSpan><BoldedSpan>Closed: </BoldedSpan>{jobSpecifics.isClosed}</NormalSpan>
+      <NormalSpan>
+        <BoldedSpan>Closed: </BoldedSpan>
+        {jobSpecifics.isClosed}
+      </NormalSpan>
     )
   }
 
