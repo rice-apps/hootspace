@@ -9,14 +9,11 @@ import Schema from './schema'
 
 import './utils/db'
 
-import { CLIENT_TOKEN_SECRET, DEV_PORT, ALLOWED_ORIGINS } from './config'
+import { ALLOWED_ORIGINS, CLIENT_TOKEN_SECRET, DEV_PORT } from './config'
 
 const app = express().use(
   cors({
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
+    origin: ALLOWED_ORIGINS,
     credentials: true
   })
 )
