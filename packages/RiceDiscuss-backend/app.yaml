@@ -6,4 +6,3 @@ handlers:
     http_headers:
       Access-Control-Allow-Origin: https://ricediscuss.uc.r.appspot.com/
       Access-Control-Allow-Credentials: true
-    script: auto
