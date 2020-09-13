@@ -31,6 +31,7 @@ steps:
     dir: 'packages/RiceDiscuss-backend'
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy']
+    timeout: '1800s'
     dir: 'packages/RiceDiscuss-backend'
   # Frontend
   - name: 'node'
@@ -54,7 +55,9 @@ steps:
     dir: 'packages/rd-frontend'
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy']
+    timeout: '1800s'
     dir: 'packages/rd-frontend'
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy', 'dispatch.yaml']
+    timeout: '1800s'
     dir: 'packages/rd-frontend'
