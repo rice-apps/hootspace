@@ -44,7 +44,7 @@ const postFieldPolicies = {
 
 const httpLink = createHttpLink({
   uri: GQL_URL,
-  credentials: 'same-origin'
+  credentials: 'include'
 })
 
 const wsLink = new WebSocketLink({
