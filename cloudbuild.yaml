@@ -58,7 +58,3 @@ steps:
     args: ['app', 'deploy', --version=2]
     timeout: '1800s'
     dir: 'packages/rd-frontend'
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'deploy', 'dispatch.yaml', --version=2]
-    timeout: '1800s'
-    dir: 'packages/rd-frontend'
