@@ -14,6 +14,8 @@ import { ALLOWED_ORIGINS, CLIENT_TOKEN_SECRET, DEV_PORT } from './config'
 const app = express().use(
   cors({
     origin: ALLOWED_ORIGINS,
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
   })
 )
