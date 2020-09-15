@@ -12,7 +12,7 @@
     "create-env": "printenv > .env"
   },
   "engines": {
-    "node": ">=12.18"
+    "node": "12.18.x"
   },
   "repository": {
     "type": "git",

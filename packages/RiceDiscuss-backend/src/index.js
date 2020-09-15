@@ -11,12 +11,7 @@ import './utils/db'
 
 import { CLIENT_TOKEN_SECRET, DEV_PORT, ALLOWED_ORIGINS } from './config'
 
-const app = express().use(
-  cors({
-    origin: ALLOWED_ORIGINS,
-    credentials: true
-  })
-)
+const app = express().use(cors())
 
 const server = new ApolloServer({
   schema: Schema,
