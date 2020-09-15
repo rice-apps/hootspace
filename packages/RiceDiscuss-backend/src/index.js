@@ -9,15 +9,9 @@ import Schema from './schema'
 
 import './utils/db'
 
-import { ALLOWED_ORIGINS, CLIENT_TOKEN_SECRET, DEV_PORT } from './config'
+import { CLIENT_TOKEN_SECRET, DEV_PORT } from './config'
 
-const app = express().use(
-  cors({
-    origin: ALLOWED_ORIGINS,
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-  })
-)
+const app = express().use(cors())
 
 const server = new ApolloServer({
   schema: Schema,
