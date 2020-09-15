@@ -11,9 +11,6 @@
     "pkg": "pkg build/index.js -o build/$npm_package_name",
     "create-env": "printenv > .env"
   },
-  "engines": {
-    "node": "12.18.x"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rice-apps/RiceDiscuss-backend.git"
