@@ -1,5 +1,7 @@
-import { PubSub } from 'apollo-server-express'
+import { GooglePubSub } from '@axelspringer/graphql-google-pubsub'
 
-const pubsub = new PubSub()
+const pubsub = new GooglePubSub({
+    projectId: 'ricediscuss'
+})
 
 export default pubsub

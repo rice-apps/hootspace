@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/rice-apps/RiceDiscuss-backend#readme",
   "dependencies": {
+    "@axelspringer/graphql-google-pubsub": "^2.1.0",
     "@babel/cli": "^7.11.6",
     "@babel/core": "^7.11.6",
     "@babel/node": "^7.10.5",
