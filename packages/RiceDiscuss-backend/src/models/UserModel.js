@@ -2,7 +2,9 @@ import { ApolloError } from 'apollo-server-express'
 import { composeWithMongoose } from 'graphql-compose-mongoose'
 import log from 'loglevel'
 import { Schema, model } from 'mongoose'
-import validator from 'validator'
+import isEmail from 'validator/lib/isEmail'
+import isMobilePhone from 'validator/lib/isMobilePhone'
+import isURL from 'validator/lib/isURL'
 import { COLLEGES, MAJORS, MINORS } from '../config'
 
 const UserSchema = new Schema({
@@ -71,7 +73,7 @@ const UserSchema = new Schema({
     type: String,
     required: false,
     validate: {
-      validator: email => validator.isEmail(email),
+      validator: email => isEmail(email),
       message: props => `${props.value} is not a valid email`
     }
   },
@@ -80,7 +82,7 @@ const UserSchema = new Schema({
     type: String,
     required: false,
     validate: {
-      validator: phone => validator.isMobilePhone(phone),
+      validator: phone => isMobilePhone(phone),
       message: props => `${props.value} is not a valid phone number`
     }
   },
@@ -89,7 +91,7 @@ const UserSchema = new Schema({
     type: String,
     required: false,
     validate: {
-      validator: url => validator.isURL(url),
+      validator: url => isURL(url),
       message: props => `${props.value} is not a valid URL`
     }
   }

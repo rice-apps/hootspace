@@ -43,7 +43,8 @@
     "intro": "node src/utils/introspection.js",
     "lint": "prettier-standard --lint",
     "lint:css": "stylelint './src/**/*.(js|jsx|css)'",
-    "create-env": "printenv > .env"
+    "create-env": "printenv > .env",
+    "clean": "rm -rf build"
   },
   "browserslist": {
     "production": [
