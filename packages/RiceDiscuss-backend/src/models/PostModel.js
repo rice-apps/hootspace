@@ -80,7 +80,7 @@ const PostSchema = new Schema({
   imageUrl: {
     type: String,
     validate: {
-      validator: url => validator.isURL(url),
+      validator: url => url ? validator.isURL(url) : true,
       message: props => `${props.value} is not a valid URL`
     },
     required: false

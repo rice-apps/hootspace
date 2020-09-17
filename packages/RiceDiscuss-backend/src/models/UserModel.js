@@ -72,7 +72,7 @@ const UserSchema = new Schema({
     type: String,
     required: false,
     validate: {
-      validator: email => validator.isEmail(email),
+      validator: email => (email ? validator.isEmail(email) : true),
       message: props => `${props.value} is not a valid email`
     }
   },
@@ -81,7 +81,7 @@ const UserSchema = new Schema({
     type: String,
     required: false,
     validate: {
-      validator: phone => validator.isMobilePhone(phone),
+      validator: phone => (phone ? validator.isMobilePhone(phone) : true),
       message: props => `${props.value} is not a valid phone number`
     }
   },
@@ -90,7 +90,7 @@ const UserSchema = new Schema({
     type: String,
     required: false,
     validate: {
-      validator: url => validator.isURL(url),
+      validator: url => (url ? validator.isURL(url) : true),
       message: props => `${props.value} is not a valid URL`
     }
   }
