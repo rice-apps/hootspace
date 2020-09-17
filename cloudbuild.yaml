@@ -4,7 +4,7 @@ steps:
   - name: node
     entrypoint: yarn
     args: ['install']
-    dir: 'packages/RiceDiscuss-backend'
+    dir: 'packages/backend'
   - name: node
     entrypoint: yarn
     args: ['run', 'create-env']
@@ -25,20 +25,22 @@ steps:
       - 'AWS_SECRET=${_AWS_SECRET}'
       - 'BUCKET=${_BUCKET}'
       - 'REGION=${_REGION}'
-    dir: 'packages/RiceDiscuss-backend'
+      - 'REDISHOST=${_REDISHOST}'
+      - 'REDISPORT=${_REDISPORT}'
+    dir: 'packages/backend'
   - name: node
     entrypoint: yarn
     args: ['run', 'build']
-    dir: 'packages/RiceDiscuss-backend'
+    dir: 'packages/backend'
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'deploy', '--version=1']
+    args: ['app', 'deploy', "-v", "$_GAE_VERSION"]
     timeout: '1800s'
-    dir: 'packages/RiceDiscuss-backend'
+    dir: 'packages/backend'
   # Frontend
   - name: 'node'
     entrypoint: yarn
     args: ['install']
-    dir: 'packages/rd-frontend'
+    dir: 'packages/frontend'
   - name: node
     entrypoint: yarn
     args: ['run', 'create-env']
@@ -49,12 +51,14 @@ steps:
       - 'REACT_APP_GQL_URL=${_REACT_APP_GQL_URL}'
       - 'REACT_APP_WS_URL=${_REACT_APP_WS_URL}'
       - 'REACT_APP_TOKEN_NAME=${_REACT_APP_TOKEN_NAME}'
-    dir: 'packages/rd-frontend'
+    dir: 'packages/frontend'
   - name: node
     entrypoint: yarn
     args: ['run', 'build']
-    dir: 'packages/rd-frontend'
+    dir: 'packages/frontend'
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'deploy', --version=2]
+    args: ['app', 'deploy', "-v", "$_GAE_VERSION"]
     timeout: '1800s'
-    dir: 'packages/rd-frontend'
+    dir: 'packages/frontend'
+  - name: "gcr.io/cloud-builders/gcloud"
+    args: ["app", "services", "--project", "$PROJECT_ID", "set-traffic", "--splits", "$_GAE_TRAFFIC"]
