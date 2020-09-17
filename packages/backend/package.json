@@ -1,5 +1,5 @@
 {
-  "name": "rice-discuss-backend",
+  "name": "hootspace-backend",
   "version": "1.1.0",
   "description": "The backend for RiceDiscuss, written in Node and Apollo GraphQL",
   "main": "src/index.js",
