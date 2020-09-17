@@ -1,7 +1,6 @@
 {
   "name": "rd-frontend",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@apollo/client": "^3.1.3",
     "@material-ui/core": "^4.11.0",
