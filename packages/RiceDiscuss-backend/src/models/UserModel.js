@@ -2,6 +2,9 @@ import { ApolloError } from 'apollo-server-express'
 import { composeWithMongoose } from 'graphql-compose-mongoose'
 import log from 'loglevel'
 import { Schema, model } from 'mongoose'
+import isEmail from 'validator/es/lib/isEmail'
+import isMobilePhone from 'validator/es/lib/isMobilePhone'
+import isURL from 'validator/es/lib/isURL'
 import { COLLEGES, MAJORS, MINORS } from '../config'
 
 const UserSchema = new Schema({
@@ -39,9 +42,7 @@ const UserSchema = new Schema({
   major: {
     type: [String],
     validate: {
-      validator (majors) {
-        return majors.every(major => MAJORS.includes(major))
-      },
+      validator: majors => majors.every(major => MAJORS.includes(major)),
       message: props => `${props.value} has a major that's not valid!`
     },
     required: false
@@ -50,9 +51,7 @@ const UserSchema = new Schema({
   minor: {
     type: [String],
     validate: {
-      validator (minors) {
-        return minors.every(minor => MINORS.includes(minor))
-      },
+      validator: minors => minors.every(minor => MINORS.includes(minor)),
       message: props => `${props.value} has a minor that's not valid!`
     },
     required: false
@@ -72,17 +71,29 @@ const UserSchema = new Schema({
 
   email: {
     type: String,
-    required: false
+    required: false,
+    validate: {
+      validator: email => isEmail(email),
+      message: props => `${props.value} is not a valid email`
+    }
   },
 
   phone: {
     type: String,
-    required: false
+    required: false,
+    validate: {
+      validator: phone => isMobilePhone(phone),
+      message: props => `${props.value} is not a valid phone number`
+    }
   },
 
   imageUrl: {
     type: String,
-    required: false
+    required: false,
+    validate: {
+      validator: url => isURL(url),
+      message: props => `${props.value} is not a valid URL`
+    }
   }
 })
 
