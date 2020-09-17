@@ -1,6 +1,7 @@
 import { RedisPubSub } from 'graphql-redis-subscriptions'
 import { PubSub } from 'apollo-server-express'
-import * as Redis from 'ioredis'
+
+const Redis = require("ioredis");
 
 import { REDIS_OPTIONS } from '../config'
 
