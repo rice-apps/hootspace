@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ChatIcon from '@material-ui/icons/Chat'
 import MailOutlineIcon from '@material-ui/icons/MailOutline'
 import AccountBoxIcon from '@material-ui/icons/AccountBox'
 import DateRangeIcon from '@material-ui/icons/DateRange'
+import InfoIcon from '@material-ui/icons/Info'
 import { SvgIcon } from '@material-ui/core'
 import {
   Logo,
@@ -15,7 +16,8 @@ import {
 
 function SideNav (props) {
   // const location = useLocation()
-  const pages = ['/profile', '/feed', '/calendar', '/mail']
+  const pages = ['/profile', '/feed', '/calendar', '/mail', '/about']
+  const [showAbout, setShowAbout] = useState(false)
 
   const getIcon = page => {
     switch (page) {
@@ -27,6 +29,8 @@ function SideNav (props) {
         return <AccountBoxIcon />
       case '/calendar':
         return <DateRangeIcon />
+      case '/about':
+        return <InfoIcon />
       default:
         return <ChatIcon />
     }
@@ -35,12 +39,14 @@ function SideNav (props) {
   const clickBehavior = {
     '/feed': props.handleFeed,
     '/profile': props.handleProfile,
+    //'/about': setShowAbout(!showAbout),
     default: null
   }
 
   const selected = {
     '/feed': !props.showProfile,
     '/profile': props.showProfile,
+    //'/about' : showAbout,
     default: false
   }
 
