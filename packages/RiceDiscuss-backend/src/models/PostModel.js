@@ -2,7 +2,7 @@ import { ApolloError } from 'apollo-server-express'
 import { composeWithMongooseDiscriminators } from 'graphql-compose-mongoose'
 import log from 'loglevel'
 import { Schema, model } from 'mongoose'
-import isURL from 'validator/es/lib/isURL'
+import validator from 'validator'
 import { toInputObjectType } from 'graphql-compose'
 
 import { UrlTC } from './CustomTypes'
@@ -79,7 +79,7 @@ const PostSchema = new Schema({
   imageUrl: {
     type: String,
     validate: {
-      validator: url => isURL(url),
+      validator: url => validator.isURL(url),
       message: props => `${props.value} is not a valid URL`
     },
     required: false
