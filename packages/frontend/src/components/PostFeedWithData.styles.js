@@ -13,7 +13,7 @@ export const Background = styled.div`
   // background-color: #f4efef;
   background-color: #eff0f8;
   // background-color: #bada55;
-
+ 
   @media (max-aspect-ratio: 848/712) {
     flex-direction: column;
   }

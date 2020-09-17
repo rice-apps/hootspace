@@ -26,7 +26,6 @@ export const LeftSidebarContainer = styled.div`
 `
 
 export const Background = styled.div`
-  // display: grid;
   display: flex;
   flex-direction: row;
 
@@ -35,9 +34,7 @@ export const Background = styled.div`
   /* grid-template-columns: 1.2fr 1.75fr 2.25fr 1fr 1fr 1fr 0.5fr; */
   /* grid-template-rows: 12fr 12fr 1fr 1fr; */
 
-  // background-color: #f4efef;
   background-color: #eff0f8;
-  // background-color: #bada55;
 
   @media (max-aspect-ratio: 848/712) {
     flex-direction: column;
@@ -45,20 +42,65 @@ export const Background = styled.div`
 `
 
 export const AboutContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  // order: 3;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+    margin-left: 5vh;
+    margin-right: 5vh;
+    width: 95vw;
+    height: auto;
+    padding-bottom: .5vh;
+`
 
-  // grid-column-start: 2;
-  flex: 16 // background-color: green;
-    ${props =>
-      props.shrink &&
-      css`
-        // width: 10%;
-        justify-self: center;
-      `};
+export const TextDiv = styled.div `
+    grid-column: 1 / 4;
+    min-width: 0;
+    font-family: AvenirLTStd-Book;
+    margin-top: 5vh;
+    color: #272848;
+`;
 
-  // @media (min-aspect-ratio: 848/712) {
-  //   background-color: red;
-  // }
+export const PictureDiv = styled.div `
+    grid-column: 5 / 8;
+    font-family: AvenirLTStd-Book;
+    color: white;
+`;
+
+
+export const DetailText = styled.div`
+    font-family: Verdana;
+    font-size: 2vw;
+    margin-left: 6vw;
+    margin-right: auto;
+    margin-bottom: 2vh;
+    text-align: left;
+    line-height: 2;
+`
+
+export const AcknowledgementText = styled.div`
+    font-size: 1.5vw;
+    margin-left: 6vw;
+    margin-right: auto;
+    text-align: left;
+    line-height: 2;
+`
+
+export const AckDiv = styled.div`
+    display: flex;
+    flex-direciton: row;
+`
+
+export const PictureText = styled.div`
+    /* margin-left: 6vw;
+    margin-right: auto; */
+    text-align: left;
+    font-family: Verdana;
+    font-size: 2vw;
+    line-height: 2;
+    color: #272848;
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+`
+ 
+export const Gap = styled.div`
+    min-height: 5vh;
 `
