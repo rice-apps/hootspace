@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react'
 
 import { useLazyQuery, useMutation } from '@apollo/client'
-// import CloseIcon from '@material-ui/icons/Close'
+import log from 'loglevel'
 
-// import { Helmet } from 'react-helmet'
-// import { FeedProfileContainer } from "./PostFeedWithData.styles";
 import {
   Descriptor,
   LogoutButton,
@@ -98,12 +96,12 @@ const ProfilePane = props => {
     setPhone(currentPhone)
     setImageUrl(currentUrl)
     setSavedPosts(currentSavedPosts)
-    console.log(currentSavedPosts)
+    log.info(currentSavedPosts)
     // if (currentUrl) {
-    //   // console.log('hello?', currentUrl)
+    //   // log.info('hello?', currentUrl)
     // }
     // if (currentUrl && HeadshotUrl && currentUrl.toString() !== HeadshotUrl.toString()) {
-    //   // console.log('here')
+    //   // log.info('here')
     //   setImageUrl(currentUrl)
     // }
   }
@@ -261,7 +259,7 @@ const ProfilePane = props => {
         setBeingEdited('none')
       })
     } catch (error) {
-      error.log(error)
+      log.error(error)
     }
   }
 

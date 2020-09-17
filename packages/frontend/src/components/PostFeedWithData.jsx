@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import { useQuery } from '@apollo/client'
 
 import { Helmet } from 'react-helmet'
+
+import log from 'loglevel'
 import PostFeed from './PostFeed'
 import { POST_PAGE, GET_FILTERED_IDS } from '../graphql/Queries'
 import { POST_CREATED, POST_VOTE_CHANGED } from '../graphql/Subscriptions'
@@ -108,9 +110,9 @@ function PostFeedWithData () {
   // 6) Clear all filters --> refetch FILTER --> refetch POST_PAGE
   // ---
 
-  console.log('type', filterType)
-  console.log('kind', kindFilter)
-  console.log('Data', filteredData)
+  log.info('type', filterType)
+  log.info('kind', kindFilter)
+  log.info('Data', filteredData)
   const [showWritePost, setShowWritePost] = useState(false)
   const openModal = () => {
     setShowWritePost(!showWritePost)

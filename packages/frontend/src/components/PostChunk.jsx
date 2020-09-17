@@ -88,33 +88,6 @@ function PostChunk (props) {
     }
   )
 
-  // useEffect(() => {
-  //   const unsubscribeToNewComments = subscribeToMore({
-  //     document: COMMENT_CREATED,
-  //     variables: { post_id: props.post.node._id },
-  //     updateQuery: (prev, { subscriptionData }) => {
-  //       if (!subscriptionData.data) return prev
-
-  //       console.log(prev)
-  //       console.log(subscriptionData)
-
-  //       const newFeedItem = subscriptionData.data.commentCreated
-
-  //       console.log(newFeedItem.parent)
-
-  //       if (typeof newFeedItem.parent === 'undefined') {
-  //         return {
-  //           commentByPost: [newFeedItem, ...prev.commentByPost]
-  //         }
-  //       }
-  //     }
-  //   })
-
-  //   return () => {
-  //     unsubscribeToNewComments()
-  //   }
-  // }, [])
-
   // Comments stuff ends
 
   const classes = useStyles()

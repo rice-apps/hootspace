@@ -127,12 +127,12 @@ function PostFull () {
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData.data) return prev
 
-        console.log(prev)
-        console.log(subscriptionData)
+        log.info(prev)
+        log.info(subscriptionData)
 
         const newFeedItem = subscriptionData.data.commentCreated
 
-        console.log(newFeedItem.parent)
+        log.info(newFeedItem.parent)
 
         if (typeof newFeedItem.parent === 'undefined') {
           return {

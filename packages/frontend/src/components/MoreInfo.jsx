@@ -73,7 +73,7 @@ function MoreInfo () {
   }, [username])
 
   useEffect(() => {
-    console.log(username)
+    log.info(username)
     const isMyUsernameTaken = userExists?.doesUsernameExist
     setStatement('valid username!')
     if (username === '') {

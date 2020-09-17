@@ -4,7 +4,6 @@ import gql from 'graphql-tag.macro'
 const POST_PAGE = gql`
   query PostPage($after: String!, $listOfIDs: [MongoID]) {
     postConnection(first: 10, after: $after, filter: { _ids: $listOfIDs }) {
-      count
       edges {
         cursor
         node {

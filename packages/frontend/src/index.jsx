@@ -3,6 +3,8 @@ import { render } from 'react-dom'
 
 import { ApolloProvider } from '@apollo/client'
 
+import log from 'loglevel'
+
 import { mainClient as client } from './utils/apollo'
 
 import App from './App'
@@ -23,6 +25,8 @@ render(
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
   serviceWorker.unregister()
+  log.setLevel('TRACE')
 } else {
   serviceWorker.register()
+  log.setLevel('SILENT')
 }

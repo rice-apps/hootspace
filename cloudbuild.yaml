@@ -25,6 +25,8 @@ steps:
       - 'AWS_SECRET=${_AWS_SECRET}'
       - 'BUCKET=${_BUCKET}'
       - 'REGION=${_REGION}'
+      - 'REDISHOST=${_REDISHOST}'
+      - 'REDISPORT=${_REDISPORT}'
     dir: 'packages/backend'
   - name: node
     entrypoint: yarn
