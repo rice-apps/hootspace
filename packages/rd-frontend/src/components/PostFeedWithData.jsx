@@ -30,7 +30,7 @@ function PostFeedWithData () {
   const [upvoteFilter, setUpvoteFilter] = useState('')
   const [dateFilter, setDateFilter] = useState('')
   const [tagFilter, setTagFilter] = useState([])
-  const [areFiltersClosed, setFiltersClosed] = useState(false);
+  const [areFiltersClosed, setFiltersClosed] = useState(false)
 
   // when we clear filter, this gets set to empty string and it will cause
   // a graphql bug within our GET_FILTER_ID query because "" is not a valid EnumPostKey
@@ -108,21 +108,20 @@ function PostFeedWithData () {
   // 6) Clear all filters --> refetch FILTER --> refetch POST_PAGE
   // ---
 
-  console.log("type", filterType);
-  console.log("kind", kindFilter);
-  console.log("Data", filteredData);
+  console.log('type', filterType)
+  console.log('kind', kindFilter)
+  console.log('Data', filteredData)
   const [showWritePost, setShowWritePost] = useState(false)
   const openModal = () => {
-    setShowWritePost(!showWritePost);
-    setFiltersClosed(true);
-    setShowProfile(false);
+    setShowWritePost(!showWritePost)
+    setFiltersClosed(true)
+    setShowProfile(false)
   }
 
   // const closeModal = () => {
   //   setShowProfile(false);
   // }
 
-  
   const processDateFilter = filter => {
     if (filter.length === 0) return
     if (filter.includes('yesterday')) {
@@ -164,64 +163,59 @@ function PostFeedWithData () {
         <FeedProfileContainer shrink={showProfile}>
           <PostFeedContainer>
             <div>
-            <NewPostButtonContainer>
-              <Button
-                variant='contained'
-                onClick={openModal}
-                style={{
-                  textTransform: 'none',
-                  background: '#ffffff93 0% 0% no-repeat padding-box',
-                  borderRadius: '0.7vw',
-                  marginLeft: '-4.8vw',
-                  marginTop: '3vw'
-                }}
-                startIcon={
-                  <AddCircleIcon
-                    style={{
-                      color: '#7380FF',
-                      width: '1.3vw',
-                      height: '1.3vw'
-                    }}
-                  />
-                }
-              >
-                Create a Hoot
-              </Button>
-              
-              {/* <NewPostButton onClick={openModal}>
+              <NewPostButtonContainer>
+                <Button
+                  variant='contained'
+                  onClick={openModal}
+                  style={{
+                    textTransform: 'none',
+                    background: '#ffffff93 0% 0% no-repeat padding-box',
+                    borderRadius: '0.7vw',
+                    marginLeft: '-4.8vw',
+                    marginTop: '3vw'
+                  }}
+                  startIcon={
+                    <AddCircleIcon
+                      style={{
+                        color: '#7380FF',
+                        width: '1.3vw',
+                        height: '1.3vw'
+                      }}
+                    />
+                  }
+                >
+                  Create a Hoot
+                </Button>
+
+                {/* <NewPostButton onClick={openModal}>
                 <AddCircleIcon
                   style={{ color: '#7380FF', width: '1.3vw', height: '1.3vw' }}
                 />
                 <ButtonText>Create Post</ButtonText>
               </NewPostButton> */}
-            </NewPostButtonContainer>
+              </NewPostButtonContainer>
 
-            <Filters
-              processDate={processDateFilter}
-
-              setEarlyDateBound={setEarlyDateBound}
-              currentDate={today}
-              setDateFilter={setDateFilter}
-              setUpvoteFilter={setUpvoteFilter}
-              setKindFilter={setKindFilter}
-              setTagFilter={setTagFilter}
-              dateFilter={dateFilter}
-              upvoteFilter={upvoteFilter}
-              kindFilter={kindFilter}
-              tagFilter={tagFilter}
-              setTypeofFilter={setFilterType}
-              refetch={refetchFilter}
-              post_ids={postIDs}
-
-              kindInactive={firstTime}
-              kindFilterActive={setFirstTime}
-
-              filtersClosed = {areFiltersClosed}
-              setFiltersClosed = {setFiltersClosed}
-
-              style = {{"position": "relative",
-                        "margin-top": "300px"}}
-            />
+              <Filters
+                processDate={processDateFilter}
+                setEarlyDateBound={setEarlyDateBound}
+                currentDate={today}
+                setDateFilter={setDateFilter}
+                setUpvoteFilter={setUpvoteFilter}
+                setKindFilter={setKindFilter}
+                setTagFilter={setTagFilter}
+                dateFilter={dateFilter}
+                upvoteFilter={upvoteFilter}
+                kindFilter={kindFilter}
+                tagFilter={tagFilter}
+                setTypeofFilter={setFilterType}
+                refetch={refetchFilter}
+                post_ids={postIDs}
+                kindInactive={firstTime}
+                kindFilterActive={setFirstTime}
+                filtersClosed={areFiltersClosed}
+                setFiltersClosed={setFiltersClosed}
+                style={{ position: 'relative', 'margin-top': '300px' }}
+              />
             </div>
 
             {/* <BannerContainer>
@@ -292,7 +286,7 @@ function PostFeedWithData () {
               }
             />
           </PostFeedContainer>
-          <ProfilePane show={showProfile} close={() => setShowProfile(false)}/>
+          <ProfilePane show={showProfile} close={() => setShowProfile(false)} />
         </FeedProfileContainer>
       </Background>
     </>

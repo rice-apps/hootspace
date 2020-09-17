@@ -198,7 +198,7 @@ const DiscussionBody = styled.text`
 const ReadMore = styled.text`
   font: normal normal normal 1.75vh Avenir;
   letter-spacing: 0px;
-  color: #9293A3;
+  color: #9293a3;
   text-align: right;
   text-decoration: underline;
 `
@@ -252,7 +252,7 @@ const CommentInput = styled.input`
 
 const CommentInput = styled.input`
   grid-area: commentinput;
-  background: #F8F8F8 0% 0% no-repeat padding-box;
+  background: #f8f8f8 0% 0% no-repeat padding-box;
   border: none;
   border-radius: 20px;
 
@@ -272,7 +272,6 @@ const CommentInput = styled.input`
   opacity: 1;
 `
 
-
 // based off posting button in WritePost styles
 const CommentButton = styled.button`
   grid-area: commentbutton;
@@ -288,18 +287,18 @@ const CommentButton = styled.button`
   }
   width: 10vw;
   height: 4vh;
-  background: #7380FF 0% 0% no-repeat padding-box;
+  background: #7380ff 0% 0% no-repeat padding-box;
   border-radius: 20px;
   opacity: 1;
   font: Medium 20px/17px Avenir;
   letter-spacing: 0px;
   color: #747886;
-  border: none
+  border: none;
 `
 const CommentButtonText = styled.text`
   font: normal normal 700 1.1vw Avenir;
   letter-spacing: 0px;
-  color: #FFFFFF;
+  color: #ffffff;
   opacity: 1;
 `
 const BoldedSpan = styled.span`

@@ -26,7 +26,7 @@ const UserSchema = new Schema({
   date_joined: {
     type: Date,
     required: false,
-    default: new Date().getTime(),
+    default: Date.now,
     index: true
   },
 

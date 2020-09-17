@@ -55,7 +55,7 @@ function PostFeed (props) {
     }
   } = data
 
-  console.log("POSTS", data);
+  console.log('POSTS', data)
 
   const processDateFilter = filter => {
     const today = props.currentDate

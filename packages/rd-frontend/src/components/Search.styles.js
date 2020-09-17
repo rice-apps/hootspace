@@ -10,6 +10,4 @@ const Search = styled.input`
   line-height: 14px;
 `
 
-export {
-    Search
-  }
+export { Search }

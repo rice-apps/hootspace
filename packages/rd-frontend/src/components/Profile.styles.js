@@ -43,39 +43,39 @@ export const RightSidebarContainer = styled.div`
 export const CloseButton = styled.div`
   height: 100vh;
   width: 5vh;
-  
+
   // background: #FFFFFF 0% 0% no-repeat padding-box;
-  background-color: #7380FF;
-  
+  background-color: #7380ff;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+
   cursor: pointer;
-  
+
   @media (max-aspect-ratio: 848/712) {
     // order: 2;
     height: 90vh;
     top: 10vh;
   }
-  
+
   &:hover {
-    background-color: #333B8B;
+    background-color: #333b8b;
   }
 `
 
 export const RightSidebar = styled.div`
   height: 100vh;
   width: 50vh;
-  
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  
+
+  background: #ffffff 0% 0% no-repeat padding-box;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  
+
   @media (max-aspect-ratio: 848/712) {
     // order: 2;
     height: 90vh;
@@ -110,7 +110,7 @@ export const LogoutButton = styled.button`
 export const ProfileInner = styled.div`
   height: 65vh;
   width: 35vh;
-  
+
   font-size: 2.2vh;
 
   display: flex;
@@ -143,7 +143,7 @@ export const Descriptor = styled.div`
   // height: 4vh;
   width: 100%;
   position: relative;
-  
+
   display: flex;
   justify-content: space-between;
 `
@@ -153,35 +153,34 @@ export const Headshot = styled.div`
   height: 13.5vh;
   border-radius: 20%;
   // padding-top: 23.33%;
-  
+
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
 
   // background-color: red;
-  
+
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  
+
   ${props =>
-  css`
-    background-image: url(${props.src});
-  `}
-  
+    css`
+      background-image: url(${props.src});
+    `}
 `
 
 export const AddPhotoButton = styled.div`
   width: 3.5vh;
   height: 3.5vh;
-  background-color: #333B8B;
+  background-color: #333b8b;
   border-radius: 3.5vh;
   cursor: pointer;
-  
+
   position: relative;
   top: 1vh;
   left: 1vh;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -245,11 +244,11 @@ export const DDList = styled.ul`
   // border-bottom-left-radius: 3px;
   // border-bottom-right-radius: 3px;
   box-shadow: 0 2px 5px -1px rgb(232, 232, 232);
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   // font-weight: 700;
   text-align: left;
   -webkit-overflow-scrolling: touch;
-  
+
   padding-left: 0;
 `
 
@@ -260,7 +259,7 @@ export const DDListItem = styled.li`
   white-space: nowrap;
   text-overflow: ellipsis;
   cursor: pointer;
-  
+
   // padding-left: 0;
 `
 
@@ -268,7 +267,7 @@ export const SavedPostsContainer = styled.div`
   height: 10vh;
   overflow-x: visible;
   overflow-y: auto;
-  
+
   padding: 1vh;
   justify-self: center;
 `

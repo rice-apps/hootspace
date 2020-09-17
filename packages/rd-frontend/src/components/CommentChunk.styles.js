@@ -103,7 +103,7 @@ const CommentVotes = styled.div`
 `
 
 const CommentUpvote = styled.div`
-  grid-area: upvote
+  grid-area: upvote;
 `
 
 const CommentDownvote = styled.div`
@@ -128,8 +128,9 @@ const ReplyArea = styled.div`
   display: grid;
   padding: 1vh 0px;
   justify-items: start;
-  grid-template-areas: 'replyinput'
-                       'replybutton';
+  grid-template-areas:
+    'replyinput'
+    'replybutton';
   grid-template-rows: auto auto;
 `
 
@@ -151,14 +152,13 @@ const ReplyStart = styled.button`
   border: none;
   background: none;
   font-size: 1.7vh;
-  color: #A9ABB4;
+  color: #a9abb4;
   opacity: 1;
   cursor: pointer;
   &:hover {
     color: #e7c6c6;
   }
 `
-
 
 const CountDiv = styled.text`
   grid-area: hoots
@@ -177,7 +177,7 @@ const ReportButton = styled.button`
   border: none;
   background: none;
   font-size: 1.7vh;
-  color: #A9ABB4;
+  color: #a9abb4;
   opacity: 1;
   cursor: pointer;
   &:hover {
@@ -208,10 +208,9 @@ const TimestampDiv = styled.text`
   // padding: 5px;
 `
 
-
 const ReplyInput = styled.input`
   grid-area: replyinput;
-  background: #F8F8F8 0% 0% no-repeat padding-box;
+  background: #f8f8f8 0% 0% no-repeat padding-box;
   border: none;
   border-radius: 20px;
 
@@ -245,18 +244,18 @@ const PostReplyButton = styled.button`
   }
   width: 10vw;
   height: 4vh;
-  background: #7380FF 0% 0% no-repeat padding-box;
+  background: #7380ff 0% 0% no-repeat padding-box;
   border-radius: 20px;
   opacity: 1;
   font: Medium 20px/17px Avenir;
   letter-spacing: 0px;
   color: #747886;
-  border: none
+  border: none;
 `
 const ReplyButtonText = styled.text`
   font: normal normal 700 15px/20px Avenir;
   letter-spacing: 0px;
-  color: #FFFFFF;
+  color: #ffffff;
   opacity: 1;
 `
 

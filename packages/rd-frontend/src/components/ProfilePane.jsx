@@ -25,21 +25,21 @@ import {
   UsernameEditable,
   AddPhotoButton,
   SavedPostsContainer
-} from "./Profile.styles";
+} from './Profile.styles'
 
-import EditUrl from "../images/edit.svg"
-import HeadshotUrl from "../images/headshot.svg";
-import { Navigate, useNavigate } from "react-router-dom";
-import { currentUser, mainClient } from "../utils/apollo";
-import { SET_INFO } from "../graphql/Mutations";
-import { USER_EXISTS } from "../graphql/Queries";
-import majorMinorJson from "../utils/MajorMinor.json";
-import DropDownItem from "./DropDownItem";
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import AddIcon from '@material-ui/icons/Add';
-import SearchBar from "./Search";
+import EditUrl from '../images/edit.svg'
+import HeadshotUrl from '../images/headshot.svg'
+import { Navigate, useNavigate } from 'react-router-dom'
+import { currentUser, mainClient } from '../utils/apollo'
+import { SET_INFO } from '../graphql/Mutations'
+import { USER_EXISTS } from '../graphql/Queries'
+import majorMinorJson from '../utils/MajorMinor.json'
+import DropDownItem from './DropDownItem'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight'
+import AddIcon from '@material-ui/icons/Add'
+import SearchBar from './Search'
 // import {FieldSetStyle, TextField} from "./MoreInfo.styles";
-import ImageUploader from "./ImageUploader";
+import ImageUploader from './ImageUploader'
 
 const ProfilePane = props => {
   const navigate = useNavigate()
@@ -53,7 +53,7 @@ const ProfilePane = props => {
   // current major, minors, and college
   const [major, setMajor] = useState([])
   const [minor, setMinor] = useState([])
-  const [college, setCollege] = useState("")
+  const [college, setCollege] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
 
@@ -86,7 +86,7 @@ const ProfilePane = props => {
       email: currentEmail,
       phone: currentPhone,
       imageUrl: currentUrl,
-      savedPosts: currentSavedPosts,
+      savedPosts: currentSavedPosts
     } = currentUser()
     const newUsername = username.length === 0 ? currentUsername : username
     setOriginal(newUsername)
@@ -151,11 +151,11 @@ const ProfilePane = props => {
     }
     setShowSaveButton(true)
 
-    if (beingEdited ==='username') {
-        setShowStatement(true)
+    if (beingEdited === 'username') {
+      setShowStatement(true)
     }
 
-    switch(source) {
+    switch (source) {
       case 'email':
         setEmail(document.getElementById('email').innerText)
         break
@@ -163,14 +163,13 @@ const ProfilePane = props => {
         setUsername(document.getElementById('username').innerText)
         break
     }
-
   }
 
   const checkForEnter = e => {
     if (e.keyCode === 13) {
       e.preventDefault()
 
-      switch(beingEdited) {
+      switch (beingEdited) {
         case 'email':
           setEmail(document.getElementById('email').innerText)
           break
@@ -186,7 +185,6 @@ const ProfilePane = props => {
       setEmail(document.getElementById('email').innerText)
     }
   }
-
 
   // const handleUserChange = useCallback(e => {
   //   setUsername(document.getElementById('username').innerText)
@@ -225,14 +223,14 @@ const ProfilePane = props => {
 
     if (username !== typedUsername) {
       setUsername(typedUsername)
-      return;
+      return
     }
 
     if (
-        userExistLoading ||
-        (userExists?.doesUsernameExist && originalUsername !== username)
+      userExistLoading ||
+      (userExists?.doesUsernameExist && originalUsername !== username)
     ) {
-      return;
+      return
     }
 
     try {
@@ -246,19 +244,19 @@ const ProfilePane = props => {
           email: document.getElementById('email').innerText.trim(),
           phone: document.getElementById('phone').innerText.trim(),
           isNewUser: false,
-          imageUrl,
+          imageUrl
         }
       }).then(() => {
-              // setCollege(returned.data.userUpdateOne.record.college)
-              // setEmail(returned.data.userUpdateOne.record.email)
-              // setPhone(returned.data.userUpdateOne.record.phone)
-              // setMajor(returned.data.userUpdateOne.record.major)
-              // setMinor(returned.data.userUpdateOne.record.minor)
-              // setImageUrl(returned.data.userUpdateOne.record.imageUrl)
-              setShowSaveButton(false)
-              setShowStatement(false)
-              setBeingEdited('none')
-            })
+        // setCollege(returned.data.userUpdateOne.record.college)
+        // setEmail(returned.data.userUpdateOne.record.email)
+        // setPhone(returned.data.userUpdateOne.record.phone)
+        // setMajor(returned.data.userUpdateOne.record.major)
+        // setMinor(returned.data.userUpdateOne.record.minor)
+        // setImageUrl(returned.data.userUpdateOne.record.imageUrl)
+        setShowSaveButton(false)
+        setShowStatement(false)
+        setBeingEdited('none')
+      })
     } catch (error) {
       error.log(error)
     }
@@ -275,26 +273,39 @@ const ProfilePane = props => {
   return props.show ? (
     <RightSidebarContainer>
       <CloseButton onClick={props.close}>
-        <ChevronRightIcon style={{width: '4.5vh', height: '4.5vh', color: '#FFFFFF'}}/>
+        <ChevronRightIcon
+          style={{ width: '4.5vh', height: '4.5vh', color: '#FFFFFF' }}
+        />
       </CloseButton>
       <RightSidebar>
         <ProfileLogout>
-          <b style={{fontSize: '3.7vh'}}>Profile</b>
+          <b style={{ fontSize: '3.7vh' }}>Profile</b>
 
-          <LogoutButton onClick={handleLogout} >Logout</LogoutButton>
+          <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
         </ProfileLogout>
         <ProfileInner>
           <Headshot src={imageUrl}>
-            <AddPhotoButton onClick={() => { setImgUploaderVisible(!imgUploaderVisible); setShowSaveButton(true) }}>
-              <AddIcon style={{width: '2.7vh', height: '2.7vh', color: 'white'}} />
+            <AddPhotoButton
+              onClick={() => {
+                setImgUploaderVisible(!imgUploaderVisible)
+                setShowSaveButton(true)
+              }}
+            >
+              <AddIcon
+                style={{ width: '2.7vh', height: '2.7vh', color: 'white' }}
+              />
             </AddPhotoButton>
           </Headshot>
           <ImageUploader
-              parentUrlCallback={url => { if (url) { setImageUrl(url) }}}
-              show={imgUploaderVisible}
-              handleDismissSelf={() => {
-                setImgUploaderVisible(false)
-              }}
+            parentUrlCallback={url => {
+              if (url) {
+                setImageUrl(url)
+              }
+            }}
+            show={imgUploaderVisible}
+            handleDismissSelf={() => {
+              setImgUploaderVisible(false)
+            }}
           />
           {/*<b>{username}</b>*/}
           {/*<FieldSetStyle>*/}
@@ -304,51 +315,85 @@ const ProfilePane = props => {
           {/*      value={username}*/}
           {/*      onChange={handleUserChange}*/}
           {/*  />*/}
-          <Descriptor style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-            <UsernameEditable contentEditable={beingEdited === 'username'} id={'username'}
-                               // onChange={text => handleUserChange(text)}
-                               style={beingEdited === 'username' ?
-                                   {backgroundColor: '#FCE8DA'} : {fontWeight: 'bold'}}
-                               onKeyDown={checkForEnter}>
+          <Descriptor
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center'
+            }}
+          >
+            <UsernameEditable
+              contentEditable={beingEdited === 'username'}
+              id={'username'}
+              // onChange={text => handleUserChange(text)}
+              style={
+                beingEdited === 'username'
+                  ? { backgroundColor: '#FCE8DA' }
+                  : { fontWeight: 'bold' }
+              }
+              onKeyDown={checkForEnter}
+            >
               {username}
             </UsernameEditable>
-            <EditButton src={EditUrl} onClick={() => handleEditClick('username')}/>
-            {showStatement &&
-              <div style={{position: 'absolute', top: '3vh', backgroundColor: '#F5F7FC',
-                    paddingLeft: '0.25em', paddingRight: '0.25em', borderRadius: '0.5vh',
-                    zIndex: '30'}}>
+            <EditButton
+              src={EditUrl}
+              onClick={() => handleEditClick('username')}
+            />
+            {showStatement && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '3vh',
+                  backgroundColor: '#F5F7FC',
+                  paddingLeft: '0.25em',
+                  paddingRight: '0.25em',
+                  borderRadius: '0.5vh',
+                  zIndex: '30'
+                }}
+              >
                 {userStatement}
               </div>
-            }
+            )}
           </Descriptor>
           <Divider />
           <Descriptor>
             <BlockyText>
-            <b> Major: </b>
-            <TextBlock>{major.join(', ')}</TextBlock>
+              <b> Major: </b>
+              <TextBlock>{major.join(', ')}</TextBlock>
             </BlockyText>
-            <EditButton src={EditUrl} onClick={() => handleEditClick('major')}/>
-            {beingEdited === 'major'  && (
-              <div style={{width: 'calc(35vh - 1.2em)', position: 'fixed',
-                           display: 'flex', flexDirection: 'column', zIndex: '30'}}>
+            <EditButton
+              src={EditUrl}
+              onClick={() => handleEditClick('major')}
+            />
+            {beingEdited === 'major' && (
+              <div
+                style={{
+                  width: 'calc(35vh - 1.2em)',
+                  position: 'fixed',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  zIndex: '30'
+                }}
+              >
                 <SearchBar
-                  style={{width: '23.5vh',
+                  style={{
+                    width: '23.5vh',
                     // maxWidth: '23.5vh', maxHeight: '2vh', lineHeight: '2vh',
                     padding: '0.4vh 0.4vh',
-                    fontSize: '2vh', alignSelf: 'flex-end'}}
+                    fontSize: '2vh',
+                    alignSelf: 'flex-end'
+                  }}
                   items={majors}
                   setList={setFilteredMajors}
                   setActive={setMajorsActive}
                 />
-                <DDList
-                  style={{position: 'relative', top: '-2.2vh'}}
-                >
+                <DDList style={{ position: 'relative', top: '-2.2vh' }}>
                   {finalizedMajors.map(item => (
                     <DDListItem key={item}>
                       <DropDownItem
-                          name={item}
-                          setInfo={handleMajorChange}
-                          selectedItems={major}
+                        name={item}
+                        setInfo={handleMajorChange}
+                        selectedItems={major}
                       />
                     </DDListItem>
                   ))}
@@ -361,22 +406,33 @@ const ProfilePane = props => {
               <b> Minor: </b>
               <TextBlock> {minor.join(', ')} </TextBlock>
             </BlockyText>
-            <EditButton src={EditUrl} onClick={() => handleEditClick('minor')}/>
-            {beingEdited === 'minor'  && (
-              <div style={{width: 'calc(35vh - 1.2em)', position: 'fixed',
-                display: 'flex', flexDirection: 'column', zIndex: '30'}}>
+            <EditButton
+              src={EditUrl}
+              onClick={() => handleEditClick('minor')}
+            />
+            {beingEdited === 'minor' && (
+              <div
+                style={{
+                  width: 'calc(35vh - 1.2em)',
+                  position: 'fixed',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  zIndex: '30'
+                }}
+              >
                 <SearchBar
-                  style={{width: '23.5vh',
+                  style={{
+                    width: '23.5vh',
                     // maxWidth: '23.5vh', maxHeight: '2vh', lineHeight: '2vh',
                     padding: '0.4vh 0.4vh',
-                    fontSize: '2vh', alignSelf: 'flex-end'}}
+                    fontSize: '2vh',
+                    alignSelf: 'flex-end'
+                  }}
                   items={minors}
                   setList={setFilteredMinors}
                   setActive={setMinorsActive}
                 />
-                <DDList
-                  style={{position: 'relative', top: '-2.2vh'}}
-                >
+                <DDList style={{ position: 'relative', top: '-2.2vh' }}>
                   {finalizedMinors.map(item => (
                     <DDListItem key={item}>
                       <DropDownItem
@@ -393,22 +449,33 @@ const ProfilePane = props => {
           <Descriptor>
             <BlockyText>
               <b> College: </b>
-              <TextBlock> {college.replace("_", " ")} </TextBlock>
+              <TextBlock> {college.replace('_', ' ')} </TextBlock>
             </BlockyText>
-            <EditButton src={EditUrl} onClick={() => handleEditClick('college')} />
-            {beingEdited === 'college'  && (
-              <div style={{width: 'calc(35vh - 1.2em)', position: 'fixed',
-                           display: 'flex', flexDirection: 'column', zIndex: '30',
-                           paddingTop: '1vh' }}>
+            <EditButton
+              src={EditUrl}
+              onClick={() => handleEditClick('college')}
+            />
+            {beingEdited === 'college' && (
+              <div
+                style={{
+                  width: 'calc(35vh - 1.2em)',
+                  position: 'fixed',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  zIndex: '30',
+                  paddingTop: '1vh'
+                }}
+              >
                 <DDList
-                  // style={{position: 'relative', top: '1vh'}}
+                // style={{position: 'relative', top: '1vh'}}
                 >
                   {colleges.map(item => (
                     <DDListItem key={item}>
                       <DropDownItem
-                          name={item} alias={item.replace("_", " ")}
-                          setInfo={handleCollegeChange}
-                          selectedItems={college}
+                        name={item}
+                        alias={item.replace('_', ' ')}
+                        setInfo={handleCollegeChange}
+                        selectedItems={college}
                       />
                     </DDListItem>
                   ))}
@@ -420,50 +487,71 @@ const ProfilePane = props => {
           <Descriptor>
             <BlockyText>
               <b> Email: </b>
-                <EditableTextBlock contentEditable={beingEdited === 'email'} id={'email'}
-                                   onChange={text => setEmail(text)}
-                           style={beingEdited === 'email' ?
-                               {backgroundColor: '#FCE8DA'} : null} onKeyDown={checkForEnter}>
-                  <a href={beingEdited === 'email' ? null : 'mailto:' + email} >
-                    {email}
-                  </a>
-                </EditableTextBlock>
+              <EditableTextBlock
+                contentEditable={beingEdited === 'email'}
+                id={'email'}
+                onChange={text => setEmail(text)}
+                style={
+                  beingEdited === 'email'
+                    ? { backgroundColor: '#FCE8DA' }
+                    : null
+                }
+                onKeyDown={checkForEnter}
+              >
+                <a href={beingEdited === 'email' ? null : 'mailto:' + email}>
+                  {email}
+                </a>
+              </EditableTextBlock>
             </BlockyText>
-            <EditButton src={EditUrl} onClick={() => handleEditClick('email')}/>
+            <EditButton
+              src={EditUrl}
+              onClick={() => handleEditClick('email')}
+            />
           </Descriptor>
           <Descriptor>
             <BlockyText>
               <b> Phone: </b>
-              <EditableTextBlock contentEditable={beingEdited === 'phone'} id={'phone'} value={phone}
-                                 style={beingEdited === 'phone' ?
-                                     {backgroundColor: '#FCE8DA'} : null} onKeyDown={checkForEnter}>
+              <EditableTextBlock
+                contentEditable={beingEdited === 'phone'}
+                id={'phone'}
+                value={phone}
+                style={
+                  beingEdited === 'phone'
+                    ? { backgroundColor: '#FCE8DA' }
+                    : null
+                }
+                onKeyDown={checkForEnter}
+              >
                 {phone}
               </EditableTextBlock>
             </BlockyText>
-            <EditButton src={EditUrl} onClick={() => handleEditClick('phone')}/>
+            <EditButton
+              src={EditUrl}
+              onClick={() => handleEditClick('phone')}
+            />
           </Descriptor>
           <Divider />
-          {showSaveButton &&
-            <SaveButton onClick={() => saveData()}>
-              Save
-            </SaveButton>}
+          {showSaveButton && (
+            <SaveButton onClick={() => saveData()}>Save</SaveButton>
+          )}
           {showSaveButton && <Divider />}
         </ProfileInner>
-          <b>Saved posts:</b>
-        {savedPosts.length &&
+        <b>Saved posts:</b>
+        {savedPosts.length && (
           <SavedPostsContainer>
             {savedPosts.map(post => (
-                <div key={post._id} style={{fontSize: 'inherit'}}>
-                  <a href={'/posts/' + post._id} target={'_blank'}
-                     style={{fontSize: 'inherit'}}
-                  >
-                    {post._id}
-                  </a>
-                </div>
-              ))
-            }
+              <div key={post._id} style={{ fontSize: 'inherit' }}>
+                <a
+                  href={'/posts/' + post._id}
+                  target={'_blank'}
+                  style={{ fontSize: 'inherit' }}
+                >
+                  {post._id}
+                </a>
+              </div>
+            ))}
           </SavedPostsContainer>
-        }
+        )}
       </RightSidebar>
     </RightSidebarContainer>
   ) : null

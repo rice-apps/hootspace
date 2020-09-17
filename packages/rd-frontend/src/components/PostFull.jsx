@@ -23,7 +23,7 @@ import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
 import ArrowDropUp from '@material-ui/icons/ArrowDropUp'
 import ArrowDropDown from '@material-ui/icons/ArrowDropDown'
-import CommentOutlinedIcon from '@material-ui/icons/CommentOutlined';
+import CommentOutlinedIcon from '@material-ui/icons/CommentOutlined'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import log from 'loglevel'
 
@@ -70,10 +70,7 @@ import {
   BoldedSpan,
   NormalSpan
 } from './PostChunk.styles'
-import {
-  BackToFeed,
-  Tags
-} from './PostFull.styles'
+import { BackToFeed, Tags } from './PostFull.styles'
 import { tagColors } from './tagColors'
 import { COMMENT_CREATED } from '../graphql/Subscriptions'
 import CommentChunk from './CommentChunk'
@@ -97,7 +94,7 @@ function PostFull () {
   const [removePost] = useMutation(REMOVE_POST)
   const [savePost] = useMutation(SAVE_POST)
   const [createComment] = useMutation(CREATE_COMMENT)
-  
+
   // const [getCommentsPost, { refetch, ...result }] = useLazyQuery(
   //   FETCH_COMMENTS_POST
   // )
@@ -231,12 +228,11 @@ function PostFull () {
     return <p>Error Fetching Comments</p>
   }
 
-
   thePost = resultPost.data.postById
 
   const theComments = data.commentByPost
 
-  var numComments = theComments.length;
+  var numComments = theComments.length
 
   theComments.map(comment => {
     numComments += comment.children.length
@@ -245,7 +241,7 @@ function PostFull () {
         numComments += child.children.length
       })
     }
-  });
+  })
 
   if (thePost.imageUrl) {
     oneImage = <img width={500} src={thePost.imageUrl} alt='Custom-thing' />
@@ -271,18 +267,18 @@ function PostFull () {
     workplace: thePost.workplace ? thePost.workplace : '',
     startTime: thePost.start ? thePost.start : '',
     endTime: thePost.end ? thePost.end : '',
-    deadline: thePost.deadline ? thePost.deadline: ''
+    deadline: thePost.deadline ? thePost.deadline : ''
   }
 
-  const isPaid = thePost.isPaid;
-  let paidString = ""
-  if (typeof isPaid === 'boolean'){
-    paidString = isPaid === true ? "Yes" : "No"
+  const isPaid = thePost.isPaid
+  let paidString = ''
+  if (typeof isPaid === 'boolean') {
+    paidString = isPaid === true ? 'Yes' : 'No'
   }
-  const isClosed = thePost.isClosed;
-  let closedString = ""
-  if (typeof isClosed === 'boolean'){
-    closedString = isClosed === true ? "Yes" : "No"
+  const isClosed = thePost.isClosed
+  let closedString = ''
+  if (typeof isClosed === 'boolean') {
+    closedString = isClosed === true ? 'Yes' : 'No'
   }
 
   const jobSpecifics = {
@@ -290,41 +286,70 @@ function PostFull () {
     isClosed: closedString
   }
 
-  const months = [ "January", "February", "March", "April", "May", "June", 
-  "July", "August", "September", "October", "November", "December" ];
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ]
   //maybe we should put N/A if it wasn't specified hmm...
-  let postDescriptor = [];
-  if (calEvent.startTime.length > 0){
-    const startDate = calEvent.startTime.split('T')[0];
+  let postDescriptor = []
+  if (calEvent.startTime.length > 0) {
+    const startDate = calEvent.startTime.split('T')[0]
     const formattedDate = startDate.split('-')
-    const month = months[parseInt(formattedDate[1], 10) - 1];
+    const month = months[parseInt(formattedDate[1], 10) - 1]
     postDescriptor.push(
-      <NormalSpan><BoldedSpan>From: </BoldedSpan>{month + ' ' + formattedDate[2] + ", " + formattedDate[0] + `      `}</NormalSpan>
+      <NormalSpan>
+        <BoldedSpan>From: </BoldedSpan>
+        {month + ' ' + formattedDate[2] + ', ' + formattedDate[0] + `      `}
+      </NormalSpan>
     )
   }
-  if (calEvent.endTime.length > 0 || calEvent.deadline.length > 0){
-    const until = calEvent.endTime.length > 0 ? calEvent.endTime : calEvent.deadline;
-    const endDate = until.split('T')[0];
+  if (calEvent.endTime.length > 0 || calEvent.deadline.length > 0) {
+    const until =
+      calEvent.endTime.length > 0 ? calEvent.endTime : calEvent.deadline
+    const endDate = until.split('T')[0]
     const formattedDate = endDate.split('-')
-    const month = months[parseInt(formattedDate[1], 10) - 1];
+    const month = months[parseInt(formattedDate[1], 10) - 1]
     postDescriptor.push(
-      <NormalSpan><BoldedSpan>End: </BoldedSpan>{month + ' ' + formattedDate[2] + ", " + formattedDate[0] + `      `}</NormalSpan>
+      <NormalSpan>
+        <BoldedSpan>End: </BoldedSpan>
+        {month + ' ' + formattedDate[2] + ', ' + formattedDate[0] + `      `}
+      </NormalSpan>
     )
   }
-  if (calEvent.location.length > 0 || calEvent.workplace.length > 0){
-    const place = calEvent.location.length > 0 ? calEvent.location : calEvent.workplace;
+  if (calEvent.location.length > 0 || calEvent.workplace.length > 0) {
+    const place =
+      calEvent.location.length > 0 ? calEvent.location : calEvent.workplace
     postDescriptor.push(
-      <NormalSpan><BoldedSpan>Location: </BoldedSpan>{place}</NormalSpan>
+      <NormalSpan>
+        <BoldedSpan>Location: </BoldedSpan>
+        {place}
+      </NormalSpan>
     )
   }
-  if (jobSpecifics.isPaid.length > 0){
+  if (jobSpecifics.isPaid.length > 0) {
     postDescriptor.push(
-      <NormalSpan><BoldedSpan>Paid: </BoldedSpan>{jobSpecifics.isPaid}</NormalSpan>
+      <NormalSpan>
+        <BoldedSpan>Paid: </BoldedSpan>
+        {jobSpecifics.isPaid}
+      </NormalSpan>
     )
   }
-  if (jobSpecifics.isClosed.length > 0){
+  if (jobSpecifics.isClosed.length > 0) {
     postDescriptor.push(
-      <NormalSpan><BoldedSpan>Closed: </BoldedSpan>{jobSpecifics.isClosed}</NormalSpan>
+      <NormalSpan>
+        <BoldedSpan>Closed: </BoldedSpan>
+        {jobSpecifics.isClosed}
+      </NormalSpan>
     )
   }
 
@@ -352,9 +377,7 @@ function PostFull () {
                 <ArrowDropUp fontSize='large' />
               </IconButton>
             </Upvote>
-            <Likes>
-              {thePost.upvotes.length - thePost.downvotes.length}
-            </Likes>
+            <Likes>{thePost.upvotes.length - thePost.downvotes.length}</Likes>
             <Downvote className={classes.root}>
               <IconButton
                 style={
@@ -444,18 +467,14 @@ function PostFull () {
                       )
                       savePost({
                         variables: {
-                          savedPosts: [
-                            ...currentSavedPosts,
-                            thePost._id
-                          ]
+                          savedPosts: [...currentSavedPosts, thePost._id]
                         }
                       })
                     }}
                   >
                     Save Post
                   </Save>
-                  {(thePost.kind === 'Event' ||
-                    thePost.kind === 'Job') && (
+                  {(thePost.kind === 'Event' || thePost.kind === 'Job') && (
                     <AddTo>
                       <AddToCalendar
                         event={calEvent}
@@ -480,34 +499,29 @@ function PostFull () {
                     Report Post
                   </Report>
 
-                  {thePost.creator.username ===
-                    userInfo.username && (
-                      <Delete
-                        onClick={e => {
-                          e.preventDefault()
-                          removePost({
-                            variables: {
-                              _id: thePost._id
-                            }
-                          })
-                          window.location.reload(false)
-                        }}
-                      >
-                        Delete Post
-                      </Delete>
-                    )}
+                  {thePost.creator.username === userInfo.username && (
+                    <Delete
+                      onClick={e => {
+                        e.preventDefault()
+                        removePost({
+                          variables: {
+                            _id: thePost._id
+                          }
+                        })
+                        window.location.reload(false)
+                      }}
+                    >
+                      Delete Post
+                    </Delete>
+                  )}
                 </DDMenu>
               )}
             </MoreOptions>
             <DiscussionBody style={{ textAlign: thePost.text_align }}>
               {ReactHtmlParser(remarkable.render(thePost.body))}
             </DiscussionBody>
-            <ImageDiv>
-              {oneImage}
-            </ImageDiv>
-            <DescriptorDiv>
-              {postDescriptor}
-            </DescriptorDiv>
+            <ImageDiv>{oneImage}</ImageDiv>
+            <DescriptorDiv>{postDescriptor}</DescriptorDiv>
           </TopMiddleComponent>
 
           <CommentComponent>
@@ -519,20 +533,24 @@ function PostFull () {
 
             <ShowCommentsDiv>
               <Button
-                startIcon={<CommentOutlinedIcon fontSize="large"/>}
+                startIcon={<CommentOutlinedIcon fontSize='large' />}
                 style={{
                   background: 'none',
                   border: 'none',
                   font: 'Avenir',
                   textTransform: 'none',
-                  display: 'flex',
+                  display: 'flex'
                 }}
                 onClick={toggleComment}
               >
                 {isCommentOpen ? (
-                  <text style={{color: '#67687E'}}>Hide Comments ({numComments})</text>
+                  <text style={{ color: '#67687E' }}>
+                    Hide Comments ({numComments})
+                  </text>
                 ) : (
-                  <text style={{color: '#67687E'}}>Show Comments ({numComments})</text>
+                  <text style={{ color: '#67687E' }}>
+                    Show Comments ({numComments})
+                  </text>
                 )}
               </Button>
             </ShowCommentsDiv>
@@ -564,32 +582,49 @@ function PostFull () {
                   }
                 }}
               >
-                <CommentButtonText>
-                  Post Comment
-                </CommentButtonText>
+                <CommentButtonText>Post Comment</CommentButtonText>
               </CommentButton>
             )}
             {isCommentOpen && (
               <CommentsDiv>
-                <ul style={{listStyleType:"none", paddingLeft:"0px"}}>
+                <ul style={{ listStyleType: 'none', paddingLeft: '0px' }}>
                   {/* level 1 */}
-                  {theComments.map((comment) => (
-                    <li key={comment._id} style={{listStyleType:"none"}}>
-                      <CommentChunk comment={comment} postID={thePost._id} setParentID={setReplyID} isLeaf={false}></CommentChunk>
+                  {theComments.map(comment => (
+                    <li key={comment._id} style={{ listStyleType: 'none' }}>
+                      <CommentChunk
+                        comment={comment}
+                        postID={thePost._id}
+                        setParentID={setReplyID}
+                        isLeaf={false}
+                      ></CommentChunk>
                       {/* <button onClick={() => setReplyID(comment._id)}>Reply</button> */}
-                      <ul style={{listStyleType:"none"}}>
+                      <ul style={{ listStyleType: 'none' }}>
                         {/* level 2 */}
-                        {comment.children.map((child1) => (
-                          <li key={child1._id} style={{listStyleType:"none"}}>
-                            <CommentChunk comment={child1} postID={thePost._id} isLeaf={false}></CommentChunk>
+                        {comment.children.map(child1 => (
+                          <li
+                            key={child1._id}
+                            style={{ listStyleType: 'none' }}
+                          >
+                            <CommentChunk
+                              comment={child1}
+                              postID={thePost._id}
+                              isLeaf={false}
+                            ></CommentChunk>
                             {/* <button onClick={() => setReplyID(child1._id)}>
                               Reply
                             </button> */}
-                            <ul style={{listStyleType:"none"}}>
+                            <ul style={{ listStyleType: 'none' }}>
                               {/* level 3 */}
-                              {child1.children.map((child2) => (
-                                <li key={child2._id} style={{listStyleType:"none"}}>
-                                  <CommentChunk comment={child2} postID={thePost._id} isLeaf={true}></CommentChunk>
+                              {child1.children.map(child2 => (
+                                <li
+                                  key={child2._id}
+                                  style={{ listStyleType: 'none' }}
+                                >
+                                  <CommentChunk
+                                    comment={child2}
+                                    postID={thePost._id}
+                                    isLeaf={true}
+                                  ></CommentChunk>
                                   {/* dont nest any further */}
                                 </li>
                               ))}

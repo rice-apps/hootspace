@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import {Search} from "./Search.styles"
-
+import { Search } from './Search.styles'
 
 function SearchBar ({ items, setList, setActive, style, placeholder }) {
   const [searchText, setSearchText] = useState('')

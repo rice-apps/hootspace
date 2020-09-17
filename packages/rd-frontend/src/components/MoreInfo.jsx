@@ -47,7 +47,7 @@ function MoreInfo () {
   const [filteredMajors, setFilteredMajors] = useState([])
   const [filteredMinors, setFilteredMinors] = useState([])
 
-  const [addInfo, {data : USER_DATA_L}] = useMutation(SET_INFO)
+  const [addInfo, { data: USER_DATA_L }] = useMutation(SET_INFO)
   const [
     checkUser,
     { data: userExists, loading: userExistLoading }
@@ -73,11 +73,11 @@ function MoreInfo () {
   }, [username])
 
   useEffect(() => {
-    console.log(username);
+    console.log(username)
     const isMyUsernameTaken = userExists?.doesUsernameExist
     setStatement('valid username!')
-    if (username === ''){
-      setStatement("you need a username");
+    if (username === '') {
+      setStatement('you need a username')
     }
     if (isMyUsernameTaken) {
       setStatement('somebody already took that username lol')
@@ -95,7 +95,7 @@ function MoreInfo () {
         ? major.filter(maj => newValue !== maj)
         : [...major, newValue]
     )
-    setMajorOpen(false);
+    setMajorOpen(false)
   }
 
   const handleMinorChange = newValue => {
@@ -167,7 +167,7 @@ function MoreInfo () {
           }
         })
       } catch (error) {
-        return;
+        return
       }
       navigator('/feed')
     } catch (error) {
@@ -192,9 +192,13 @@ function MoreInfo () {
 
           <MarginsForm onSubmit={handleSubmit}>
             <TotalForm>
-              <div style={{"display":"flex",
-                          "flex-direction": "column",
-                          "align-items": "flex-start"}}>
+              <div
+                style={{
+                  display: 'flex',
+                  'flex-direction': 'column',
+                  'align-items': 'flex-start'
+                }}
+              >
                 <p>{userStatement}</p>
                 <FieldSetStyle>
                   <TextField
@@ -210,7 +214,7 @@ function MoreInfo () {
                 items={majors}
                 setList={setFilteredMajors}
                 setActive={setMajorsActive}
-                placeholder={"search majors"}
+                placeholder={'search majors'}
               />
               <DDWrapper>
                 <DDHeader onClick={toggleMajor}>
@@ -239,7 +243,7 @@ function MoreInfo () {
                 items={minors}
                 setList={setFilteredMinors}
                 setActive={setMinorsActive}
-                placeholder={"search minors"}
+                placeholder={'search minors'}
               />
               <DDWrapper>
                 <DDHeader onClick={toggleMinor}>

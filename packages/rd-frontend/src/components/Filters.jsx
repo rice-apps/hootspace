@@ -45,11 +45,11 @@ const Filters = props => {
   }, [])
 
   useEffect(() => {
-    if (props.filtersClosed){
-      setPostMenuOpen(false);
-      setTagOpen(false);
-      setDateOpen(false);
-      setUpvotes(false);
+    if (props.filtersClosed) {
+      setPostMenuOpen(false)
+      setTagOpen(false)
+      setDateOpen(false)
+      setUpvotes(false)
     }
   }, [props.filtersClosed])
 
@@ -59,10 +59,8 @@ const Filters = props => {
   const tagList = data.getAllTags
   const finalizedTags = searchActivated ? filteredTags : tagList
 
-  
-
   const togglePost = () => {
-    props.setFiltersClosed(false);
+    props.setFiltersClosed(false)
     setPostMenuOpen(!isPostTypeOpen)
     setTagOpen(false)
     setDateOpen(false)
@@ -70,7 +68,7 @@ const Filters = props => {
   }
 
   const toggleTag = () => {
-    props.setFiltersClosed(false);
+    props.setFiltersClosed(false)
     setTagOpen(!isTagOpen)
     setPostMenuOpen(false)
     setDateOpen(false)
@@ -78,7 +76,7 @@ const Filters = props => {
   }
 
   const toggleDate = () => {
-    props.setFiltersClosed(false);
+    props.setFiltersClosed(false)
     setDateOpen(!isDateOpen)
     setPostMenuOpen(false)
     setTagOpen(false)
@@ -160,75 +158,75 @@ const Filters = props => {
 
   return (
     <>
-    <div style = {{}}>
-      <HorizontalDiv>
-        <DDWrapper>
-          <DDHeader onClick={togglePost}>
-            <DDHeaderTitle>
-              {postType === '' ? 'Post Type' : postType}
-              <ArrowI open={isPostTypeOpen} />
-            </DDHeaderTitle>
-          </DDHeader>
-          {isPostTypeOpen && (
-            <DDList>
-              {POST_TYPES.map(item => (
-                <DDListItem key={item}>
-                  <DropDownItem
-                    name={item}
-                    setInfo={handlePostTypeChange}
-                    selectedItems={postType}
-                  />
-                </DDListItem>
-              ))}
-            </DDList>
-          )}
-        </DDWrapper>
+      <div style={{}}>
+        <HorizontalDiv>
+          <DDWrapper>
+            <DDHeader onClick={togglePost}>
+              <DDHeaderTitle>
+                {postType === '' ? 'Post Type' : postType}
+                <ArrowI open={isPostTypeOpen} />
+              </DDHeaderTitle>
+            </DDHeader>
+            {isPostTypeOpen && (
+              <DDList>
+                {POST_TYPES.map(item => (
+                  <DDListItem key={item}>
+                    <DropDownItem
+                      name={item}
+                      setInfo={handlePostTypeChange}
+                      selectedItems={postType}
+                    />
+                  </DDListItem>
+                ))}
+              </DDList>
+            )}
+          </DDWrapper>
 
-        <DDWrapper>
-          <DDHeader onClick={toggleTag}>
-            <DDHeaderTitle>
-              Tags
-              <ArrowI open={isTagOpen} />
-            </DDHeaderTitle>
-          </DDHeader>
-          {isTagOpen && (
-            <DDList>
-              {finalizedTags.map(item => (
-                <DDListItem key={item}>
-                  <DropDownItem
-                    name={item}
-                    setInfo={handleTagsChange}
-                    selectedItems={tags}
-                  />
-                </DDListItem>
-              ))}
-            </DDList>
-          )}
-        </DDWrapper>
+          <DDWrapper>
+            <DDHeader onClick={toggleTag}>
+              <DDHeaderTitle>
+                Tags
+                <ArrowI open={isTagOpen} />
+              </DDHeaderTitle>
+            </DDHeader>
+            {isTagOpen && (
+              <DDList>
+                {finalizedTags.map(item => (
+                  <DDListItem key={item}>
+                    <DropDownItem
+                      name={item}
+                      setInfo={handleTagsChange}
+                      selectedItems={tags}
+                    />
+                  </DDListItem>
+                ))}
+              </DDList>
+            )}
+          </DDWrapper>
 
-        <DDWrapper>
-          <DDHeader onClick={toggleDate}>
-            <DDHeaderTitle>
-              {dates === '' ? 'By Date' : dates}
-              <ArrowI open={isDateOpen} />
-            </DDHeaderTitle>
-          </DDHeader>
-          {isDateOpen && (
-            <DDList>
-              {DATES.map(item => (
-                <DDListItem key={item}>
-                  <DropDownItem
-                    name={item}
-                    setInfo={handleDateChange}
-                    selectedItems={dates}
-                  />
-                </DDListItem>
-              ))}
-            </DDList>
-          )}
-        </DDWrapper>
+          <DDWrapper>
+            <DDHeader onClick={toggleDate}>
+              <DDHeaderTitle>
+                {dates === '' ? 'By Date' : dates}
+                <ArrowI open={isDateOpen} />
+              </DDHeaderTitle>
+            </DDHeader>
+            {isDateOpen && (
+              <DDList>
+                {DATES.map(item => (
+                  <DDListItem key={item}>
+                    <DropDownItem
+                      name={item}
+                      setInfo={handleDateChange}
+                      selectedItems={dates}
+                    />
+                  </DDListItem>
+                ))}
+              </DDList>
+            )}
+          </DDWrapper>
 
-        {/*         <DDWrapper>
+          {/*         <DDWrapper>
           <DDHeader onClick={toggleUpvotes}>
             <DDHeaderTitle>
               {upvotes === '' ? 'By Popularity' : upvotes}
@@ -249,28 +247,30 @@ const Filters = props => {
             </DDList>
           )}
         </DDWrapper>*/}
-        <IconButton
-          onClick={submitFilters}
-          style={{
-            background: 'white',
-            borderRadius: '.8vw',
-            height: '2.4vw',
-            width: '2.4vw',
-            marginLeft: '1vw'
-          }}
-        >
-          <TuneIcon />
-        </IconButton>
-        {/* <SubmitButton onClick={submitFilters}> Filter! </SubmitButton> */}
-        <ClearFilter onClick={clearFilters}>Clear</ClearFilter>
-      </HorizontalDiv>
-      {isTagOpen && <SearchBar
-        items={tagList}
-        setList={setFilteredTags}
-        setActive={setActive}
-        placeholder={"search tags"}
-        style = {{}}
-      />}
+          <IconButton
+            onClick={submitFilters}
+            style={{
+              background: 'white',
+              borderRadius: '.8vw',
+              height: '2.4vw',
+              width: '2.4vw',
+              marginLeft: '1vw'
+            }}
+          >
+            <TuneIcon />
+          </IconButton>
+          {/* <SubmitButton onClick={submitFilters}> Filter! </SubmitButton> */}
+          <ClearFilter onClick={clearFilters}>Clear</ClearFilter>
+        </HorizontalDiv>
+        {isTagOpen && (
+          <SearchBar
+            items={tagList}
+            setList={setFilteredTags}
+            setActive={setActive}
+            placeholder={'search tags'}
+            style={{}}
+          />
+        )}
       </div>
     </>
   )
