@@ -13,7 +13,7 @@ import {
 } from './SideNav.styles'
 // import { Link, useLocation } from 'react-router-dom'
 
-function SideNav (props) {
+function SideNav(props) {
   // const location = useLocation()
   const pages = ['/profile', '/feed', '/calendar', '/mail']
 
@@ -46,10 +46,12 @@ function SideNav (props) {
 
   return (
     <NavWrapper>
-      <Logo>
-        {/* Replace icon with something more professional or customized */}
-        <ChatLogo />
-      </Logo>
+      <a href="/feed">
+        <Logo>
+          {/* Replace icon with something more professional or customized */}
+          <ChatLogo />
+        </Logo>
+      </a>
       <NavList>
         {/*{pages.map((page, i) => {*/}
         {/*  return (*/}
