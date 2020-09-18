@@ -1,5 +1,5 @@
-import styled from 'styled-components/macro'
-import { Link } from 'react-router-dom'
+import styled, { css } from 'styled-components/macro'
+// import { Link } from 'react-router-dom'
 
 // note: PostFull.styles.js is based on this file
 // so please make relevant design updates to both places
@@ -31,7 +31,7 @@ const TopComponent = styled.div`
   grid-area: top;
   display: grid;
   grid-template-columns: auto auto;
-  grid-template-rows: 3vh 1vh;
+  grid-template-rows: 5vh 1vh;
   grid-template-areas:
     'op tags'
     'line line';
@@ -39,9 +39,16 @@ const TopComponent = styled.div`
 `
 const OriginalPoster = styled.div`
   display: grid;
+  grid-template-columns: 20vh 20vh;
+  grid-template-rows: auto;
+  // flex-direction: row;
+  // justify-content: flex-start;
+  // align-items: center;
+  
   font-size: 2vh;
   grid-area: op;
   white-space: nowrap;
+  padding-bottom: 0.5vh;
 `
 
 // contains Tag, ViewTags
@@ -124,7 +131,7 @@ const DiscussionTitle = styled.text`
   align-self: start;
 `
 
-const FullPostLink = styled(Link)`
+const FullPostLink = styled.text`
   color: black;
   text-decoration: none;
 `
@@ -156,42 +163,45 @@ const MoreOptions = styled.div`
 `
 
 const DDMenu = styled.div`
-  position: relative;
-  align-self: start;
-  justify-self: center;
+  position: absolute;
+  // align-self: start;
+  // justify-self: center;
+  top: 5vh;
+  left: 2vh;
+  z-index: 4;
   background-color: white;
   display: grid;
-  bottom: 25px;
-  width: 150%;
+  // bottom: 25px;
+  width: 15vh;
 `
 
 const Save = styled.button`
-  padding: 5px;
+  padding: 0.5vh;
 `
 
 const Expand = styled.button`
-  padding: 5px;
+  padding: 0.5vh;
 `
 
 const AddTo = styled.button`
-  padding: 5px;
+  padding: 0.5vh;
 `
 
 const Report = styled.button`
-  padding: 5px;
+  padding: 0.5vh;
 `
 
 const Delete = styled.button`
-  padding: 5px;
+  padding: 0.5vh;
 `
 
 const DiscussionBody = styled.text`
   grid-area: body;
   padding: 1vh 0px;
   font-size: 2vh;
-  max-height: 10vh;
+  // max-height: 10vh;
   overflow: hidden;
-  text-overflow: ellipsis;
+  // text-overflow: ellipsis;
   white-space: nowrap;
 `
 
@@ -322,6 +332,28 @@ const Commentli = styled.li`
   list-style-type: none;
 `
 
+const Pic = styled.div`
+  width: 5.37vh;
+  height: 5.37vh;
+  border-radius: 20%;
+  // padding-top: 23.33%;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+
+  // background-color: red;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  ${props =>
+    css`
+      background-image: url(${props.src});
+    `}
+`
+
 export {
   DiscussionBoxSection,
   OriginalPoster,
@@ -359,5 +391,6 @@ export {
   CommentButtonText,
   CommentsDiv,
   BoldedSpan,
-  NormalSpan
+  NormalSpan,
+  Pic
 }
