@@ -11,12 +11,38 @@ const ExitButton = styled.div`
   cursor: pointer;
 `
 
-const PostWrapper = styled.div`
+const BackgroundCover = styled.div`
   position: fixed;
+  
+  right: 0;
+  bottom: 0;
+  
+  width: calc(100vw - 14vh);
+  height: 100%;
+  
+  background-color: rgba(248, 248, 249, 0.7);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  z-index: 40;
+  
+  @media (max-aspect-ratio: 848/712) {
+    width: 100vw;
+    height: 89vh;
+    top: 11vh;
+    left: 0;
+    // background-color: #ffffff;
+  }
+`
 
-  left: 70%;
-  top: 50%;
-  transform: translate(-70%, -50%);
+const PostWrapper = styled.div`
+  // position: fixed;
+  //
+  // left: 50vw;
+  // top: 50vh;
+  // transform: translate(-50vw, -50vh);
 
   width: 100vh;
 
@@ -30,13 +56,10 @@ const PostWrapper = styled.div`
   border: 0.37vh solid #ffffff;
   border-radius: 1.85vh;
 
-  z-index: 1;
+  z-index: 50;
 
   @media (max-aspect-ratio: 848/712) {
-    width: 91vw;
-    top: 90%;
-    left: 50%;
-    transform: translate(-50%, -90%);
+    width: 90vw;
   }
 `
 
@@ -201,7 +224,7 @@ const DatesWrapper = styled.div`
   // background-color: pink;
   display: flex;
   align-items: center;
-  z-index: 5;
+  z-index: 60;
 `
 
 const TagWrapper = styled.div`
@@ -512,5 +535,6 @@ export {
   TagCircle,
   StyledLink,
   StereoButton,
-  StereoButtonCheck
+  StereoButtonCheck,
+  BackgroundCover
 }

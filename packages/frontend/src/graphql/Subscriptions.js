@@ -9,6 +9,7 @@ const POST_CREATED = gql`
       creator {
         _id
         username
+        imageUrl
       }
       body
       text_align
@@ -84,6 +85,7 @@ const COMMENT_CREATED = gql`
       }
       creator {
         username
+        imageUrl
       }
       date_created
       body
@@ -117,6 +119,7 @@ const COMMENT_UPDATED = gql`
       }
       creator {
         username
+        imageUrl
       }
       date_created
       body
