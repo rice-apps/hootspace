@@ -17,6 +17,8 @@ import FadeIn from 'react-fade-in';
 import wyao from '../images/wyao.jpg';
 import sgoyal from '../images/sgoyal.jpg';
 import ccai from '../images/ccai.jpg';
+import hqin from '../images/hqin.jfif'
+import bzhang from '../images/bzhang.jpg'
 
 import {
     LeftSidebarContainer,
@@ -98,31 +100,27 @@ function AboutPage () {
                 <DetailText>
                     Frequently Asked Questions:
                 </DetailText>
-                <SimpleAccordion title="Who can use Carpool?">
-                    Carpool was created for the Rice University Community. A Net ID is required.
+                <SimpleAccordion title="Who can use hootspace?">
+                    hootspace was created for the Rice University Community. A Net ID is required.
                 </SimpleAccordion>
-                <SimpleAccordion title="Do I need to download Carpool on my phone?">
-                    No, Carpool is not a mobile device app. It was created as website to be accessible through all devices including desktop computers.
+                <SimpleAccordion title="Do I need to download hootspace on my phone?">
+                    No, hootspace is not a mobile device app. It was created as website to be accessible through all devices including desktop computers.
                 </SimpleAccordion>
-                <SimpleAccordion title="How do I sign up for Carpool?">
-                    No sign up is necessary! All you need is your Rice Net ID to log onto the site: carpool.riceapps.org
+                <SimpleAccordion title="How do I sign up for hootspace?">
+                    No sign up is necessary! All you need is your Rice Net ID to log onto the site.
                 </SimpleAccordion>
                 <SimpleAccordion title="I’ve signed in for the first time, now what?">
-                    Fill out your profile page with your first name, last name, and phone number.
-                    Now you can join and create rides!
+                    Fill out your profile page with your desired username.
+                    Now you can create and comment on posts!
                 </SimpleAccordion>
-                <SimpleAccordion title="How do I see my past and future rides?">
-                    You can find the rides you’ve taken in the past and the rides you’ve scheduled listed on your profile.
+                <SimpleAccordion title="How do I create a post?">
+                    To create a post, simply click the "Create a Hoot" button on the top left corner of the feed page. There, you can select a category for the post, set a title, as well as add custom tags to the post.
                 </SimpleAccordion>
-                <SimpleAccordion title="If I leave a ride, will the ride disappear?">
-                    If you created a ride and were the only one on the ride, the ride will be deleted. If you joined a ride with other existing riders, the ride will exist but you will not be listed as a rider.
-                </SimpleAccordion>
-                <SimpleAccordion title="How can I delete a ride?">
-                    You can access the rides you have created your profile page. Clicking on the ride card brings you to a page where you can delete your ride via the
-                    "Delete this ride" button. Alternatively, you can see the rides you have created on the find ride page, and you can delete them from there.
+                <SimpleAccordion title="How do I delete a post?">
+                    To delete a post, click on the three dots on the top left-hand corner of your post, and there will be an option to delete your post.
                 </SimpleAccordion>
                 <SimpleAccordion title="Is my information shared with outside parties?">
-                    No, your information is not shared outside the application. It is only used for coordinating rides with your fellow Rice Owls.
+                    No, your information is not shared outside the application. It is only used for communication within the Rice community.
                 </SimpleAccordion>
                 <Gap />
                 <DetailText>
@@ -136,13 +134,14 @@ function AboutPage () {
                 <PictureText>
                     Meet The Team:
                 </PictureText>
-                <AboutCard name="Winnie Li" description="Team Lead - McMurtry College" image={wyao} />
-                <AboutCard name="Will Mundy" description="Mentor - Sid Richardson College" image={wyao}/>
-                <SecondaryAboutCard name="Guancong Jia" description="Developer - Brown College" image={wyao} />
-                <SecondaryAboutCard name="William Yao" description="Developer - Will Rice College" image={wyao} />
-                <SecondaryAboutCard name="Shryans Goyal" description="Mentor - Will Rice College" image={sgoyal} />
-                <SecondaryAboutCard name="Helena Hu" description="Designer - Jones College" image={wyao} />
+                <AboutCard name="Brandon Zhang" description="Developer - Duncan College" image={bzhang} />
+                <AboutCard name="Henry Qin" description="Developer - Will Rice College" image={hqin}/>
+                <SecondaryAboutCard name="Nathaniel Hejduk" description="Developer - Brown College" image={wyao} />
+                <SecondaryAboutCard name="Shreya Nidadavolu" description="Developer - Will Rice College" image={wyao} />
+                <SecondaryAboutCard name="William Yao" description="CSS - Will Rice College" image={wyao} />
                 <SecondaryAboutCard name="Cloris Cai" description="Designer - Duncan College" image={ccai} />
+                <SecondaryAboutCard name="Shryans Goyal" description="Team Lead - Will Rice College" image={sgoyal} />
+                <SecondaryAboutCard name="Victor Song" description="Team Lead - Jones College" image={wyao} />
                 </FadeIn>
             </PictureDiv>
             </AboutContainer>

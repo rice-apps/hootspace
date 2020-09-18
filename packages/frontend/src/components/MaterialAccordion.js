@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     marginLeft: '6vw',
   },
+  rounded: {
+    borderRadius: 5
+  },
   heading: {
     fontSize: '1.3vw',
     fontWeight: theme.typography.fontWeightRegular,
@@ -19,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
   base: {
     background: '#FFFFFF',
     borderBottom: '1.2px solid #CDCED240',
-    borderRadius: '5vh'
   },
   details: {
     color: '#052343',
@@ -37,7 +39,7 @@ const SimpleAccordion = ({title, children}) => {
 
   return (
     <div className={classes.root}>
-      <Accordion className={classes.base}>
+      <Accordion className={classes.base} square={false}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{ color: '#052343' }} />}
           aria-controls="panel1a-content"
