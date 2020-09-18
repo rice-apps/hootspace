@@ -17,8 +17,11 @@ import FadeIn from 'react-fade-in';
 import wyao from '../images/wyao.jpg';
 import sgoyal from '../images/sgoyal.jpg';
 import ccai from '../images/ccai.jpg';
-import hqin from '../images/hqin.jfif'
-import bzhang from '../images/bzhang.jpg'
+import hqin from '../images/hqin.jfif';
+import bzhang from '../images/bzhang.jpg';
+import nhejduk from '../images/nhejduk.jpg';
+import snidadavolu from '../images/snidadavolu.png';
+import vsong from '../images/vsong.jpg';
 
 import {
     LeftSidebarContainer,
@@ -127,6 +130,45 @@ function AboutPage () {
                     Our Product Roadmap:
                 </DetailText>
                 <ColorsTimeline />
+                <DetailText>
+                    Known Bugs and Issues:
+                </DetailText>
+                <AckDiv>
+                    <List 
+                        component="nav" 
+                        aria-label="contacts" 
+                        style={{
+                            marginLeft: '5vw',
+                            marginRight: 'auto',
+                            borderRadius: '2vh'
+                        }}
+                    >
+                        <ListItem style={{fontSize: '10vw'}} button>
+                            <ListItemIcon style={{color: '#6D71F9'}}>
+                                <FiberManualRecordIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Improving load times and overall smoothness of the website" />
+                        </ListItem>
+                        <ListItem button>
+                            <ListItemIcon style={{color: '#6D71F9'}}>
+                                <FiberManualRecordIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Sometimes logging in takes multiple tries" />
+                        </ListItem>
+                        <ListItem button>
+                            <ListItemIcon style={{color: '#6D71F9'}}>
+                                <FiberManualRecordIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Improving the user interface for comments" />
+                        </ListItem>
+                        <ListItem button>
+                            <ListItemIcon style={{color: '#6D71F9'}}>
+                                <FiberManualRecordIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Implementing the Calendar and direct messaging, as well as alerts" />
+                        </ListItem>
+                    </List>
+                </AckDiv>
                 </FadeIn>
             </TextDiv>
             <PictureDiv>
@@ -136,12 +178,12 @@ function AboutPage () {
                 </PictureText>
                 <AboutCard name="Brandon Zhang" description="Developer - Duncan College" image={bzhang} />
                 <AboutCard name="Henry Qin" description="Developer - Will Rice College" image={hqin}/>
-                <SecondaryAboutCard name="Nathaniel Hejduk" description="Developer - Brown College" image={wyao} />
-                <SecondaryAboutCard name="Shreya Nidadavolu" description="Developer - Will Rice College" image={wyao} />
+                <SecondaryAboutCard name="Nathaniel Hejduk" description="Developer - Duncan College" image={nhejduk} />
+                <SecondaryAboutCard name="Shreya Nidadavolu" description="Developer - Will Rice College" image={snidadavolu} />
                 <SecondaryAboutCard name="William Yao" description="CSS - Will Rice College" image={wyao} />
                 <SecondaryAboutCard name="Cloris Cai" description="Designer - Duncan College" image={ccai} />
                 <SecondaryAboutCard name="Shryans Goyal" description="Team Lead - Will Rice College" image={sgoyal} />
-                <SecondaryAboutCard name="Victor Song" description="Team Lead - Jones College" image={wyao} />
+                <SecondaryAboutCard name="Victor Song" description="Team Lead - Sid Richardson College" image={vsong} />
                 </FadeIn>
             </PictureDiv>
             </AboutContainer>

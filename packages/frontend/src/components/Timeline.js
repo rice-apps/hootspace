@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '6px 16px',
   },
   primaryTail: {
-    backgroundColor: '#7380FF',
+    backgroundColor: '#6DC8F9',
   },
 }));
 
