@@ -13,7 +13,7 @@ import {
   CREATE_COMMENT
 } from '../graphql/Mutations'
 import { currentUser } from '../utils/apollo'
-import log from 'loglevel'
+// import log from 'loglevel'
 
 function PostFeed (props) {
   const date = new Date()
@@ -56,7 +56,7 @@ function PostFeed (props) {
     }
   } = data
 
-  log.info('POSTS', data)
+  // log.info('POSTS', data)
 
   const processDateFilter = filter => {
     const today = props.currentDate

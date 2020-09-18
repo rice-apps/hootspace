@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client'
 
 import { Helmet } from 'react-helmet'
 
-import log from 'loglevel'
+// import log from 'loglevel'
 import PostFeed from './PostFeed'
 import { POST_PAGE, GET_FILTERED_IDS } from '../graphql/Queries'
 import { POST_CREATED, POST_VOTE_CHANGED } from '../graphql/Subscriptions'
@@ -109,10 +109,10 @@ function PostFeedWithData () {
   // 5) Apply a filter --> refetch the FILTER query --> refetch the POST_PAGE
   // 6) Clear all filters --> refetch FILTER --> refetch POST_PAGE
   // ---
-
-  log.info('type', filterType)
-  log.info('kind', kindFilter)
-  log.info('Data', filteredData)
+  //
+  // log.info('type', filterType)
+  // log.info('kind', kindFilter)
+  // log.info('Data', filteredData)
   const [showWritePost, setShowWritePost] = useState(false)
   const openModal = () => {
     setShowWritePost(!showWritePost)
@@ -144,7 +144,7 @@ function PostFeedWithData () {
   return (
     <>
       <Helmet>
-        <title>RiceDiscuss &middot; Your Feed</title>
+        <title>hootspace &middot; Your Feed</title>
       </Helmet>
       <WritePost
         show={showWritePost}
@@ -186,7 +186,7 @@ function PostFeedWithData () {
                     />
                   }
                 >
-                  Create a Hoot
+                  Create a Post
                 </Button>
 
                 {/* <NewPostButton onClick={openModal}>

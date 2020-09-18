@@ -34,7 +34,8 @@
     "react-truncate-markup": "^5.0.0",
     "remarkable": "^2.0.1",
     "styled-components": "^5.2.0",
-    "subscriptions-transport-ws": "^0.9.18"
+    "subscriptions-transport-ws": "^0.9.18",
+    "validator": "^13.1.1"
   },
   "scripts": {
     "start": "serve -s build -l 3000",

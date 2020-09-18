@@ -96,7 +96,7 @@ export const NavWrapper = styled.div`
   background-color: #ffffff;
   height: 100%;
 
-  z-index: 11;
+  z-index: 80;
 
   @media (max-aspect-ratio: 848/712) {
     height: 10vh;

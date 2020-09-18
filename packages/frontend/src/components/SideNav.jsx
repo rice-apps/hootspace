@@ -54,10 +54,12 @@ function SideNav (props) {
 
   return (
     <NavWrapper>
-      <Logo>
-        {/* Replace icon with something more professional or customized */}
-        <ChatLogo />
-      </Logo>
+      <a href="/feed">
+        <Logo>
+          {/* Replace icon with something more professional or customized */}
+          <ChatLogo />
+        </Logo>
+      </a>
       <NavList>
         {/*{pages.map((page, i) => {*/}
         {/*  return (*/}
