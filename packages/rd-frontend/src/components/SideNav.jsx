@@ -3,6 +3,7 @@ import ChatIcon from '@material-ui/icons/Chat'
 import MailOutlineIcon from '@material-ui/icons/MailOutline'
 import AccountBoxIcon from '@material-ui/icons/AccountBox'
 import DateRangeIcon from '@material-ui/icons/DateRange'
+import Calendar404 from './Calendar404'
 import { SvgIcon } from '@material-ui/core'
 import {
   Logo,
@@ -12,9 +13,11 @@ import {
   ChatLogo
 } from './SideNav.styles'
 // import { Link, useLocation } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 
-function SideNav (props) {
+function SideNav(props) {
   // const location = useLocation()
+  const navigator = useNavigate()
   const pages = ['/profile', '/feed', '/calendar', '/mail']
 
   const getIcon = page => {
@@ -35,6 +38,7 @@ function SideNav (props) {
   const clickBehavior = {
     '/feed': props.handleFeed,
     '/profile': props.handleProfile,
+    '/calendar': () => navigator('/calendar'),
     default: null
   }
 
