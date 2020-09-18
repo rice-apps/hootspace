@@ -180,7 +180,7 @@ function AboutPage () {
                 <AboutCard name="Henry Qin" description="Developer - Will Rice College" image={hqin}/>
                 <SecondaryAboutCard name="Nathaniel Hejduk" description="Developer - Duncan College" image={nhejduk} />
                 <SecondaryAboutCard name="Shreya Nidadavolu" description="Developer - Will Rice College" image={snidadavolu} />
-                <SecondaryAboutCard name="William Yao" description="CSS - Will Rice College" image={wyao} />
+                <SecondaryAboutCard name="William Yao" description="Developer - Will Rice College" image={wyao} />
                 <SecondaryAboutCard name="Cloris Cai" description="Designer - Duncan College" image={ccai} />
                 <SecondaryAboutCard name="Shryans Goyal" description="Team Lead - Will Rice College" image={sgoyal} />
                 <SecondaryAboutCard name="Victor Song" description="Team Lead - Sid Richardson College" image={vsong} />
