@@ -8,6 +8,7 @@ import MoreInfo from './MoreInfo'
 import ProfilePage from './Profile'
 import PostFull from './PostFull'
 import Calendar404 from './Calendar404'
+import Mail404 from './Mail404'
 import { currentUser, loadToken } from '../utils/apollo'
 import { VERIFY_USER } from '../graphql/Queries'
 import { TOKEN_NAME } from '../config'
@@ -71,6 +72,10 @@ const routesArray = [
   {
     path: '/calendar',
     element: <PrivateRoute element={<Calendar404 />} />
+  },
+  {
+    path: '/mail',
+    element: <PrivateRoute element={<Mail404 />} />
   }
 ]
 

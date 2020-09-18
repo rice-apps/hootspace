@@ -39,6 +39,7 @@ function SideNav(props) {
     '/feed': props.handleFeed,
     '/profile': props.handleProfile,
     '/calendar': () => navigator('/calendar'),
+    '/mail': () => navigator('/mail'),
     default: null
   }
 
