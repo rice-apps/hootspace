@@ -7,6 +7,7 @@ import Login from './Login'
 import MoreInfo from './MoreInfo'
 import ProfilePage from './Profile'
 import PostFull from './PostFull'
+import AboutPage from './About'
 import { currentUser, loadToken } from '../utils/apollo'
 import { VERIFY_USER } from '../graphql/Queries'
 import { TOKEN_NAME } from '../config'
@@ -62,6 +63,10 @@ const routesArray = [
   {
     path: '/profile',
     element: <PrivateRoute element={<ProfilePage />} />
+  },
+  {
+    path: '/about',
+    element: <PrivateRoute element={<AboutPage />} />
   },
   {
     path: '/',

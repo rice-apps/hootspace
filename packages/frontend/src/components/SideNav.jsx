@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ChatIcon from '@material-ui/icons/Chat'
 import MailOutlineIcon from '@material-ui/icons/MailOutline'
 import AccountBoxIcon from '@material-ui/icons/AccountBox'
 import DateRangeIcon from '@material-ui/icons/DateRange'
+import InfoIcon from '@material-ui/icons/Info'
 import { SvgIcon } from '@material-ui/core'
 import {
   Logo,
@@ -11,11 +12,14 @@ import {
   NavWrapper,
   ChatLogo
 } from './SideNav.styles'
-// import { Link, useLocation } from 'react-router-dom'
+// import {useHistory} from 'react-router-dom'
+import { Navigate, useNavigate, useLocation } from 'react-router-dom'
 
-function SideNav(props) {
-  // const location = useLocation()
-  const pages = ['/profile', '/feed', '/calendar', '/mail']
+function SideNav (props) {
+  const location = useLocation()
+  const pages = ['/profile', '/feed', '/calendar', '/mail', '/about']
+  const [showAbout, setShowAbout] = useState(false)
+  const navigator = useNavigate()
 
   const getIcon = page => {
     switch (page) {
@@ -27,6 +31,8 @@ function SideNav(props) {
         return <AccountBoxIcon />
       case '/calendar':
         return <DateRangeIcon />
+      case '/about':
+        return <InfoIcon />
       default:
         return <ChatIcon />
     }
@@ -35,12 +41,14 @@ function SideNav(props) {
   const clickBehavior = {
     '/feed': props.handleFeed,
     '/profile': props.handleProfile,
+    '/about': () => navigator('/about'),
     default: null
   }
 
   const selected = {
-    '/feed': !props.showProfile,
-    '/profile': props.showProfile,
+    '/feed': location.pathname === '/feed' && !props.showProfile,
+    '/profile': location.pathname === '/feed' && props.showProfile,
+    '/about' : location.pathname === '/about',
     default: false
   }
 
