@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import SideNav from './SideNav'
+import { Navigate, useNavigate, useLocation } from 'react-router-dom'
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -85,15 +86,17 @@ const SecondaryAboutCard = ({name, description, image}) => {
 function AboutPage () {
     const [showProfile, setShowProfile] = useState(false)
     const [showWritePost, setShowWritePost] = useState(false)
+    const navigator = useNavigate()
     return (
         <Background>
             <LeftSidebarContainer>
                 <SideNav
                 handleProfile={() => {
-                    setShowProfile(false)
-                    setShowWritePost(false)
+                    navigator('/feed')
                 }}
-                handleFeed={() => setShowProfile(!showProfile)}
+                handleFeed={() => {
+                    navigator('/feed')
+                }}
                 showProfile={showProfile}
                 />
             </LeftSidebarContainer>
@@ -179,11 +182,11 @@ function AboutPage () {
                 <AboutCard name="Brandon Zhang" description="Developer - Duncan College" image={bzhang} />
                 <AboutCard name="Henry Qin" description="Developer - Will Rice College" image={hqin}/>
                 <SecondaryAboutCard name="Nathaniel Hejduk" description="Developer - Duncan College" image={nhejduk} />
-                <SecondaryAboutCard name="Shreya Nidadavolu" description="Developer - Will Rice College" image={snidadavolu} />
+                <SecondaryAboutCard name="Shreya Nidadavolu" description="Developer - Wiess College" image={snidadavolu} />
                 <SecondaryAboutCard name="William Yao" description="Developer - Will Rice College" image={wyao} />
                 <SecondaryAboutCard name="Cloris Cai" description="Designer - Duncan College" image={ccai} />
                 <SecondaryAboutCard name="Shryans Goyal" description="Team Lead - Will Rice College" image={sgoyal} />
-                <SecondaryAboutCard name="Victor Song" description="Team Lead - Sid Richardson College" image={vsong} />
+                <SecondaryAboutCard name="Victor Song" description="Team Lead - Sid Rich College" image={vsong} />
                 </FadeIn>
             </PictureDiv>
             </AboutContainer>
