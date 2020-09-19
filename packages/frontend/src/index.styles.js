@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components/macro'
-import avenir from "./fonts/AvenirLTStd-Book.otf"
+import avenir from './fonts/AvenirLTStd-Book.otf'
 
 const GlobalStyle = createGlobalStyle`
   @font-face {

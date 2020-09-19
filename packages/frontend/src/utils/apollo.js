@@ -96,7 +96,7 @@ const mainClient = new ApolloClient({
             }
           },
           commentByPost: {
-            merge(_existing, incoming) {
+            merge (_existing, incoming) {
               return incoming
             }
           }
