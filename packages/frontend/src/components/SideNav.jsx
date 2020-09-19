@@ -1,8 +1,9 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import ChatIcon from '@material-ui/icons/Chat'
 import MailOutlineIcon from '@material-ui/icons/MailOutline'
 import AccountBoxIcon from '@material-ui/icons/AccountBox'
 import DateRangeIcon from '@material-ui/icons/DateRange'
+import Calendar404 from './Calendar404'
 import InfoIcon from '@material-ui/icons/Info'
 import { SvgIcon } from '@material-ui/core'
 import {
@@ -15,10 +16,10 @@ import {
 // import {useHistory} from 'react-router-dom'
 import { Navigate, useNavigate, useLocation } from 'react-router-dom'
 
-function SideNav (props) {
+function SideNav(props) {
   const location = useLocation()
   const pages = ['/profile', '/feed', '/calendar', '/mail', '/about']
-  const [showAbout, setShowAbout] = useState(false)
+  // const [showAbout, setShowAbout] = useState(false)
   const navigator = useNavigate()
 
   const getIcon = page => {
@@ -41,6 +42,8 @@ function SideNav (props) {
   const clickBehavior = {
     '/feed': props.handleFeed,
     '/profile': props.handleProfile,
+    '/calendar': () => navigator('/calendar'),
+    '/mail': () => navigator('/mail'),
     '/about': () => navigator('/about'),
     default: null
   }
@@ -48,7 +51,7 @@ function SideNav (props) {
   const selected = {
     '/feed': location.pathname === '/feed' && !props.showProfile,
     '/profile': location.pathname === '/feed' && props.showProfile,
-    '/about' : location.pathname === '/about',
+    '/about': location.pathname === '/about',
     default: false
   }
 

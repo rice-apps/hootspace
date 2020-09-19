@@ -6,7 +6,7 @@ import { LoginButton, LoginContainer, LoginImage } from './Login.styles'
 
 import { FRONTEND_AUTH_URL } from '../config'
 
-function Login () {
+function Login() {
   const [hasTicket] = useState(
     new URLSearchParams(window.location.search).has('ticket')
   )
@@ -14,20 +14,20 @@ function Login () {
   return hasTicket ? (
     Auth('info', 'login')
   ) : (
-    <LoginContainer>
-      <Helmet>
-        <title>RiceDiscuss &middot; Login</title>
-      </Helmet>
-      <LoginImage />
-      <LoginButton
-        onClick={() => {
-          window.open(FRONTEND_AUTH_URL, '_self')
-        }}
-      >
-        Login
+      <LoginContainer>
+        <Helmet>
+          <title>hootspace &middot; Login</title>
+        </Helmet>
+        <LoginImage />
+        <LoginButton
+          onClick={() => {
+            window.open(FRONTEND_AUTH_URL, '_self')
+          }}
+        >
+          Login
       </LoginButton>
-    </LoginContainer>
-  )
+      </LoginContainer>
+    )
 }
 
 export default Login

@@ -7,12 +7,14 @@ import Login from './Login'
 import MoreInfo from './MoreInfo'
 import ProfilePage from './Profile'
 import PostFull from './PostFull'
+import Calendar404 from './Calendar404'
+import Mail404 from './Mail404'
 import AboutPage from './About'
 import { currentUser, loadToken } from '../utils/apollo'
 import { VERIFY_USER } from '../graphql/Queries'
 import { TOKEN_NAME } from '../config'
 
-function PrivateRoute ({ element, ...rest }) {
+function PrivateRoute({ element, ...rest }) {
   const token = loadToken()
 
   const { data, loading, error } = useQuery(VERIFY_USER, {
@@ -71,10 +73,18 @@ const routesArray = [
   {
     path: '/',
     element: <Navigate to='/feed' replace />
+  },
+  {
+    path: '/calendar',
+    element: <PrivateRoute element={<Calendar404 />} />
+  },
+  {
+    path: '/mail',
+    element: <PrivateRoute element={<Mail404 />} />
   }
 ]
 
-function CustomRoutes () {
+function CustomRoutes() {
   return useRoutes(routesArray)
 }
 
