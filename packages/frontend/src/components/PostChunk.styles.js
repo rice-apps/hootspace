@@ -44,7 +44,7 @@ const OriginalPoster = styled.div`
   // flex-direction: row;
   // justify-content: flex-start;
   // align-items: center;
-  
+
   font-size: 2vh;
   grid-area: op;
   white-space: nowrap;

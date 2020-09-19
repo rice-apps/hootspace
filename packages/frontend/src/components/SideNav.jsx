@@ -16,7 +16,7 @@ import {
 // import {useHistory} from 'react-router-dom'
 import { Navigate, useNavigate, useLocation } from 'react-router-dom'
 
-function SideNav(props) {
+function SideNav (props) {
   const location = useLocation()
   const pages = ['/profile', '/feed', '/calendar', '/mail', '/about']
   // const [showAbout, setShowAbout] = useState(false)
@@ -57,7 +57,7 @@ function SideNav(props) {
 
   return (
     <NavWrapper>
-      <a href="/feed">
+      <a href='/feed'>
         <Logo>
           {/* Replace icon with something more professional or customized */}
           <ChatLogo />

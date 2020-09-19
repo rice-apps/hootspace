@@ -9,7 +9,7 @@ const Container404 = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color:#f0f0f8;
+  background-color: #f0f0f8;
 `
 
 const Image404 = styled.div`
@@ -25,7 +25,7 @@ const BackButton = styled.button`
   position: absolute;
   top: 60%;
   left: 14.4%;
-  z-index: 3;  
+  z-index: 3;
   background: white;
   color: #272848;
   font-size: 1vw;

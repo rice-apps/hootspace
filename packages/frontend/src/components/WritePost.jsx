@@ -59,7 +59,8 @@ import {
   LocationBox,
   StyledLink,
   StereoButton,
-  StereoButtonCheck, BackgroundCover
+  StereoButtonCheck,
+  BackgroundCover
 } from './WritePost.styles'
 import { currentUser } from '../utils/apollo'
 import ImageUploader from './ImageUploader'

@@ -24,7 +24,7 @@ import AddCircleIcon from '@material-ui/icons/AddCircle'
 import Button from '@material-ui/core/Button'
 import ProfilePane from './ProfilePane'
 
-function PostFeedWithData() {
+function PostFeedWithData () {
   const [today, setToday] = useState(null)
   const [earlyDateBound, setEarlyDateBound] = useState(new Date(2000, 1, 1))
 

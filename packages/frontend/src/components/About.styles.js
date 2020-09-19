@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const LeftSidebarContainer = styled.div`
   position: sticky;
@@ -44,63 +44,62 @@ export const Background = styled.div`
 export const AboutContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-    margin-left: 5vh;
-    margin-right: 5vh;
-    width: 95vw;
-    height: auto;
-    padding-bottom: .5vh;
+  margin-left: 5vh;
+  margin-right: 5vh;
+  width: 95vw;
+  height: auto;
+  padding-bottom: 0.5vh;
 `
 
-export const TextDiv = styled.div `
-    grid-column: 1 / 4;
-    min-width: 0;
-    font-family: AvenirLTStd-Book;
-    margin-top: 5vh;
-    color: #272848;
-`;
+export const TextDiv = styled.div`
+  grid-column: 1 / 4;
+  min-width: 0;
+  font-family: AvenirLTStd-Book;
+  margin-top: 5vh;
+  color: #272848;
+`
 
-export const PictureDiv = styled.div `
-    grid-column: 5 / 8;
-    font-family: AvenirLTStd-Book;
-    color: white;
-`;
-
+export const PictureDiv = styled.div`
+  grid-column: 5 / 8;
+  font-family: AvenirLTStd-Book;
+  color: white;
+`
 
 export const DetailText = styled.div`
-    font-family: Verdana;
-    font-size: 2vw;
-    margin-left: 6vw;
-    margin-right: auto;
-    margin-bottom: 2vh;
-    text-align: left;
-    line-height: 2;
+  font-family: Verdana;
+  font-size: 2vw;
+  margin-left: 6vw;
+  margin-right: auto;
+  margin-bottom: 2vh;
+  text-align: left;
+  line-height: 2;
 `
 
 export const AcknowledgementText = styled.div`
-    font-size: 1.5vw;
-    margin-left: 6vw;
-    margin-right: auto;
-    text-align: left;
-    line-height: 2;
+  font-size: 1.5vw;
+  margin-left: 6vw;
+  margin-right: auto;
+  text-align: left;
+  line-height: 2;
 `
 
 export const AckDiv = styled.div`
-    display: flex;
-    flex-direciton: row;
+  display: flex;
+  flex-direciton: row;
 `
 
 export const PictureText = styled.div`
-    /* margin-left: 6vw;
+  /* margin-left: 6vw;
     margin-right: auto; */
-    text-align: left;
-    font-family: Verdana;
-    font-size: 2vw;
-    line-height: 2;
-    color: #272848;
-    margin-top: 5vh;
-    margin-bottom: 2vh;
+  text-align: left;
+  font-family: Verdana;
+  font-size: 2vw;
+  line-height: 2;
+  color: #272848;
+  margin-top: 5vh;
+  margin-bottom: 2vh;
 `
- 
+
 export const Gap = styled.div`
-    min-height: 5vh;
+  min-height: 5vh;
 `

@@ -66,7 +66,7 @@ import {
   Pic
 } from './PostChunk.styles'
 import { tagColors } from './tagColors'
-import HeadshotUrl from "../images/headshot.svg";
+import HeadshotUrl from '../images/headshot.svg'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -183,7 +183,7 @@ function PostChunk (props) {
     workplace: props.post.node.workplace ? props.post.node.workplace : '',
     startTime: props.post.node.start ? props.post.node.start : '',
     endTime: props.post.node.end ? props.post.node.end : '',
-    deadline: props.post.node.deadline ? props.post.node.deadline : '',
+    deadline: props.post.node.deadline ? props.post.node.deadline : ''
   }
 
   const isPaid = props.post.node.isPaid
@@ -319,18 +319,20 @@ function PostChunk (props) {
           <TopComponent>
             <OriginalPoster>
               {/*<a>*/}
-              <div
-                style={{display: 'flex', flexDirection: 'row'}}
-              >
+              <div style={{ display: 'flex', flexDirection: 'row' }}>
                 <Pic src={props.post.node.creator.imageUrl || HeadshotUrl} />
-                <t style={{alignSelf: 'center', paddingLeft: '1vh'}}>
+                <t style={{ alignSelf: 'center', paddingLeft: '1vh' }}>
                   {props.post.node.creator.username}
                 </t>
               </div>
-                <TimeAgo
-                    date={props.post.node.date_created}
-                    style={{alignSelf: 'center', justifySelf: 'right', textAlign: 'right'}}
-                />
+              <TimeAgo
+                date={props.post.node.date_created}
+                style={{
+                  alignSelf: 'center',
+                  justifySelf: 'right',
+                  textAlign: 'right'
+                }}
+              />
               {/*</a>*/}
             </OriginalPoster>
 
@@ -397,11 +399,13 @@ function PostChunk (props) {
 
             <MoreOptions className={classes.root}>
               <IconButton
-                  onClick={toggleDD}
-                  style={{height: '7vh', width: '7vh'}}
+                onClick={toggleDD}
+                style={{ height: '7vh', width: '7vh' }}
               >
-                <MoreHorizIcon open={isDDOpen}
-                               style={{height: '4vh', width: '4vh'}} />
+                <MoreHorizIcon
+                  open={isDDOpen}
+                  style={{ height: '4vh', width: '4vh' }}
+                />
               </IconButton>
               {isDDOpen && (
                 <DDMenu>

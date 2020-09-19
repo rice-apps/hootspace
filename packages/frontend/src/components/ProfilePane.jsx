@@ -552,9 +552,9 @@ const ProfilePane = props => {
           )}
           {showSaveButton && <Divider />}
         </ProfileInner>
-        <b style={{fontSize: '2.2vh'}}>Saved posts:</b>
+        <b style={{ fontSize: '2.2vh' }}>Saved posts:</b>
         {savedPosts.length && (
-          <SavedPostsContainer style={{fontSize: '2.2vh'}}>
+          <SavedPostsContainer style={{ fontSize: '2.2vh' }}>
             {savedPosts.map(post => (
               <div key={post._id} style={{ fontSize: 'inherit' }}>
                 <a
