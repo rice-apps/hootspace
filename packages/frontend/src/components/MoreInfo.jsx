@@ -4,7 +4,7 @@ import { useMutation, useLazyQuery } from '@apollo/client'
 import { Helmet } from 'react-helmet'
 import log from 'loglevel'
 import { SET_INFO } from '../graphql/Mutations'
-import { USER_EXISTS } from '../graphql/Queries'
+import { USER_EXISTS, VERIFY_USER } from '../graphql/Queries'
 import laptopGirl from '../images/Page 2.svg'
 import majorMinorJson from '../utils/MajorMinor.json'
 import DropDownItem from './DropDownItem'
@@ -27,10 +27,10 @@ import {
   ArrowI,
   Statements
 } from './MoreInfo.styles'
-import { currentUser } from '../utils/apollo'
+import { currentUser, loadToken } from '../utils/apollo'
 
 function MoreInfo () {
-  const navigator = useNavigate()
+  const navigate = useNavigate()
 
   const [userStatement, setStatement] = useState('Valid!')
   const [, setLoading] = useState(false)
@@ -135,7 +135,7 @@ function MoreInfo () {
   }
 
   if (!data?.isNewUser) {
-    log.info('Navigateing....')
+    log.info('Navigating....')
     return <Navigate to='/feed' />
   }
 
@@ -164,12 +164,20 @@ function MoreInfo () {
             major,
             minor,
             isNewUser: false
-          }
+          },
+          refetchQueries: [
+            {
+              query: VERIFY_USER,
+              variables: {
+                token: loadToken()
+              }
+            }
+          ]
         })
       } catch (error) {
         return
       }
-      navigator('/feed')
+      navigate('/feed')
     } catch (error) {
       log.error(error)
     } finally {

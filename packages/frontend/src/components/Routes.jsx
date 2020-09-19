@@ -24,7 +24,7 @@ function PrivateRoute ({ element, ...rest }) {
 
   if (error) {
     window.localStorage.clear()
-    await mainClient.clearStore()
+    mainClient.clearStore()
 
     return <Navigate to='/login' />
   }
@@ -35,7 +35,7 @@ function PrivateRoute ({ element, ...rest }) {
 
   if (!data || !data.verifyToken) {
     window.localStorage.clear()
-    await mainClient.clearStore()
+    mainClient.clearStore()
 
     return <Navigate to='/login' />
   }
