@@ -10,7 +10,7 @@ import PostFull from './PostFull'
 import Calendar404 from './Calendar404'
 import Mail404 from './Mail404'
 import AboutPage from './About'
-import { currentUser, loadToken } from '../utils/apollo'
+import { currentUser, loadToken, mainClient } from '../utils/apollo'
 import { VERIFY_USER } from '../graphql/Queries'
 import { TOKEN_NAME } from '../config'
 
@@ -23,7 +23,8 @@ function PrivateRoute ({ element, ...rest }) {
   })
 
   if (error) {
-    window.localStorage.removeItem(TOKEN_NAME)
+    window.localStorage.clear()
+    await mainClient.clearStore()
 
     return <Navigate to='/login' />
   }
@@ -33,7 +34,8 @@ function PrivateRoute ({ element, ...rest }) {
   }
 
   if (!data || !data.verifyToken) {
-    window.localStorage.removeItem(TOKEN_NAME)
+    window.localStorage.clear()
+    await mainClient.clearStore()
 
     return <Navigate to='/login' />
   }

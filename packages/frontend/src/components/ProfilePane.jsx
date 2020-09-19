@@ -283,7 +283,8 @@ const ProfilePane = props => {
   }
 
   const handleLogout = async () => {
-    mainClient.resetStore().then(() => navigate('/login'))
+    window.localStorage.clear()
+    mainClient.clearStore().then(() => navigate('/login'))
   }
 
   return props.show ? (
