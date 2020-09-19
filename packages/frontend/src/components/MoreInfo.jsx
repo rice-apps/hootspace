@@ -225,7 +225,7 @@ function MoreInfo () {
                 </DDHeader>
                 {isMajorOpen && (
                   <DDList>
-                    {finalizedMajors.map(item => (
+                    {finalizedMajors.sort().map(item => (
                       <DDListItem key={item}>
                         <DropDownItem
                           name={item}
@@ -254,7 +254,7 @@ function MoreInfo () {
                 </DDHeader>
                 {isMinorOpen && (
                   <DDList>
-                    {finalizedMinors.map(item => (
+                    {finalizedMinors.sort().map(item => (
                       <DDListItem key={item}>
                         <DropDownItem
                           name={item}
@@ -270,7 +270,7 @@ function MoreInfo () {
               <DDWrapper>
                 <DDHeader onClick={toggleCollege}>
                   <DDHeaderTitle>
-                    {college === '' ? 'College' : college}
+                    {college === '' ? 'College' : college.replace('_', ' ')}
                     <ArrowI open={isCollegeOpen} />
                   </DDHeaderTitle>
                 </DDHeader>
@@ -280,6 +280,7 @@ function MoreInfo () {
                       <DDListItem key={item}>
                         <DropDownItem
                           name={item}
+                          alias={item.replace('_', ' ')}
                           setInfo={handleCollegeChange}
                           selectedItems={college}
                         />
