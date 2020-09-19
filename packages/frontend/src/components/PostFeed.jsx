@@ -56,8 +56,6 @@ function PostFeed (props) {
     }
   } = data
 
-  log.info('POSTS', data)
-
   const processDateFilter = filter => {
     const today = props.currentDate
 

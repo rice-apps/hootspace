@@ -110,9 +110,6 @@ function PostFeedWithData () {
   // 6) Clear all filters --> refetch FILTER --> refetch POST_PAGE
   // ---
 
-  log.info('type', filterType)
-  log.info('kind', kindFilter)
-  log.info('Data', filteredData)
   const [showWritePost, setShowWritePost] = useState(false)
   const openModal = () => {
     setShowWritePost(!showWritePost)

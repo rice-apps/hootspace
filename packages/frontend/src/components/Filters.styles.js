@@ -132,6 +132,7 @@ const ClearFilter = styled.button`
   border-color: white;
   font-weight: 600;
   margin-left: 10px;
+  text-align: center;
 `
 
 export {

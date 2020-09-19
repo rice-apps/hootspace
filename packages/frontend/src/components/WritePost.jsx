@@ -97,6 +97,8 @@ function WritePost (props) {
 
   const [tags, setTags] = useState([])
 
+  const [posting, setPosting] = useState(false);
+
   const [postCreate] = useMutation(POST_CREATE)
 
   const [url, setUrl] = useState('')
