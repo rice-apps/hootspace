@@ -94,6 +94,11 @@ const mainClient = new ApolloClient({
             read () {
               return currentUser().netID
             }
+          },
+          commentByPost: {
+            merge (_existing, incoming) {
+              return incoming
+            }
           }
         }
       },

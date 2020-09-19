@@ -1,11 +1,11 @@
 import { createGlobalStyle } from 'styled-components/macro'
+import avenir from './fonts/AvenirLTStd-Book.otf'
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: "Avenir";
     src: 
-      local("Avenir") 
-      url("./fonts/AvenirLTStd-Book.otf") 
+      url(${avenir}) 
       format("opentype");
   }
 

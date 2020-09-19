@@ -16,7 +16,7 @@ function Login () {
   ) : (
     <LoginContainer>
       <Helmet>
-        <title>RiceDiscuss &middot; Login</title>
+        <title>hootspace &middot; Login</title>
       </Helmet>
       <LoginImage />
       <LoginButton

@@ -14,6 +14,7 @@ const POST_PAGE = gql`
           creator {
             _id
             username
+            imageUrl
           }
           date_created
           body
@@ -150,6 +151,7 @@ const FETCH_COMMENTS_POST = gql`
       _id
       creator {
         username
+        imageUrl
       }
       date_created
       body
@@ -172,6 +174,7 @@ const FETCH_COMMENTS_PARENT = gql`
       _id
       creator {
         username
+        imageUrl
       }
       date_created
       body
@@ -194,6 +197,7 @@ const FETCH_COMMENTS_NESTED = gql`
       _id
       creator {
         username
+        imageUrl
       }
       date_created
       upvotes {
@@ -210,6 +214,7 @@ const FETCH_COMMENTS_NESTED = gql`
         _id
         creator {
           username
+          imageUrl
         }
         date_created
         upvotes {
@@ -226,6 +231,7 @@ const FETCH_COMMENTS_NESTED = gql`
           _id
           creator {
             username
+            imageUrl
           }
           date_created
           upvotes {
@@ -277,6 +283,7 @@ const GET_POST = gql`
       creator {
         netID
         username
+        imageUrl
         savedPosts {
           _id
         }
@@ -300,6 +307,7 @@ const GET_POST = gql`
         body
         creator {
           username
+          imageUrl
         }
         upvotes {
           username
@@ -311,6 +319,7 @@ const GET_POST = gql`
           body
           creator {
             username
+            imageUrl
           }
           upvotes {
             username
@@ -333,6 +342,7 @@ const GET_POST = gql`
               body
               creator {
                 username
+                imageUrl
               }
               upvotes {
                 username

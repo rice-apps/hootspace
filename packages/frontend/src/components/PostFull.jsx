@@ -68,12 +68,14 @@ import {
   CommentButtonText,
   CommentsDiv,
   BoldedSpan,
-  NormalSpan
+  NormalSpan,
+  Pic
 } from './PostChunk.styles'
 import { BackToFeed, Tags } from './PostFull.styles'
 import { tagColors } from './tagColors'
 import { COMMENT_CREATED } from '../graphql/Subscriptions'
 import CommentChunk from './CommentChunk'
+import HeadshotUrl from '../images/headshot.svg'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -399,10 +401,22 @@ function PostFull () {
           </LeftComponent>
           <TopComponent>
             <OriginalPoster>
-              <a>
-                {thePost.creator.username} -{' '}
-                <TimeAgo date={thePost.date_created} />
-              </a>
+              {/*<a>*/}
+              <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <Pic src={thePost.creator.imageUrl || HeadshotUrl} />
+                <t style={{ alignSelf: 'center', paddingLeft: '1vh' }}>
+                  {thePost.creator.username}
+                </t>
+              </div>
+              <TimeAgo
+                date={thePost.date_created}
+                style={{
+                  alignSelf: 'center',
+                  width: '15vh',
+                  textAlign: 'right'
+                }}
+              />
+              {/*</a>*/}
             </OriginalPoster>
 
             <Tags>

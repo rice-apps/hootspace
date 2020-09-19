@@ -59,7 +59,8 @@ import {
   LocationBox,
   StyledLink,
   StereoButton,
-  StereoButtonCheck
+  StereoButtonCheck,
+  BackgroundCover
 } from './WritePost.styles'
 import { currentUser } from '../utils/apollo'
 import ImageUploader from './ImageUploader'
@@ -494,213 +495,214 @@ function WritePost (props) {
   return (
     <div>
       <Helmet>
-        <title>RiceDiscuss &middot; Compose post</title>
+        <title>hootspace &middot; Compose post</title>
       </Helmet>
+      <BackgroundCover>
+        <PostWrapper>
+          <ModalTitle>
+            <t style={{ position: 'relative', top: '3vh', left: '7vh' }}>
+              Add New Post
+            </t>
+            <ExitButton onClick={closeModal}>
+              <CloseIcon style={{ width: '5vh', height: '5vh' }} />
+            </ExitButton>
+          </ModalTitle>
 
-      <PostWrapper>
-        <ModalTitle>
-          <t style={{ position: 'relative', top: '3vh', left: '7vh' }}>
-            Add New Post
-          </t>
-          <ExitButton onClick={closeModal}>
-            <CloseIcon style={{ width: '5vh', height: '5vh' }} />
-          </ExitButton>
-        </ModalTitle>
+          <FormWrapper>
+            <SelectCategoryWrapper>
+              Select Category:
+              <ButtonWrapper>
+                <Button
+                  id='Notice'
+                  onClick={changePostType}
+                  style={
+                    postType === 'Notice'
+                      ? {
+                          borderTopLeftRadius: '1.4vh',
+                          borderBottomLeftRadius: '1.4vh',
+                          fontWeight: 'bold'
+                        }
+                      : {
+                          borderTopLeftRadius: '1.4vh',
+                          borderBottomLeftRadius: '1.4vh'
+                        }
+                  }
+                >
+                  NOTICE
+                </Button>
+                <Button
+                  id='Event'
+                  onClick={changePostType}
+                  style={postType === 'Event' ? { fontWeight: 'bold' } : null}
+                >
+                  EVENT
+                </Button>
+                <Button
+                  id='Job'
+                  onClick={changePostType}
+                  style={postType === 'Job' ? { fontWeight: 'bold' } : null}
+                >
+                  JOB
+                </Button>
+                <Button
+                  id='Discussion'
+                  onClick={changePostType}
+                  style={
+                    postType === 'Discussion'
+                      ? {
+                          borderTopRightRadius: '1.4vh',
+                          borderBottomRightRadius: '1.4vh',
+                          fontWeight: 'bold'
+                        }
+                      : {
+                          borderTopRightRadius: '1.4vh',
+                          borderBottomRightRadius: '1.4vh'
+                        }
+                  }
+                >
+                  DISCUSSION
+                </Button>
+              </ButtonWrapper>
+            </SelectCategoryWrapper>
 
-        <FormWrapper>
-          <SelectCategoryWrapper>
-            Select Category:
-            <ButtonWrapper>
-              <Button
-                id='Notice'
-                onClick={changePostType}
-                style={
-                  postType === 'Notice'
-                    ? {
-                        borderTopLeftRadius: '1.4vh',
-                        borderBottomLeftRadius: '1.4vh',
-                        fontWeight: 'bold'
-                      }
-                    : {
-                        borderTopLeftRadius: '1.4vh',
-                        borderBottomLeftRadius: '1.4vh'
-                      }
-                }
-              >
-                NOTICE
-              </Button>
-              <Button
-                id='Event'
-                onClick={changePostType}
-                style={postType === 'Event' ? { fontWeight: 'bold' } : null}
-              >
-                EVENT
-              </Button>
-              <Button
-                id='Job'
-                onClick={changePostType}
-                style={postType === 'Job' ? { fontWeight: 'bold' } : null}
-              >
-                JOB
-              </Button>
-              <Button
-                id='Discussion'
-                onClick={changePostType}
-                style={
-                  postType === 'Discussion'
-                    ? {
-                        borderTopRightRadius: '1.4vh',
-                        borderBottomRightRadius: '1.4vh',
-                        fontWeight: 'bold'
-                      }
-                    : {
-                        borderTopRightRadius: '1.4vh',
-                        borderBottomRightRadius: '1.4vh'
-                      }
-                }
-              >
-                DISCUSSION
-              </Button>
-            </ButtonWrapper>
-          </SelectCategoryWrapper>
-
-          <TitleWrapper>
-            Title:
-            <TitleBox onChange={e => setTitle(e.target.value.trim())} />
-            {datePossibilities[postType] || datePossibilities.default}
-            {locationJobInfo[postType] || locationJobInfo.default}
-          </TitleWrapper>
-          <BodyWrapper>
-            <RichIcons>
-              <RichButton
-                icon={<FormatBoldIcon style={richIconStyle} />}
-                type='style'
-                op='BOLD'
-              />
-              <RichButton
-                icon={<FormatItalicIcon style={richIconStyle} />}
-                type='style'
-                op='ITALIC'
-              />
-              <RichButton
-                icon={<FormatUnderlinedIcon style={richIconStyle} />}
-                type='style'
-                op='UNDERLINE'
-              />
-              <RichButton
-                icon={<StrikethroughSIcon style={richIconStyle} />}
-                type='style'
-                op='STRIKETHROUGH'
-              />
-              <RichButton
-                icon={<FormatListBulletedIcon style={richIconStyle} />}
-                type='list'
-                op='unordered-list-item'
-              />
-              <RichButton
-                icon={<FormatListNumberedIcon style={richIconStyle} />}
-                type='list'
-                op='ordered-list-item'
-              />
-              <RichButton
-                icon={<FormatAlignLeftIcon style={richIconStyle} />}
-                type='align'
-                op='left'
-              />
-              <RichButton
-                icon={<FormatAlignCenterIcon style={richIconStyle} />}
-                type='align'
-                op='center'
-              />
-              <RichButton
-                icon={<FormatAlignRightIcon style={richIconStyle} />}
-                type='align'
-                op='right'
-              />
-              <RichButton
-                icon={<InsertLinkIcon style={richIconStyle} />}
-                type='link'
-                op='LINK'
-              />
-              {/* <RichButton icon={<VideoLibraryIcon />} type='video' op='VIDEO' /> */}
-              <RichButton
-                icon={<ImageIcon style={richIconStyle} />}
-                type='image'
-                op='IMAGE'
-              />
-            </RichIcons>
-            <ImageUploader
-              parentUrlCallback={callbackURL}
-              show={imgUploaderVisible}
-              handleDismissSelf={() => {
-                setImgUploaderVisible(false)
-              }}
-            />
-            <LinkAdder
-              callback={linkAdderCallback}
-              show={linkAdderVisible}
-              handleDismissSelf={() => {
-                setLinkAdderVisible(false)
-              }}
-            />
-            <RichEditorWrapper>
-              <Editor
-                placeholder='Enter description...'
-                editorState={editorState}
-                onChange={editorState => {
-                  setEditorState(editorState)
+            <TitleWrapper>
+              Title:
+              <TitleBox onChange={e => setTitle(e.target.value.trim())} />
+              {datePossibilities[postType] || datePossibilities.default}
+              {locationJobInfo[postType] || locationJobInfo.default}
+            </TitleWrapper>
+            <BodyWrapper>
+              <RichIcons>
+                <RichButton
+                  icon={<FormatBoldIcon style={richIconStyle} />}
+                  type='style'
+                  op='BOLD'
+                />
+                <RichButton
+                  icon={<FormatItalicIcon style={richIconStyle} />}
+                  type='style'
+                  op='ITALIC'
+                />
+                <RichButton
+                  icon={<FormatUnderlinedIcon style={richIconStyle} />}
+                  type='style'
+                  op='UNDERLINE'
+                />
+                <RichButton
+                  icon={<StrikethroughSIcon style={richIconStyle} />}
+                  type='style'
+                  op='STRIKETHROUGH'
+                />
+                <RichButton
+                  icon={<FormatListBulletedIcon style={richIconStyle} />}
+                  type='list'
+                  op='unordered-list-item'
+                />
+                <RichButton
+                  icon={<FormatListNumberedIcon style={richIconStyle} />}
+                  type='list'
+                  op='ordered-list-item'
+                />
+                <RichButton
+                  icon={<FormatAlignLeftIcon style={richIconStyle} />}
+                  type='align'
+                  op='left'
+                />
+                <RichButton
+                  icon={<FormatAlignCenterIcon style={richIconStyle} />}
+                  type='align'
+                  op='center'
+                />
+                <RichButton
+                  icon={<FormatAlignRightIcon style={richIconStyle} />}
+                  type='align'
+                  op='right'
+                />
+                <RichButton
+                  icon={<InsertLinkIcon style={richIconStyle} />}
+                  type='link'
+                  op='LINK'
+                />
+                {/* <RichButton icon={<VideoLibraryIcon />} type='video' op='VIDEO' /> */}
+                <RichButton
+                  icon={<ImageIcon style={richIconStyle} />}
+                  type='image'
+                  op='IMAGE'
+                />
+              </RichIcons>
+              <ImageUploader
+                parentUrlCallback={callbackURL}
+                show={imgUploaderVisible}
+                handleDismissSelf={() => {
+                  setImgUploaderVisible(false)
                 }}
-                handleKeyCommand={handleKeyCommand}
-                ref={editorRef}
-                customStyleMap={styleMap}
-                textAlignment={textAlignment}
               />
-            </RichEditorWrapper>
-          </BodyWrapper>
-          <TagWrapper>
-            <t style={{ paddingLeft: '3.3vh' }}>Add Tags</t>
-            <TagBox
-              onChange={e => setTag(e.target.value.trim())}
-              onKeyUp={addTag}
-              placeholder='Ex. Internship, Externship, ...'
-            />
-          </TagWrapper>
-          {tags.length === 0 ? (
-            <TagsListWrapper>
-              Suggested:
-              {suggestedTags.map((tag, index) => (
-                <Tag
-                  key={tag}
-                  onClick={() => setTags([tag])}
-                  style={tagColors[index % tagColors.length]}
-                >
-                  {tag}
-                </Tag>
-              ))}
-            </TagsListWrapper>
-          ) : (
-            <TagsListWrapper>
-              Your tags:
-              {tags.map((tag, index) => (
-                <Tag
-                  key={tag}
-                  onClick={() => removeTag(tag)}
-                  style={tagColors[index % 3]}
-                >
-                  {tag}
-                </Tag>
-              ))}
-            </TagsListWrapper>
-          )}
+              <LinkAdder
+                callback={linkAdderCallback}
+                show={linkAdderVisible}
+                handleDismissSelf={() => {
+                  setLinkAdderVisible(false)
+                }}
+              />
+              <RichEditorWrapper>
+                <Editor
+                  placeholder='Enter description...'
+                  editorState={editorState}
+                  onChange={editorState => {
+                    setEditorState(editorState)
+                  }}
+                  handleKeyCommand={handleKeyCommand}
+                  ref={editorRef}
+                  customStyleMap={styleMap}
+                  textAlignment={textAlignment}
+                />
+              </RichEditorWrapper>
+            </BodyWrapper>
+            <TagWrapper>
+              <t style={{ paddingLeft: '3.3vh' }}>Add Tags</t>
+              <TagBox
+                onChange={e => setTag(e.target.value.trim())}
+                onKeyUp={addTag}
+                placeholder='Ex. Internship, Externship, ...'
+              />
+            </TagWrapper>
+            {tags.length === 0 ? (
+              <TagsListWrapper>
+                Suggested:
+                {suggestedTags.map((tag, index) => (
+                  <Tag
+                    key={tag}
+                    onClick={() => setTags([tag])}
+                    style={tagColors[index % tagColors.length]}
+                  >
+                    {tag}
+                  </Tag>
+                ))}
+              </TagsListWrapper>
+            ) : (
+              <TagsListWrapper>
+                Your tags:
+                {tags.map((tag, index) => (
+                  <Tag
+                    key={tag}
+                    onClick={() => removeTag(tag)}
+                    style={tagColors[index % 3]}
+                  >
+                    {tag}
+                  </Tag>
+                ))}
+              </TagsListWrapper>
+            )}
 
-          {/* {locationJobInfo[postType] || locationJobInfo.default} */}
+            {/* {locationJobInfo[postType] || locationJobInfo.default} */}
 
-          <DraftSubmitWrapper>
-            {/*<SaveAsDraft onClick={null}>Save As Draft</SaveAsDraft>*/}
-            <PostingButton onClick={handleSubmit}>Submit</PostingButton>
-          </DraftSubmitWrapper>
-        </FormWrapper>
-      </PostWrapper>
+            <DraftSubmitWrapper>
+              {/*<SaveAsDraft onClick={null}>Save As Draft</SaveAsDraft>*/}
+              <PostingButton onClick={handleSubmit}>Submit</PostingButton>
+            </DraftSubmitWrapper>
+          </FormWrapper>
+        </PostWrapper>
+      </BackgroundCover>
     </div>
   )
 }

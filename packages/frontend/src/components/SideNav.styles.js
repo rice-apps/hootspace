@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components/macro'
-import LogoUrl from '../images/RD_logo.svg'
+import LogoUrl from '../images/smalllogo.svg'
 
 export const ChatLogo = styled.div`
   width: 9vh;
-  height: 8vh;
+  height: 9vh;
   background-image: url(${LogoUrl});
   background-repeat: no-repeat;
   background-position: center;
@@ -96,7 +96,7 @@ export const NavWrapper = styled.div`
   background-color: #ffffff;
   height: 100%;
 
-  z-index: 11;
+  z-index: 80;
 
   @media (max-aspect-ratio: 848/712) {
     height: 10vh;

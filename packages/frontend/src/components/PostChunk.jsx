@@ -62,9 +62,11 @@ import {
   CommentButtonText,
   CommentsDiv,
   BoldedSpan,
-  NormalSpan
+  NormalSpan,
+  Pic
 } from './PostChunk.styles'
 import { tagColors } from './tagColors'
+import HeadshotUrl from '../images/headshot.svg'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -316,10 +318,22 @@ function PostChunk (props) {
           </LeftComponent>
           <TopComponent>
             <OriginalPoster>
-              <a>
-                {props.post.node.creator.username} |{' '}
-                <TimeAgo date={props.post.node.date_created} />
-              </a>
+              {/*<a>*/}
+              <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <Pic src={props.post.node.creator.imageUrl || HeadshotUrl} />
+                <t style={{ alignSelf: 'center', paddingLeft: '1vh' }}>
+                  {props.post.node.creator.username}
+                </t>
+              </div>
+              <TimeAgo
+                date={props.post.node.date_created}
+                style={{
+                  alignSelf: 'center',
+                  justifySelf: 'right',
+                  textAlign: 'right'
+                }}
+              />
+              {/*</a>*/}
             </OriginalPoster>
 
             <Tags>
@@ -384,8 +398,14 @@ function PostChunk (props) {
             </KindDiv>
 
             <MoreOptions className={classes.root}>
-              <IconButton onClick={toggleDD}>
-                <MoreHorizIcon open={isDDOpen} />
+              <IconButton
+                onClick={toggleDD}
+                style={{ height: '7vh', width: '7vh' }}
+              >
+                <MoreHorizIcon
+                  open={isDDOpen}
+                  style={{ height: '4vh', width: '4vh' }}
+                />
               </IconButton>
               {isDDOpen && (
                 <DDMenu>
@@ -420,8 +440,8 @@ function PostChunk (props) {
                     </AddTo>
                   )}
 
-                  <Expand>
-                    <FullPostLink to={myPostLink}>Expand</FullPostLink>
+                  <Expand onClick={() => navigate(myPostLink)}>
+                    <FullPostLink>Expand</FullPostLink>
                   </Expand>
 
                   <Report
@@ -458,19 +478,19 @@ function PostChunk (props) {
               )}
             </MoreOptions>
             <DiscussionBody style={{ textAlign: props.post.node.text_align }}>
-              <Truncate
-                lines={4}
-                ellipsis={
-                  <span>
-                    ...
-                    <FullPostLink to={myPostLink}>
-                      <ReadMore>Read More</ReadMore>
-                    </FullPostLink>
-                  </span>
-                }
-              >
-                {ReactHtmlParser(remarkable.render(props.post.node.body))}
-              </Truncate>
+              {/*<Truncate*/}
+              {/*  lines={4}*/}
+              {/*  ellipsis={*/}
+              {/*    <span>*/}
+              {/*      ...*/}
+              {/*      <FullPostLink to={myPostLink}>*/}
+              {/*        <ReadMore>Read More</ReadMore>*/}
+              {/*      </FullPostLink>*/}
+              {/*    </span>*/}
+              {/*  }*/}
+              {/*>*/}
+              {ReactHtmlParser(remarkable.render(props.post.node.body))}
+              {/*</Truncate>*/}
             </DiscussionBody>
             <ImageDiv>{oneImage}</ImageDiv>
             <DescriptorDiv>{postDescriptor}</DescriptorDiv>

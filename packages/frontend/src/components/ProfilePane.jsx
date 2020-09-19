@@ -39,6 +39,8 @@ import SearchBar from './Search'
 // import {FieldSetStyle, TextField} from "./MoreInfo.styles";
 import ImageUploader from './ImageUploader'
 
+const validator = require('validator')
+
 const ProfilePane = props => {
   const navigate = useNavigate()
   const [userStatement, setStatement] = useState('Valid!')
@@ -234,6 +236,19 @@ const ProfilePane = props => {
       return
     }
 
+    const attemptedEmail = document.getElementById('email').innerText.trim()
+    const attemptedPhone = document.getElementById('phone').innerText.trim()
+
+    if (attemptedEmail && !validator.isEmail(attemptedEmail)) {
+      alert(attemptedEmail + ' is not a valid email address')
+      return
+    }
+
+    if (attemptedPhone && !validator.isMobilePhone(attemptedPhone)) {
+      alert(attemptedPhone + ' is not a valid phone number')
+      return
+    }
+
     try {
       addInfo({
         variables: {
@@ -242,8 +257,8 @@ const ProfilePane = props => {
           major,
           minor,
           netID,
-          email: document.getElementById('email').innerText.trim(),
-          phone: document.getElementById('phone').innerText.trim(),
+          email: attemptedEmail ? attemptedEmail : '',
+          phone: attemptedPhone ? attemptedPhone : '',
           isNewUser: false,
           imageUrl
         }
@@ -259,7 +274,7 @@ const ProfilePane = props => {
         setBeingEdited('none')
       })
     } catch (error) {
-      log.error(error)
+      alert(error)
     }
   }
 
@@ -268,7 +283,8 @@ const ProfilePane = props => {
   }
 
   const handleLogout = async () => {
-    mainClient.resetStore().then(() => navigate('/login'))
+    window.localStorage.clear()
+    mainClient.clearStore().then(() => navigate('/login'))
   }
 
   return props.show ? (
@@ -537,9 +553,9 @@ const ProfilePane = props => {
           )}
           {showSaveButton && <Divider />}
         </ProfileInner>
-        <b>Saved posts:</b>
+        <b style={{ fontSize: '2.2vh' }}>Saved posts:</b>
         {savedPosts.length && (
-          <SavedPostsContainer>
+          <SavedPostsContainer style={{ fontSize: '2.2vh' }}>
             {savedPosts.map(post => (
               <div key={post._id} style={{ fontSize: 'inherit' }}>
                 <a

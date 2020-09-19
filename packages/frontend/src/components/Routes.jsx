@@ -7,7 +7,10 @@ import Login from './Login'
 import MoreInfo from './MoreInfo'
 import ProfilePage from './Profile'
 import PostFull from './PostFull'
-import { currentUser, loadToken } from '../utils/apollo'
+import Calendar404 from './Calendar404'
+import Mail404 from './Mail404'
+import AboutPage from './About'
+import { currentUser, loadToken, mainClient } from '../utils/apollo'
 import { VERIFY_USER } from '../graphql/Queries'
 import { TOKEN_NAME } from '../config'
 
@@ -20,7 +23,8 @@ function PrivateRoute ({ element, ...rest }) {
   })
 
   if (error) {
-    window.localStorage.removeItem(TOKEN_NAME)
+    window.localStorage.clear()
+    mainClient.clearStore()
 
     return <Navigate to='/login' />
   }
@@ -30,7 +34,8 @@ function PrivateRoute ({ element, ...rest }) {
   }
 
   if (!data || !data.verifyToken) {
-    window.localStorage.removeItem(TOKEN_NAME)
+    window.localStorage.clear()
+    mainClient.clearStore()
 
     return <Navigate to='/login' />
   }
@@ -64,8 +69,20 @@ const routesArray = [
     element: <PrivateRoute element={<ProfilePage />} />
   },
   {
+    path: '/about',
+    element: <PrivateRoute element={<AboutPage />} />
+  },
+  {
     path: '/',
     element: <Navigate to='/feed' replace />
+  },
+  {
+    path: '/calendar',
+    element: <PrivateRoute element={<Calendar404 />} />
+  },
+  {
+    path: '/mail',
+    element: <PrivateRoute element={<Mail404 />} />
   }
 ]
 
