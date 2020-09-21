@@ -1,5 +1,4 @@
 import { ForbiddenError, UserInputError } from 'apollo-server-express'
-import S3 from 'aws-sdk/clients/s3'
 import log from 'loglevel'
 import { CommentTC, PostDTC, UserTC, Post } from '../models'
 import {
@@ -12,13 +11,7 @@ import {
 
 import { S3PayloadTC } from '../models/CustomTypes'
 
-import {
-  AWS_ACCESS_KEY_ID,
-  AWS_SECRET_ACCESS_KEY,
-  BUCKET,
-  REGION,
-  MAX_REPORTS
-} from '../config'
+import { BUCKET, MAX_REPORTS } from '../config'
 
 PostDTC.addFields({
   comments: [CommentTC]
@@ -222,16 +215,7 @@ PostDTC.addFields({
       filename: `String!`,
       filetype: `String!`
     },
-    resolve: async ({ args }) => {
-      const s3 = new S3({
-        apiVersion: '2006-03-01',
-        region: REGION,
-        credentials: {
-          accessKeyId: AWS_ACCESS_KEY_ID,
-          secretAccessKey: AWS_SECRET_ACCESS_KEY
-        }
-      })
-
+    resolve: async ({ args, context }) => {
       const s3Params = {
         Bucket: BUCKET,
         Key: args.filename,
@@ -240,8 +224,11 @@ PostDTC.addFields({
         ACL: 'public-read'
       }
 
-      const signedRequest = s3.getSignedUrl('putObject', s3Params)
+      const signedRequest = context.s3.getSignedUrl('putObject', s3Params)
       const url = `https://${BUCKET}.s3.amazonaws.com/${args.filename}`
+
+      console.log(signedRequest)
+      console.log(url)
 
       return {
         signedRequest,
