@@ -22,7 +22,7 @@ const MINORS = process.env.MINORS.split(';')
 const MAX_REPORTS = parseInt(process.env.MAX_REPORTS, 10)
 
 const { AWS_ACCESS_KEY_ID } = process.env
-const { AWS_SECRET } = process.env
+const { AWS_SECRET_ACCESS_KEY } = process.env
 const { BUCKET } = process.env
 const { REGION } = process.env
 const { REDISHOST } = process.env
@@ -61,7 +61,7 @@ export {
   MINORS,
   MAX_REPORTS,
   AWS_ACCESS_KEY_ID,
-  AWS_SECRET,
+  AWS_SECRET_ACCESS_KEY,
   BUCKET,
   REGION,
   CHECK_HTML_CONFIG,

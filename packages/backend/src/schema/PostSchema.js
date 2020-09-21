@@ -14,7 +14,7 @@ import { S3PayloadTC } from '../models/CustomTypes'
 
 import {
   AWS_ACCESS_KEY_ID,
-  AWS_SECRET,
+  AWS_SECRET_ACCESS_KEY,
   BUCKET,
   REGION,
   MAX_REPORTS
@@ -228,7 +228,7 @@ PostDTC.addFields({
         region: REGION,
         credentials: {
           accessKeyId: AWS_ACCESS_KEY_ID,
-          secretAccessKey: AWS_SECRET
+          secretAccessKey: AWS_SECRET_ACCESS_KEY
         }
       })
 

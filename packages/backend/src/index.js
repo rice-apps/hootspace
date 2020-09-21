@@ -9,7 +9,7 @@ import Schema from './schema'
 
 import './utils/db'
 
-import { CLIENT_TOKEN_SECRET, DEV_PORT, ALLOWED_ORIGINS } from './config'
+import { CLIENT_TOKEN_SECRET, DEV_PORT } from './config'
 
 const app = express().use(cors())
 
