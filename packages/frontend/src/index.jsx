@@ -23,10 +23,10 @@ render(
   document.getElementById('root')
 )
 
+serviceWorker.unregister()
+
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-  serviceWorker.unregister()
   log.setLevel('TRACE')
 } else {
-  serviceWorker.register()
   log.setLevel('SILENT')
 }
