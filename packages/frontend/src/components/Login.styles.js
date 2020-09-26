@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro'
 
-import LoginBackground from '../images/backgroundLogin.svg'
+import LoginBackground from '../images/HomePage.svg'
+// import LoginBackground from '../images/backgroundLogin.svg'
 
 const LoginContainer = styled.div`
   width: 100vw;
@@ -13,7 +14,7 @@ const LoginContainer = styled.div`
 
 const LoginImage = styled.div`
   width: 100vw;
-  padding-top: 23.33%;
+  // padding-top: 23.33%;
   background-image: url(${LoginBackground});
   background-repeat: no-repeat;
   background-position: center;

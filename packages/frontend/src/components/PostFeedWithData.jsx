@@ -49,7 +49,7 @@ function PostFeedWithData () {
     {
       variables: {
         after: '',
-        listOfIDs: postIDs
+        listOfIDs: null
       },
       fetchPolicy: 'cache-and-network',
       nextFetchPolicy: 'cache-first'
@@ -97,7 +97,9 @@ function PostFeedWithData () {
 
   // get the actual data from the post_Id
   useEffect(() => {
-    refetch()
+    refetch({
+      listOfIDs: postIDs,
+    })
   }, [postIDs])
 
   // --- start
