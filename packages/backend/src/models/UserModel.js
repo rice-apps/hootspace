@@ -1,6 +1,4 @@
-import { ApolloError } from 'apollo-server-express'
-import { composeWithMongoose } from 'graphql-compose-mongoose'
-import log from 'loglevel'
+import { composeMongoose } from 'graphql-compose-mongoose'
 import { Schema, model } from 'mongoose'
 import { COLLEGES, MAJORS, MINORS } from '../config'
 
@@ -98,43 +96,6 @@ const UserSchema = new Schema({
 
 const User = model('User', UserSchema)
 
-const UserTC = composeWithMongoose(User)
-
-UserTC.wrapResolverResolve('findOne', next => rp =>
-  next({ ...rp, projection: { netID: {}, ...rp.projection } })
-    .then(payload => {
-      const res = { ...payload._doc }
-
-      if (typeof res.netID === 'undefined' || res.netID !== rp.context.netID) {
-        res.token = null
-      }
-
-      return res
-    })
-    .catch(err => {
-      log.error(err)
-      return new ApolloError(`User findOne failed: ${err}`)
-    })
-).wrapResolverResolve('connection', next => rp =>
-  next({ ...rp, projection: { netID: {}, ...rp.projection } })
-    .then(payload => {
-      const res = { ...payload }
-
-      for (let i = 0; i < res.edges.length; i += 1) {
-        if (
-          typeof res.edges[i].node.netID === 'undefined' ||
-          res.edges[i].node.netID !== rp.context.netID
-        ) {
-          res.edges[i].node.token = null
-        }
-      }
-
-      return res
-    })
-    .catch(err => {
-      log.error(err)
-      return new ApolloError(`User connection resolver failed: ${err}`)
-    })
-)
+const UserTC = composeMongoose(User)
 
 export { User, UserTC }

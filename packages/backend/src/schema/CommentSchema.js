@@ -13,12 +13,17 @@ import {
 } from '../utils'
 
 import { MAX_REPORTS } from '../config'
+import {
+  removeTokenFromFindMany,
+  removeTokenFromFindOne
+} from '../utils/middlewares'
 
 CommentTC.addFields({
   children: [CommentTC]
 })
   .addRelation('creator', {
-    resolver: () => UserTC.getResolver('findOne'),
+    resolver: () =>
+      UserTC.mongooseResolvers.findOne().wrapResolve(removeTokenFromFindOne),
 
     prepareArgs: {
       filter: source => {
@@ -55,7 +60,8 @@ CommentTC.addFields({
     }
   })
   .addRelation('upvotes', {
-    resolver: () => UserTC.getResolver('findMany'),
+    resolver: () =>
+      UserTC.mongooseResolvers.findMany().wrapResolve(removeTokenFromFindMany),
 
     prepareArgs: {
       filter: source => {
@@ -74,7 +80,8 @@ CommentTC.addFields({
     }
   })
   .addRelation('downvotes', {
-    resolver: () => UserTC.getResolver('findMany'),
+    resolver: () =>
+      UserTC.mongooseResolvers.findMany().wrapResolve(removeTokenFromFindMany),
 
     prepareArgs: {
       filter: source => {
@@ -104,7 +111,8 @@ CommentTC.addFields({
     }
   })
   .addRelation('reports', {
-    resolver: () => UserTC.getResolver('findMany'),
+    resolver: () =>
+      UserTC.mongooseResolvers.findMany().wrapResolve(removeTokenFromFindMany),
 
     prepareArgs: {
       filter: source => {

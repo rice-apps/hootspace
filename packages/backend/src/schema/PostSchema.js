@@ -1,4 +1,8 @@
-import { ForbiddenError, UserInputError } from 'apollo-server-express'
+import {
+  ForbiddenError,
+  UserInputError,
+  ApolloError
+} from 'apollo-server-express'
 import log from 'loglevel'
 import { CommentTC, PostDTC, UserTC, Post } from '../models'
 import {
@@ -12,6 +16,10 @@ import {
 import { S3PayloadTC } from '../models/CustomTypes'
 
 import { BUCKET, MAX_REPORTS } from '../config'
+import {
+  removeTokenFromFindMany,
+  removeTokenFromFindOne
+} from '../utils/middlewares'
 
 PostDTC.addFields({
   comments: [CommentTC]
@@ -28,7 +36,8 @@ PostDTC.addFields({
     }
   })
   .addRelation('creator', {
-    resolver: () => UserTC.getResolver('findOne'),
+    resolver: () =>
+      UserTC.mongooseResolvers.findOne().wrapResolve(removeTokenFromFindOne),
 
     prepareArgs: {
       filter: source => {
@@ -43,7 +52,8 @@ PostDTC.addFields({
     }
   })
   .addRelation('upvotes', {
-    resolver: () => UserTC.getResolver('findMany'),
+    resolver: () =>
+      UserTC.mongooseResolvers.findMany().wrapResolve(removeTokenFromFindMany),
 
     prepareArgs: {
       filter: source => {
@@ -62,7 +72,8 @@ PostDTC.addFields({
     }
   })
   .addRelation('downvotes', {
-    resolver: () => UserTC.getResolver('findMany'),
+    resolver: () =>
+      UserTC.mongooseResolvers.findMany().wrapResolve(removeTokenFromFindMany),
 
     prepareArgs: {
       filter: source => {
@@ -81,7 +92,8 @@ PostDTC.addFields({
     }
   })
   .addRelation('reports', {
-    resolver: () => UserTC.getResolver('findMany'),
+    resolver: () =>
+      UserTC.mongooseResolvers.findMany().wrapResolve(removeTokenFromFindMany),
 
     prepareArgs: {
       filter: source => {
@@ -354,8 +366,6 @@ const PostQuery = {
   postCount: PostDTC.getResolver('count').withMiddlewares([checkLoggedIn]),
 
   postConnection: PostDTC.getResolver('connection')
-    .addArgs()
-
     .withMiddlewares([checkLoggedIn])
     .wrapResolve(next => async rp => {
       const payload = await next({

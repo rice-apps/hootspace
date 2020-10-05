@@ -11,6 +11,10 @@ import {
   pubsub
 } from '../utils'
 import { CLIENT_TOKEN_SECRET } from '../config'
+import {
+  removeTokenFromFindOne,
+  removeTokenFromConnection
+} from '../utils/middlewares'
 
 UserTC.addFields({
   posts: [PostDTC.getDInterface()],
@@ -117,11 +121,15 @@ UserTC.addFields({
   })
 
 const UserQuery = {
-  userOne: UserTC.getResolver('findOne').withMiddlewares([checkLoggedIn]),
+  userOne: UserTC.mongooseResolvers
+    .findOne()
+    .wrapResolve(removeTokenFromFindOne)
+    .withMiddlewares([checkLoggedIn]),
 
-  userConnection: UserTC.getResolver('connection').withMiddlewares([
-    checkLoggedIn
-  ]),
+  userConnection: UserTC.mongooseResolvers
+    .connection()
+    .wrapResolve(removeTokenFromConnection)
+    .withMiddlewares([checkLoggedIn]),
 
   verifyToken: UserTC.getResolver('verifyToken'),
 
@@ -133,7 +141,8 @@ const UserQuery = {
 const UserMutation = {
   userAuthentication: UserTC.getResolver('authenticate'),
 
-  userUpdateOne: UserTC.getResolver('updateOne')
+  userUpdateOne: UserTC.mongooseResolvers
+    .updateOne()
     .withMiddlewares([checkLoggedIn, userCheckUserFilter])
     .wrapResolve(next => async rp => {
       const payload = await next(rp)
@@ -145,7 +154,8 @@ const UserMutation = {
       return payload
     }),
 
-  userRemoveOne: UserTC.getResolver('removeOne')
+  userRemoveOne: UserTC.mongooseResolvers
+    .removeOne()
     .withMiddlewares([checkLoggedIn])
     .wrapResolve(next => async rp => {
       const payload = await next(rp)

@@ -60,7 +60,7 @@ const CommentSchema = new Schema({
 
 const Comment = model('Comment', CommentSchema)
 
-const CommentTC = composeMongoose(Comment)
+const CommentTC = composeMongoose(Comment, { defaultsAsNonNull: true })
 
 CommentTC.addResolver({
   name: 'findManyByParentID',

@@ -45,6 +45,7 @@ steps:
     entrypoint: yarn
     args: ['run', 'create-env']
     env:
+      - 'REACT_APP_IDP_LOGOUT_URL=${_REACT_APP_IDP_LOGOUT_URL}'
       - 'REACT_APP_SERVICE_URL=${_REACT_APP_SERVICE_URL}'
       - 'REACT_APP_CAS_AUTH_URL=${_REACT_APP_CAS_AUTH_URL}'
       - 'REACT_APP_BACKEND_AUTH_URL=${_REACT_APP_BACKEND_AUTH_URL}'
