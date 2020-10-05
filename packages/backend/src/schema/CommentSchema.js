@@ -44,7 +44,7 @@ CommentTC.addFields({
     }
   })
   .addRelation('parent', {
-    resolver: () => CommentTC.getResolver('findById'),
+    resolver: () => CommentTC.mongooseResolvers.dataLoader(),
 
     prepareArgs: {
       _id: source => source.parent
@@ -239,7 +239,8 @@ CommentTC.addFields({
   })
 
 const CommentQuery = {
-  commentById: CommentTC.getResolver('findById')
+  commentById: CommentTC.mongooseResolvers
+    .dataLoader()
     .withMiddlewares([checkLoggedIn])
     .wrapResolve(next => async rp => {
       const payload = await next({
@@ -292,9 +293,12 @@ const CommentQuery = {
       return payload
     }),
 
-  commentCount: CommentTC.getResolver('count').withMiddlewares([checkLoggedIn]),
+  commentCount: CommentTC.mongooseResolvers
+    .count()
+    .withMiddlewares([checkLoggedIn]),
 
-  commentConnection: CommentTC.getResolver('connection')
+  commentConnection: CommentTC.mongooseResolvers
+    .connection()
     .withMiddlewares([checkLoggedIn])
     .wrapResolve(next => async rp => {
       const payload = await next({
@@ -315,7 +319,8 @@ const CommentQuery = {
 }
 
 const CommentMutation = {
-  commentCreateOne: CommentTC.getResolver('createOne')
+  commentCreateOne: CommentTC.mongooseResolvers
+    .createOne()
     .withMiddlewares([checkLoggedIn, userCheckCreate])
     .wrapResolve(next => async rp => {
       const payload = await next(rp)
@@ -327,7 +332,8 @@ const CommentMutation = {
       return payload
     }),
 
-  commentUpdateById: CommentTC.getResolver('updateById')
+  commentUpdateById: CommentTC.mongooseResolvers
+    .updateById()
     .withMiddlewares([checkLoggedIn, userCheckComment])
     .wrapResolve(next => async rp => {
       const payload = await next(rp)
@@ -381,7 +387,8 @@ const CommentMutation = {
       return payload
     }),
 
-  commentRemoveById: CommentTC.getResolver('removeById')
+  commentRemoveById: CommentTC.mongooseResolvers
+    .removeById()
     .withMiddlewares([checkLoggedIn, userCheckComment])
     .wrapResolve(next => async rp => {
       const payload = await next(rp)

@@ -1,5 +1,5 @@
 import { ApolloError } from 'apollo-server-express'
-import { composeWithMongoose } from 'graphql-compose-mongoose'
+import { composeMongoose } from 'graphql-compose-mongoose'
 import log from 'loglevel'
 import { Schema, model } from 'mongoose'
 
@@ -60,7 +60,7 @@ const CommentSchema = new Schema({
 
 const Comment = model('Comment', CommentSchema)
 
-const CommentTC = composeWithMongoose(Comment)
+const CommentTC = composeMongoose(Comment)
 
 CommentTC.addResolver({
   name: 'findManyByParentID',

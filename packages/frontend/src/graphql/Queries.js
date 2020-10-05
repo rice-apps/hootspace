@@ -1,9 +1,12 @@
 import gql from 'graphql-tag.macro'
 
-// sort the iDs
 const POST_PAGE = gql`
   query PostPage($after: String!, $listOfIDs: [MongoID]) {
-    postConnection(first: 10, after: $after, filter: { _ids: $listOfIDs }) {
+    postConnection(
+      first: 10, 
+      after: $after, 
+      filter: { _operators: { _id: { in: $listOfIDs } } }
+    ) {
       edges {
         cursor
         node {

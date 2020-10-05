@@ -284,7 +284,11 @@ const ProfilePane = props => {
 
   const handleLogout = async () => {
     window.localStorage.clear()
-    mainClient.clearStore().then(() => navigate('/login'))
+    mainClient
+      .clearStore()
+      .then(() =>
+        window.open('https://idp.rice.edu/idp/profile/cas/logout', '_self')
+      )
   }
 
   return props.show ? (
