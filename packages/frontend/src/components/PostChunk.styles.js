@@ -84,23 +84,50 @@ const DividerTop = styled.div`
 // contains Upvote, Downvote, Likes
 
 const LeftComponent = styled.div`
-  display: grid;
-  grid-template-rows: 20px 30px 40px 30px 1fr;
+  // display: grid;
+  // grid-template-rows: 1fr 2fr 1fr;
+  // grid-area: right;
+  // justify-items: center;
+  // align-items: center;
+  // background-color: yellow;
   grid-area: left;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
 `
 
 const Upvote = styled.div`
   grid-row: 2/3;
+  width: 4vw;
+  // height: 4vw;
+  // background-color: red;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const Likes = styled.div`
   grid-row: 3/4;
+  width: 4vw;
+  text-align: center;
+  // height: 4vw;
+  // background-color: orange;
 `
 
 const Downvote = styled.div`
   grid-row: 4/5;
+  width: 4vw;
+  // padding-right: 0px;
+  // position: relative;
+  // right: 0px;
+  // height: 4vw;
+  // background-color: purple;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 // contains DiscussionTitle, MoreOptions, DiscussionBody
@@ -196,13 +223,17 @@ const Delete = styled.button`
 `
 
 const DiscussionBody = styled.text`
+  // background-color: blue;
+  // width: 100%;
   grid-area: body;
   padding: 1vh 0px;
   font-size: 2vh;
+  display: inline-block;
   // max-height: 10vh;
-  overflow: hidden;
+  // overflow: hidden;
   // text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: break-word;
 `
 
 const ReadMore = styled.text`
