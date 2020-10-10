@@ -8,13 +8,11 @@ import {
   isTokenExpired,
   checkLoggedIn,
   userCheckUserFilter,
-  pubsub
-} from '../utils'
-import { CLIENT_TOKEN_SECRET } from '../config'
-import {
+  pubsub,
   removeTokenFromFindOne,
   removeTokenFromConnection
-} from '../utils/middlewares'
+} from '../utils'
+import { CLIENT_TOKEN_SECRET } from '../config'
 
 UserTC.addFields({
   posts: [PostDTC.getDInterface()],

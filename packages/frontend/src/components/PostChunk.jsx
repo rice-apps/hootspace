@@ -279,8 +279,11 @@ function PostChunk (props) {
           <LeftComponent>
             <Upvote className={classes.root}>
               <IconButton
-                style={isUpvoted ? { color: '#7380FF', width: '3vw' }
-                                 : { color: grey[700], width: '3vw' }}
+                style={
+                  isUpvoted
+                    ? { color: '#7380FF', width: '3vw' }
+                    : { color: grey[700], width: '3vw' }
+                }
                 onClick={e => {
                   e.preventDefault()
                   toggleUpvoted()
@@ -301,8 +304,9 @@ function PostChunk (props) {
             <Downvote className={classes.root}>
               <IconButton
                 style={
-                  isDownvoted ? { color: '#7380FF', width: '3vw' }
-                              : { color: grey[800], width: '3vw' }
+                  isDownvoted
+                    ? { color: '#7380FF', width: '3vw' }
+                    : { color: grey[800], width: '3vw' }
                 }
                 onClick={e => {
                   e.preventDefault()

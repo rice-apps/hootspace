@@ -9,14 +9,12 @@ import {
   checkLoggedIn,
   userCheckComment,
   userCheckCreate,
-  pubsub
+  pubsub,
+  removeTokenFromFindMany,
+  removeTokenFromFindOne
 } from '../utils'
 
 import { MAX_REPORTS } from '../config'
-import {
-  removeTokenFromFindMany,
-  removeTokenFromFindOne
-} from '../utils/middlewares'
 
 CommentTC.addFields({
   children: [CommentTC]
@@ -418,7 +416,7 @@ const CommentSubscription = {
     },
 
     subscribe: withFilter(
-      (rootValue, args, context, info) =>
+      (_rootValue, _args, _context, _info) =>
         pubsub.asyncIterator('commentCreated'),
       (payload, variables) =>
         String(payload.commentCreated.post) === String(variables.postID)
@@ -433,7 +431,7 @@ const CommentSubscription = {
     },
 
     subscribe: withFilter(
-      (rootValue, args, context, info) =>
+      (_rootValue, _args, _context, _info) =>
         pubsub.asyncIterator('commentUpdated'),
       (payload, variables) =>
         String(payload.commentUpdated.post) === String(variables.postID)
@@ -448,7 +446,7 @@ const CommentSubscription = {
     },
 
     subscribe: withFilter(
-      (rootValue, args, context, info) =>
+      (_rootValue, _args, _context, _info) =>
         pubsub.asyncIterator('commentVoteChanged'),
       (payload, variables) =>
         String(payload.commentVoteChanged.post) === String(variables.postID)
@@ -463,7 +461,7 @@ const CommentSubscription = {
     },
 
     subscribe: withFilter(
-      (rootValue, args, context, info) =>
+      (_rootValue, _args, _context, _info) =>
         pubsub.asyncIterator('commentReported'),
       (payload, variables) =>
         String(payload.commentReported.post) === String(variables.postID)
@@ -478,7 +476,7 @@ const CommentSubscription = {
     },
 
     subscribe: withFilter(
-      (rootValue, args, context, info) =>
+      (_rootValue, _args, _context, _info) =>
         pubsub.asyncIterator('commentRemoved'),
       (payload, variables) =>
         String(payload.commentRemoved.post) === String(variables.postID)

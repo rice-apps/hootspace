@@ -1,25 +1,17 @@
-import {
-  ForbiddenError,
-  UserInputError,
-  ApolloError
-} from 'apollo-server-express'
+import { ForbiddenError, UserInputError } from 'apollo-server-express'
 import log from 'loglevel'
-import { CommentTC, PostDTC, UserTC, Post } from '../models'
+import { CommentTC, PostDTC, UserTC, Post, S3PayloadTC } from '../models'
 import {
   checkLoggedIn,
   userCheckPost,
   userCheckCreate,
   checkHTML,
-  pubsub
-} from '../utils'
-
-import { S3PayloadTC } from '../models/CustomTypes'
-
-import { BUCKET, MAX_REPORTS } from '../config'
-import {
+  pubsub,
   removeTokenFromFindMany,
   removeTokenFromFindOne
-} from '../utils/middlewares'
+} from '../utils'
+
+import { BUCKET, MAX_REPORTS } from '../config'
 
 PostDTC.addFields({
   comments: [CommentTC]

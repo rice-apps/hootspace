@@ -102,7 +102,7 @@ const Upvote = styled.div`
   width: 4vw;
   // height: 4vw;
   // background-color: red;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,7 +124,7 @@ const Downvote = styled.div`
   // right: 0px;
   // height: 4vw;
   // background-color: purple;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;

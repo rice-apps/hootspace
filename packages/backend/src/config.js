@@ -28,6 +28,7 @@ const { REGION } = process.env
 const { REDISHOST } = process.env
 const REDISPORT = parseInt(process.env.REDISPORT, 10)
 
+/** @type {import('sanitize-html').IOptions} */
 const CHECK_HTML_CONFIG = {
   allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
   allowedAttributes: {
@@ -36,12 +37,14 @@ const CHECK_HTML_CONFIG = {
   }
 }
 
+/** @type {import('mongoose').ConnectionOptions} */
 const MONGOOSE_CONFIG = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true
 }
 
+/** @type {import('ioredis').RedisOptions} */
 const REDIS_OPTIONS = {
   host: REDISHOST,
   port: REDISPORT,
