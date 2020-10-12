@@ -152,6 +152,7 @@ const DiscussionTitle = styled.text`
   font-size: 2.3vh;
   font-weight: bold;
   min-height: 4vh;
+  line-height: 150%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -229,6 +230,7 @@ const DiscussionBody = styled.text`
   padding: 1vh 0px;
   font-size: 2vh;
   display: inline-block;
+  line-height: 150%;
   // max-height: 10vh;
   // overflow: hidden;
   // text-overflow: ellipsis;
