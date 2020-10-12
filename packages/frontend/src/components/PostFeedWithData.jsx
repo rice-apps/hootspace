@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client'
 import { Helmet } from 'react-helmet'
 
 // import log from 'loglevel'
+import GuidelinesBanner from './GuidelinesBanner'
 import PostFeed from './PostFeed'
 import { POST_PAGE, GET_FILTERED_IDS } from '../graphql/Queries'
 import { POST_CREATED, POST_VOTE_CHANGED } from '../graphql/Subscriptions'
@@ -224,6 +225,7 @@ function PostFeedWithData () {
             {/* <BannerContainer>
               <Banner />
             </BannerContainer> */}
+            <GuidelinesBanner/>
             <PostFeed
               {...result}
               // setEarlyDateBound={setEarlyDateBound}
