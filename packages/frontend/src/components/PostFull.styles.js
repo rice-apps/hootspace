@@ -12,6 +12,30 @@ import { Link } from 'react-router-dom'
 const BackToFeed = styled(Link)`
   color: black;
 `
+
+const Background = styled.div`
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: stretch;*/
+ 
+  background-color: #eff0f8;
+  
+  @media (max-aspect-ratio: 848/712) {
+    flex-direction: column;
+  }
+`
+
+const BTFButtonContainer = styled.div`
+  /* position: relative; */
+  /* padding-top: 1vh; */
+  padding: 20px 70px;
+
+  width: 3vw;
+  height: 3vw;
+
+  /* justify-content: space-between; */
+`
+
 // Contains Discussion Box
 const DiscussionBoxSection = styled.section`
   padding: 20px 70px;
@@ -218,6 +242,7 @@ const CommentButton = styled.button`
 `
 
 export {
+  Background,
   DiscussionBoxSection,
   OriginalPoster,
   Time,
@@ -244,6 +269,7 @@ export {
   ShareTwitter,
   Share,
   BackToFeed,
+  BTFButtonContainer, 
   CommentInput,
   CommentButton
 }

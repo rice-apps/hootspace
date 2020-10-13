@@ -18,6 +18,8 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import { grey } from '@material-ui/core/colors'
 import Divider from '@material-ui/core/Divider'
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 import AddToCalendar from 'react-add-to-calendar'
 
@@ -34,6 +36,53 @@ import remarkable from '../utils/remarkable'
 
 import TimeAgo from 'react-timeago'
 
+// import {
+//   Background,
+//   DiscussionBoxSection,
+//   OriginalPoster,
+//   Time,
+//   DiscussionBox,
+//   LeftComponent,
+//   Likes,
+//   Upvote,
+//   Downvote,
+//   TopMiddleComponent,
+//   DiscussionTitle,
+//   Tags,
+//   Tag,
+//   ViewTags,
+//   MoreOptions,
+//   DDMenu,
+//   DiscussionBody,
+//   BottomComponent,
+//   Save,
+//   AddTo,
+//   Report,
+//   Delete,
+//   Comments,
+//   ShareFacebook,
+//   ShareTwitter,
+//   Share,
+//   BackToFeed,
+//   CommentInput,
+//   CommentButton
+
+  
+//   //DividerTop,
+//   // KindDiv,
+//   // Kind,  
+//   // ReadMore,
+//   // ImageDiv,
+//   // DescriptorDiv,
+//   // CommentComponent,
+//   // DividerBottom,
+//   // ShowCommentsDiv,
+//   // CommentButtonText,
+//   // CommentsDiv,
+//   // BoldedSpan,
+//   // NormalSpan,
+//   // Pic
+// } from './PostFull.styles'
 import {
   DiscussionBoxSection,
   OriginalPoster,
@@ -73,7 +122,7 @@ import {
   NormalSpan,
   Pic
 } from './PostChunk.styles'
-import { BackToFeed, Tags } from './PostFull.styles'
+import { Background, BackToFeed, BTFButtonContainer, Tags } from './PostFull.styles'
 import { tagColors } from './tagColors'
 import { COMMENT_CREATED } from '../graphql/Subscriptions'
 import CommentChunk from './CommentChunk'
@@ -361,301 +410,325 @@ function PostFull () {
 
   return (
     <>
-      <BackToFeed to='/feed'>Back To Feed</BackToFeed>
-      <DiscussionBoxSection>
-        <DiscussionBox>
-          <LeftComponent>
-            <Upvote className={classes.root}>
-              <IconButton
-                style={isUpvoted ? { color: '#7380FF' } : { color: grey[700] }}
-                onClick={e => {
-                  e.preventDefault()
-                  toggleUpvoted()
-                  upvotePost({
-                    variables: {
-                      _id: postID
-                    }
-                  })
-                }}
-              >
-                <ArrowDropUp fontSize='large' />
-              </IconButton>
-            </Upvote>
-            <Likes>{thePost.upvotes.length - thePost.downvotes.length}</Likes>
-            <Downvote className={classes.root}>
-              <IconButton
-                style={
-                  isDownvoted ? { color: '#7380FF' } : { color: grey[800] }
-                }
-                onClick={e => {
-                  e.preventDefault()
-                  toggleDownvoted()
-                  downvotePost({
-                    variables: {
-                      _id: postID
-                    }
-                  })
-                }}
-              >
-                <ArrowDropDown fontSize='large' />
-              </IconButton>
-            </Downvote>
-          </LeftComponent>
-          <TopComponent>
-            <OriginalPoster>
-              {/*<a>*/}
-              <div style={{ display: 'flex', flexDirection: 'row' }}>
-                <Pic src={thePost.creator.imageUrl || HeadshotUrl} />
-                <t style={{ alignSelf: 'center', paddingLeft: '1vh' }}>
-                  {thePost.creator.username}
-                </t>
-              </div>
-              <TimeAgo
-                date={thePost.date_created}
+      <Background>
+        {/* <BackToFeed to='/feed'>Back To Feed</BackToFeed> */}
+        <BTFButtonContainer>
+          <Button
+            variant='contained'
+            onClick={console.log("BTF button click")}
+            style={{
+              textTransform: 'none',
+              background: '#ffffff93 0% 0% no-repeat padding-box',
+              borderRadius: '0.7vw',
+              // marginLeft: '6vw',
+              marginTop: '1vw'
+            }}
+            startIcon={
+              <ArrowBackIcon
                 style={{
-                  alignSelf: 'center',
-                  width: '15vh',
-                  textAlign: 'right'
+                  color: '#7380FF',
+                  width: '2vw',
+                  height: '2vw'
                 }}
               />
-              {/*</a>*/}
-            </OriginalPoster>
+            }
+          >Back</Button>
+        </BTFButtonContainer>
+        <DiscussionBoxSection>
+          <DiscussionBox>
+            <LeftComponent>
+              <Upvote className={classes.root}>
+                <IconButton
+                  style={isUpvoted ? { color: '#7380FF' } : { color: grey[700] }}
+                  onClick={e => {
+                    e.preventDefault()
+                    toggleUpvoted()
+                    upvotePost({
+                      variables: {
+                        _id: postID
+                      }
+                    })
+                  }}
+                >
+                  <ArrowDropUp fontSize='large' />
+                </IconButton>
+              </Upvote>
+              <Likes>{thePost.upvotes.length - thePost.downvotes.length}</Likes>
+              <Downvote className={classes.root}>
+                <IconButton
+                  style={
+                    isDownvoted ? { color: '#7380FF' } : { color: grey[800] }
+                  }
+                  onClick={e => {
+                    e.preventDefault()
+                    toggleDownvoted()
+                    downvotePost({
+                      variables: {
+                        _id: postID
+                      }
+                    })
+                  }}
+                >
+                  <ArrowDropDown fontSize='large' />
+                </IconButton>
+              </Downvote>
+            </LeftComponent>
+            <TopComponent>
+              <OriginalPoster>
+                {/*<a>*/}
+                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                  <Pic src={thePost.creator.imageUrl || HeadshotUrl} />
+                  <t style={{ alignSelf: 'center', paddingLeft: '1vh' }}>
+                    {thePost.creator.username}
+                  </t>
+                </div>
+                <TimeAgo
+                  date={thePost.date_created}
+                  style={{
+                    alignSelf: 'center',
+                    width: '15vh',
+                    textAlign: 'right'
+                  }}
+                />
+                {/*</a>*/}
+              </OriginalPoster>
 
-            <Tags>
-              {thePost.tags.length > 0 && (
-                <Tag style={tagColors[0 % tagColors.length]}>
-                  {thePost.tags[0]}
-                </Tag>
-              )}
-              {thePost.tags.length > 1 && (
-                <Tag style={tagColors[1 % tagColors.length]}>
-                  {thePost.tags[1]}
-                </Tag>
-              )}
-              {thePost.tags.length > 2 && (
-                <Tag style={tagColors[2 % tagColors.length]}>
-                  {thePost.tags[2]}
-                </Tag>
-              )}
-
-              {isTagsOpen &&
-                thePost.tags.slice(3).map((tag, index) => (
-                  <Tag key={tag} style={tagColors[index % tagColors.length]}>
-                    {tag}
+              <Tags>
+                {thePost.tags.length > 0 && (
+                  <Tag style={tagColors[0 % tagColors.length]}>
+                    {thePost.tags[0]}
                   </Tag>
-                ))}
+                )}
+                {thePost.tags.length > 1 && (
+                  <Tag style={tagColors[1 % tagColors.length]}>
+                    {thePost.tags[1]}
+                  </Tag>
+                )}
+                {thePost.tags.length > 2 && (
+                  <Tag style={tagColors[2 % tagColors.length]}>
+                    {thePost.tags[2]}
+                  </Tag>
+                )}
 
-              {thePost.tags.length > 3 && (
-                <ViewTags onClick={toggleTags}>
-                  {isTagsOpen ? (
-                    <text>(View Less)</text>
-                  ) : (
-                    <text>(View All)</text>
-                  )}
-                </ViewTags>
-              )}
-            </Tags>
-            <DividerTop>
-              <Divider
-                style={{ width: '51.5vw', maxWidth: '92%', marginTop: '1vh' }}
-              />
-            </DividerTop>
-          </TopComponent>
-          <TopMiddleComponent>
-            <DiscussionTitle>{thePost.title}</DiscussionTitle>
+                {isTagsOpen &&
+                  thePost.tags.slice(3).map((tag, index) => (
+                    <Tag key={tag} style={tagColors[index % tagColors.length]}>
+                      {tag}
+                    </Tag>
+                  ))}
 
-            <KindDiv>
-              <Kind>{thePost.kind}</Kind>
-            </KindDiv>
+                {thePost.tags.length > 3 && (
+                  <ViewTags onClick={toggleTags}>
+                    {isTagsOpen ? (
+                      <text>(View Less)</text>
+                    ) : (
+                      <text>(View All)</text>
+                    )}
+                  </ViewTags>
+                )}
+              </Tags>
+              <DividerTop>
+                <Divider
+                  style={{ width: '51.5vw', maxWidth: '92%', marginTop: '1vh' }}
+                />
+              </DividerTop>
+            </TopComponent>
+            <TopMiddleComponent>
+              <DiscussionTitle>{thePost.title}</DiscussionTitle>
 
-            <MoreOptions className={classes.root}>
-              <IconButton onClick={toggleDD}>
-                <MoreHorizIcon open={isDDOpen} />
-              </IconButton>
-              {isDDOpen && (
-                <DDMenu>
-                  <Save
-                    onClick={e => {
-                      e.preventDefault()
+              <KindDiv>
+                <Kind>{thePost.kind}</Kind>
+              </KindDiv>
 
-                      const currentSavedPosts = userInfo.savedPosts.map(
-                        tup => tup._id
-                      )
-                      savePost({
-                        variables: {
-                          savedPosts: [...currentSavedPosts, thePost._id]
-                        }
-                      })
-                    }}
-                  >
-                    Save Post
-                  </Save>
-                  {(thePost.kind === 'Event' || thePost.kind === 'Job') && (
-                    <AddTo>
-                      <AddToCalendar
-                        event={calEvent}
-                        buttonLabel='Add to '
-                        buttonTemplate={calIcon}
-                        listItems={calDropDown}
-                      />
-                    </AddTo>
-                  )}
-
-                  <Report
-                    onClick={e => {
-                      e.preventDefault()
-
-                      reportPost({
-                        variables: {
-                          _id: thePost._id
-                        }
-                      })
-                    }}
-                  >
-                    Report Post
-                  </Report>
-
-                  {thePost.creator.username === userInfo.username && (
-                    <Delete
+              <MoreOptions className={classes.root}>
+                <IconButton onClick={toggleDD}>
+                  <MoreHorizIcon open={isDDOpen} />
+                </IconButton>
+                {isDDOpen && (
+                  <DDMenu>
+                    <Save
                       onClick={e => {
                         e.preventDefault()
-                        removePost({
+
+                        const currentSavedPosts = userInfo.savedPosts.map(
+                          tup => tup._id
+                        )
+                        savePost({
+                          variables: {
+                            savedPosts: [...currentSavedPosts, thePost._id]
+                          }
+                        })
+                      }}
+                    >
+                      Save Post
+                    </Save>
+                    {(thePost.kind === 'Event' || thePost.kind === 'Job') && (
+                      <AddTo>
+                        <AddToCalendar
+                          event={calEvent}
+                          buttonLabel='Add to '
+                          buttonTemplate={calIcon}
+                          listItems={calDropDown}
+                        />
+                      </AddTo>
+                    )}
+
+                    <Report
+                      onClick={e => {
+                        e.preventDefault()
+
+                        reportPost({
                           variables: {
                             _id: thePost._id
                           }
                         })
-                        window.location.reload(false)
                       }}
                     >
-                      Delete Post
-                    </Delete>
-                  )}
-                </DDMenu>
-              )}
-            </MoreOptions>
-            <DiscussionBody style={{ textAlign: thePost.text_align }}>
-              {ReactHtmlParser(remarkable.render(thePost.body))}
-            </DiscussionBody>
-            <ImageDiv>{oneImage}</ImageDiv>
-            <DescriptorDiv>{postDescriptor}</DescriptorDiv>
-          </TopMiddleComponent>
+                      Report Post
+                    </Report>
 
-          <CommentComponent>
-            <DividerBottom>
-              <Divider
-                style={{ width: '51.5vw', maxWidth: '92%', marginTop: '1vh' }}
-              />
-            </DividerBottom>
-
-            <ShowCommentsDiv>
-              <Button
-                startIcon={<CommentOutlinedIcon fontSize='large' />}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  font: 'Avenir',
-                  textTransform: 'none',
-                  display: 'flex'
-                }}
-                onClick={toggleComment}
-              >
-                {isCommentOpen ? (
-                  <text style={{ color: '#67687E' }}>
-                    Hide Comments ({numComments})
-                  </text>
-                ) : (
-                  <text style={{ color: '#67687E' }}>
-                    Show Comments ({numComments})
-                  </text>
+                    {thePost.creator.username === userInfo.username && (
+                      <Delete
+                        onClick={e => {
+                          e.preventDefault()
+                          removePost({
+                            variables: {
+                              _id: thePost._id
+                            }
+                          })
+                          window.location.reload(false)
+                        }}
+                      >
+                        Delete Post
+                      </Delete>
+                    )}
+                  </DDMenu>
                 )}
-              </Button>
-            </ShowCommentsDiv>
+              </MoreOptions>
+              <DiscussionBody style={{ textAlign: thePost.text_align }}>
+                {ReactHtmlParser(remarkable.render(thePost.body))}
+              </DiscussionBody>
+              <ImageDiv>{oneImage}</ImageDiv>
+              <DescriptorDiv>{postDescriptor}</DescriptorDiv>
+            </TopMiddleComponent>
 
-            {isCommentOpen && (
-              <CommentInput
-                placeholder='Comment here...'
-                onChange={e => setComment(e.target.value)}
-              />
-            )}
-            {isCommentOpen && (
-              <CommentButton
-                onClick={e => {
-                  e.preventDefault()
-                  if (checkComment(comment)) return
-                  try {
-                    createComment({
-                      variables: {
-                        creator: userInfo.netID,
-                        post: thePost._id,
-                        parent: null,
-                        body: comment
-                      }
-                    })
-                    setComment('')
-                    e.target.value = ''
-                  } catch (error) {
-                    console.error(error)
-                  }
-                }}
-              >
-                <CommentButtonText>Post Comment</CommentButtonText>
-              </CommentButton>
-            )}
-            {isCommentOpen && (
-              <CommentsDiv>
-                <ul style={{ listStyleType: 'none', paddingLeft: '0px' }}>
-                  {/* level 1 */}
-                  {theComments.map(comment => (
-                    <li key={comment._id} style={{ listStyleType: 'none' }}>
-                      <CommentChunk
-                        comment={comment}
-                        postID={thePost._id}
-                        setParentID={setReplyID}
-                        isLeaf={false}
-                      ></CommentChunk>
-                      {/* <button onClick={() => setReplyID(comment._id)}>Reply</button> */}
-                      <ul style={{ listStyleType: 'none' }}>
-                        {/* level 2 */}
-                        {comment.children.map(child1 => (
-                          <li
-                            key={child1._id}
-                            style={{ listStyleType: 'none' }}
-                          >
-                            <CommentChunk
-                              comment={child1}
-                              postID={thePost._id}
-                              isLeaf={false}
-                            ></CommentChunk>
-                            {/* <button onClick={() => setReplyID(child1._id)}>
-                              Reply
-                            </button> */}
-                            <ul style={{ listStyleType: 'none' }}>
-                              {/* level 3 */}
-                              {child1.children.map(child2 => (
-                                <li
-                                  key={child2._id}
-                                  style={{ listStyleType: 'none' }}
-                                >
-                                  <CommentChunk
-                                    comment={child2}
-                                    postID={thePost._id}
-                                    isLeaf={true}
-                                  ></CommentChunk>
-                                  {/* dont nest any further */}
-                                </li>
-                              ))}
-                            </ul>
-                          </li>
-                        ))}
-                      </ul>
-                    </li>
-                  ))}
-                </ul>
-              </CommentsDiv>
-            )}
-          </CommentComponent>
-        </DiscussionBox>
-      </DiscussionBoxSection>
+            <CommentComponent>
+              <DividerBottom>
+                <Divider
+                  style={{ width: '51.5vw', maxWidth: '92%', marginTop: '1vh' }}
+                />
+              </DividerBottom>
+
+              <ShowCommentsDiv>
+                <Button
+                  startIcon={<CommentOutlinedIcon fontSize='large' />}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    font: 'Avenir',
+                    textTransform: 'none',
+                    display: 'flex'
+                  }}
+                  onClick={toggleComment}
+                >
+                  {isCommentOpen ? (
+                    <text style={{ color: '#67687E' }}>
+                      Hide Comments ({numComments})
+                    </text>
+                  ) : (
+                    <text style={{ color: '#67687E' }}>
+                      Show Comments ({numComments})
+                    </text>
+                  )}
+                </Button>
+              </ShowCommentsDiv>
+
+              {isCommentOpen && (
+                <CommentInput
+                  placeholder='Comment here...'
+                  onChange={e => setComment(e.target.value)}
+                />
+              )}
+              {isCommentOpen && (
+                <CommentButton
+                  onClick={e => {
+                    e.preventDefault()
+                    if (checkComment(comment)) return
+                    try {
+                      createComment({
+                        variables: {
+                          creator: userInfo.netID,
+                          post: thePost._id,
+                          parent: null,
+                          body: comment
+                        }
+                      })
+                      setComment('')
+                      e.target.value = ''
+                    } catch (error) {
+                      console.error(error)
+                    }
+                  }}
+                >
+                  <CommentButtonText>Post Comment</CommentButtonText>
+                </CommentButton>
+              )}
+              {isCommentOpen && (
+                <CommentsDiv>
+                  <ul style={{ listStyleType: 'none', paddingLeft: '0px' }}>
+                    {/* level 1 */}
+                    {theComments.map(comment => (
+                      <li key={comment._id} style={{ listStyleType: 'none' }}>
+                        <CommentChunk
+                          comment={comment}
+                          postID={thePost._id}
+                          setParentID={setReplyID}
+                          isLeaf={false}
+                        ></CommentChunk>
+                        {/* <button onClick={() => setReplyID(comment._id)}>Reply</button> */}
+                        <ul style={{ listStyleType: 'none' }}>
+                          {/* level 2 */}
+                          {comment.children.map(child1 => (
+                            <li
+                              key={child1._id}
+                              style={{ listStyleType: 'none' }}
+                            >
+                              <CommentChunk
+                                comment={child1}
+                                postID={thePost._id}
+                                isLeaf={false}
+                              ></CommentChunk>
+                              {/* <button onClick={() => setReplyID(child1._id)}>
+                                Reply
+                              </button> */}
+                              <ul style={{ listStyleType: 'none' }}>
+                                {/* level 3 */}
+                                {child1.children.map(child2 => (
+                                  <li
+                                    key={child2._id}
+                                    style={{ listStyleType: 'none' }}
+                                  >
+                                    <CommentChunk
+                                      comment={child2}
+                                      postID={thePost._id}
+                                      isLeaf={true}
+                                    ></CommentChunk>
+                                    {/* dont nest any further */}
+                                  </li>
+                                ))}
+                              </ul>
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                    ))}
+                  </ul>
+                </CommentsDiv>
+              )}
+            </CommentComponent>
+          </DiscussionBox>
+        </DiscussionBoxSection>
+      </Background>
     </>
   )
 }
