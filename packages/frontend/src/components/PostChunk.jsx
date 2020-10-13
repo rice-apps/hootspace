@@ -392,6 +392,8 @@ function PostChunk (props) {
                     <FullPostLink to={myPostLink}>
                       <ReadMore>Read More</ReadMore>
                     </FullPostLink>
+                    {/* this isnt working! 
+                    use " onClick={() => navigate(myPostLink)} " instead somehow */}
                   </span>
                 }
               >

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useMutation, useQuery } from '@apollo/client'
+import { useNavigate } from 'react-router-dom'
 import { GET_POST, FETCH_COMMENTS_NESTED } from '../graphql/Queries'
 
 // git testing comment
@@ -153,6 +154,8 @@ function PostFull () {
   // )
 
   // *********** post full setup below
+
+  const navigator = useNavigate()
 
   const { postID } = useParams()
 
@@ -415,7 +418,9 @@ function PostFull () {
         <BTFButtonContainer>
           <Button
             variant='contained'
-            onClick={console.log("BTF button click")}
+            onClick={() => {
+              navigator('/feed')
+            }}
             style={{
               textTransform: 'none',
               background: '#ffffff93 0% 0% no-repeat padding-box',

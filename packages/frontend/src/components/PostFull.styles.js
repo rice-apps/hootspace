@@ -19,6 +19,9 @@ const Background = styled.div`
   /* align-items: stretch;*/
  
   background-color: #eff0f8;
+
+  width: 100vw;
+  height: 100vh;
   
   @media (max-aspect-ratio: 848/712) {
     flex-direction: column;
