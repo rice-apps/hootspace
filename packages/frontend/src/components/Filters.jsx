@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import IconButton from '@material-ui/core/IconButton'
 import TuneIcon from '@material-ui/icons/Tune'
 import DropDownItem from './DropDownItem'
 import SearchBar from './Search'
@@ -53,7 +52,7 @@ const Filters = props => {
   }, [props.filtersClosed])
 
   if (loading) return <h1>Your tags are loading.</h1>
-  if (error) return <h1>oshit(git) MY FILTERS ARE DUCKED</h1>
+  if (error) return;
 
   const tagList = data.getAllTags
   const finalizedTags = searchActivated ? filteredTags : tagList
@@ -216,13 +215,6 @@ const Filters = props => {
 
           <IconButton
             onClick={submitFilters}
-            style={{
-              background: 'white',
-              borderRadius: '.8vw',
-              height: '2.4vw',
-              width: '2.4vw',
-              marginLeft: '1vw'
-            }}
           >
             <TuneIcon />
           </IconButton>
