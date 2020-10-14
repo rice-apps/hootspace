@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components/macro'
+import styled from 'styled-components/macro'
 
 const GuidelinesBoxSection = styled.section`
   padding: 10px 70px 60px 70px;

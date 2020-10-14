@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 // based off title box in WritePost styles
 const CommentInput = styled.div`
@@ -20,23 +19,18 @@ const CommentInput = styled.div`
 // based off posting button in WritePost styles
 const CommentButton = styled.button`
   position: relative;
-  // background-color: #fabed6; /* Light pink */
   border: none;
-  // color: black;
   padding: 15px 20px;
   text-align: center;
-  // text-decoration: none;
   display: inline-block;
   cursor: pointer;
   z-index: 5;
   margin: 5px;
+
   &:hover {
     background-color: #e7c6c6;
     opacity: 100%;
   }
-
-  //top: 849px;
-  //left: 1222px;
   width: 150px;
   height: 46px;
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -51,9 +45,8 @@ const CommentButton = styled.button`
 const CommentListItem = styled.li`
   list-style-type: none;
 `
-
+// single comment area
 const CommentWhole = styled.div`
-  // single comment area
   display: grid;
   grid-template-areas:
     'votes commentbody'
@@ -67,28 +60,7 @@ const CommentDiv = styled.div`
   position: relative;
   grid-area: commentbody;
   padding: 1vh 0px;
-  // overflow: hidden;
-  // text-overflow: ellipsis;
-  // white-space: nowrap;
 `
-
-// const CommenterDiv = styled.div`
-//   grid-area: commentauthor;
-//   font-weight: bold;
-//   // padding: 5px 0px;
-//   // overflow: hidden;
-//   // text-overflow: ellipsis;
-//   // white-space: nowrap;
-// `
-
-// const CommentContentDiv = styled.div`
-//   grid-area: commentcontent;
-//   font-weight: bold;
-//   // padding: 5px 0px;
-//   // overflow: hidden;
-//   // text-overflow: ellipsis;
-//   // white-space: nowrap;
-// `
 
 const CommentVotes = styled.div`
   grid-area: votes;
@@ -112,7 +84,6 @@ const CommentDownvote = styled.div`
 
 const CommentMenu = styled.div`
   // comment menu of options
-  // position: relative;
   grid-area: commentmenu;
   display: grid;
   grid-template-areas: 'reply hoots report time delete .';
@@ -133,17 +104,6 @@ const ReplyArea = styled.div`
     'replybutton';
   grid-template-rows: auto auto;
 `
-
-/* const ReplyStart = styled.button`
-  grid-area: reply
-  text-decoration: underline;
-  border: none;
-  background: none;
-  font-size: 1.7vh;
-  text-align: left;
-  color: #A9ABB4;
-  opacity: 1;
-` */
 
 const ReplyStart = styled.button`
   grid-area: reply;
@@ -166,13 +126,10 @@ const CountDiv = styled.text`
   color: #A9ABB4;
   opacity: 1;
   min-width: 4vw;
-  // padding: 5px;
 `
 
 const ReportButton = styled.button`
   grid-area: report;
-  // padding: 5px;
-  // margin: 0 10px;
   text-decoration: none;
   border: none;
   background: none;
@@ -265,8 +222,6 @@ export {
   CommentListItem,
   CommentWhole,
   CommentDiv,
-  // CommenterDiv,
-  // CommentContentDiv,
   CommentMenu,
   ReplyStart,
   ReportButton,
@@ -274,7 +229,6 @@ export {
   CountDiv,
   CommentVotes,
   CommentUpvote,
-  // CommentLikes,
   CommentDownvote,
   ReplyArea,
   ReplyInput,

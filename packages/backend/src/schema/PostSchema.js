@@ -216,8 +216,8 @@ PostDTC.addFields({
     name: 'signS3Url',
     type: () => S3PayloadTC,
     args: {
-      filename: `String!`,
-      filetype: `String!`
+      filename: 'String!',
+      filetype: 'String!'
     },
     resolve: async ({ args, context }) => {
       const s3Params = {

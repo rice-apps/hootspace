@@ -13,16 +13,12 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import { grey } from '@material-ui/core/colors'
 import IconButton from '@material-ui/core/IconButton'
-import Button from '@material-ui/core/Button'
 import ArrowDropUp from '@material-ui/icons/ArrowDropUp'
 import ArrowDropDown from '@material-ui/icons/ArrowDropDown'
 import TimeAgo from 'react-timeago'
 import log from 'loglevel'
 
 import {
-  // CommentInput,
-  // CommentButton,
-  CommentListItem,
   CommentWhole,
   CommentDiv,
   CommentMenu,
@@ -62,11 +58,11 @@ function CommentChunk (props) {
   const [replyAreaVisible, setVisibility] = useState(false)
   const switchModal = () => setVisibility(!replyAreaVisible)
 
-  let listOfUpvoters = props.comment.upvotes.map(
+  const listOfUpvoters = props.comment.upvotes.map(
     userObject => userObject.username
   )
 
-  let listOfDownvoters = props.comment.downvotes.map(
+  const listOfDownvoters = props.comment.downvotes.map(
     userObject => userObject.username
   )
 
@@ -94,9 +90,6 @@ function CommentChunk (props) {
 
   const checkComment = comment => comment.length <= 0
 
-  // <CommentListItem key={props.comment._id}>
-  // ^ resolve whether this should be used or PostFull's li should be used
-
   return (
     <CommentWhole>
       <CommentVotes>
@@ -108,7 +101,6 @@ function CommentChunk (props) {
               toggleUpvoted()
               upvoteComment({
                 variables: {
-                  // netID: userInfo.netID,
                   _id: props.comment._id
                 }
               })
@@ -125,7 +117,6 @@ function CommentChunk (props) {
               toggleDownvoted()
               downvoteComment({
                 variables: {
-                  // netID: userInfo.netID,
                   _id: props.comment._id
                 }
               })
@@ -175,7 +166,6 @@ function CommentChunk (props) {
             // TODO doesn't work yet (bad request errors)
             reportComment({
               variables: {
-                // netID: userInfo.netID,
                 _id: props.comment._id
               }
             })
@@ -220,10 +210,6 @@ function CommentChunk (props) {
           />
 
           <PostReplyButton
-            // onClick={e => {
-            //   e.preventDefault()
-            //   // get an input field to show up
-            // }}
             onClick={e => {
               e.preventDefault()
               if (checkComment(reply)) return

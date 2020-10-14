@@ -131,7 +131,7 @@ CommentTC.addFields({
   .addResolver({
     name: 'upvoteComment',
     type: CommentTC,
-    args: { _id: `ID`, netID: `String!` },
+    args: { _id: 'ID', netID: 'String!' },
     resolve: async ({ args, context }) => {
       if (args.netID !== context.netID) {
         return new ForbiddenError('Cannot upvote comment as someone else')

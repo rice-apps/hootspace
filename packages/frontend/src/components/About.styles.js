@@ -1,23 +1,13 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 export const LeftSidebarContainer = styled.div`
   position: sticky;
   top: 0;
-
-  /* margin-top: 12vh; */
   justify-self: center;
   width: 11vh;
   height: 100vh;
-  // grid-column-start: 1;
-  // grid-column-end: 2;
-  // flex: 1;
-
   background-color: #ffffff;
-  // background-color: orange;
   box-shadow: 0px 0px 0.2vw white;
-  /* border-right: 0.16vw solid #ffffff; 
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px); */
 
   @media (max-aspect-ratio: 848/712) {
     height: 10vh;
@@ -28,12 +18,6 @@ export const LeftSidebarContainer = styled.div`
 export const Background = styled.div`
   display: flex;
   flex-direction: row;
-
-  // grid-template-columns: 1fr 16fr;
-
-  /* grid-template-columns: 1.2fr 1.75fr 2.25fr 1fr 1fr 1fr 0.5fr; */
-  /* grid-template-rows: 12fr 12fr 1fr 1fr; */
-
   background-color: #eff0f8;
 
   @media (max-aspect-ratio: 848/712) {
@@ -85,12 +69,10 @@ export const AcknowledgementText = styled.div`
 
 export const AckDiv = styled.div`
   display: flex;
-  flex-direciton: row;
+  flex-direction: row;
 `
 
 export const PictureText = styled.div`
-  /* margin-left: 6vw;
-    margin-right: auto; */
   text-align: left;
   font-family: Verdana;
   font-size: 2vw;

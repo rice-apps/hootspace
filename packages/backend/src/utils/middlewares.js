@@ -3,6 +3,7 @@ import {
   AuthenticationError,
   ForbiddenError
 } from 'apollo-server-express'
+import log from 'loglevel'
 import sanitizeHtml from 'sanitize-html'
 
 import { Post, Comment, User } from '../models'

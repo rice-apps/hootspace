@@ -55,9 +55,6 @@ import {
   AddTo,
   Report,
   Delete,
-  FullPostLink,
-  Expand,
-  ReadMore,
   ImageDiv,
   DescriptorDiv,
   CommentComponent,
@@ -186,7 +183,7 @@ function PostFull () {
     listOfDownvoters.includes(userInfo.username)
   )
   const [isCommentOpen, setCommentOpen] = useState(true)
-  const [replyID, setReplyID] = useState(null)
+  const [, setReplyID] = useState(null)
 
   // *********** post chunk setup below
 
@@ -236,10 +233,10 @@ function PostFull () {
 
   var numComments = theComments.length
 
-  theComments.map(comment => {
+  theComments.forEach(comment => {
     numComments += comment.children.length
     if (comment.children) {
-      comment.children.map(child => {
+      comment.children.forEach(child => {
         numComments += child.children.length
       })
     }
@@ -302,8 +299,8 @@ function PostFull () {
     'November',
     'December'
   ]
-  //maybe we should put N/A if it wasn't specified hmm...
-  let postDescriptor = []
+  // maybe we should put N/A if it wasn't specified hmm...
+  const postDescriptor = []
   if (calEvent.startTime.length > 0) {
     const startDate = calEvent.startTime.split('T')[0]
     const formattedDate = startDate.split('-')
@@ -311,7 +308,7 @@ function PostFull () {
     postDescriptor.push(
       <NormalSpan>
         <BoldedSpan>From: </BoldedSpan>
-        {month + ' ' + formattedDate[2] + ', ' + formattedDate[0] + `      `}
+        {month + ' ' + formattedDate[2] + ', ' + formattedDate[0] + '      '}
       </NormalSpan>
     )
   }
@@ -324,7 +321,7 @@ function PostFull () {
     postDescriptor.push(
       <NormalSpan>
         <BoldedSpan>End: </BoldedSpan>
-        {month + ' ' + formattedDate[2] + ', ' + formattedDate[0] + `      `}
+        {month + ' ' + formattedDate[2] + ', ' + formattedDate[0] + '      '}
       </NormalSpan>
     )
   }
@@ -401,7 +398,7 @@ function PostFull () {
           </LeftComponent>
           <TopComponent>
             <OriginalPoster>
-              {/*<a>*/}
+              {/* <a> */}
               <div style={{ display: 'flex', flexDirection: 'row' }}>
                 <Pic src={thePost.creator.imageUrl || HeadshotUrl} />
                 <t style={{ alignSelf: 'center', paddingLeft: '1vh' }}>
@@ -416,7 +413,7 @@ function PostFull () {
                   textAlign: 'right'
                 }}
               />
-              {/*</a>*/}
+              {/* </a> */}
             </OriginalPoster>
 
             <Tags>
@@ -610,7 +607,7 @@ function PostFull () {
                         postID={thePost._id}
                         setParentID={setReplyID}
                         isLeaf={false}
-                      ></CommentChunk>
+                      />
                       {/* <button onClick={() => setReplyID(comment._id)}>Reply</button> */}
                       <ul style={{ listStyleType: 'none' }}>
                         {/* level 2 */}
@@ -623,7 +620,7 @@ function PostFull () {
                               comment={child1}
                               postID={thePost._id}
                               isLeaf={false}
-                            ></CommentChunk>
+                            />
                             {/* <button onClick={() => setReplyID(child1._id)}>
                               Reply
                             </button> */}
@@ -637,8 +634,8 @@ function PostFull () {
                                   <CommentChunk
                                     comment={child2}
                                     postID={thePost._id}
-                                    isLeaf={true}
-                                  ></CommentChunk>
+                                    isLeaf
+                                  />
                                   {/* dont nest any further */}
                                 </li>
                               ))}

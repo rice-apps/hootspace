@@ -117,7 +117,7 @@ CommentTC.addResolver({
     name: 'findTopLevelByPostID',
 
     args: {
-      postID: `ID`
+      postID: 'ID'
     },
 
     type: [CommentTC],
