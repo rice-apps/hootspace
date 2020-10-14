@@ -7,7 +7,6 @@ const ExitButton = styled.div`
 
   width: 2vh;
   height: 2vh;
-  // text-align: center;
   cursor: pointer;
 `
 
@@ -33,22 +32,14 @@ const BackgroundCover = styled.div`
     height: 89vh;
     top: 11vh;
     left: 0;
-    // background-color: #ffffff;
   }
 `
 
 const PostWrapper = styled.div`
-  // position: fixed;
-  //
-  // left: 50vw;
-  // top: 50vh;
-  // transform: translate(-50vw, -50vh);
-
   width: 100vh;
 
   height: 85vh;
 
-  // background: #ffffffe8 0% 0% no-repeat padding-box;
   background-color: #ffffff;
   opacity: 1;
 
@@ -107,7 +98,6 @@ const ButtonWrapper = styled.div`
 
   border-radius: 1.4vh;
 
-  // padding-left: 2.7vh;
   margin-left: 2.7vh;
   margin-top: 0.2vh;
 
@@ -116,17 +106,11 @@ const ButtonWrapper = styled.div`
 `
 
 const TitleWrapper = styled.div`
-  // height: 3.9vh;
-  // flex-direction: row;
   display: flex;
   align-self: flex-start;
   justify-content: center;
   align-items: baseline;
   padding-left: 4.8vh;
-  // margin-bottom: 1vh;
-  // padding-bottom: 1vh;
-
-  // background-color: red;
 
   flex-wrap: wrap;
 
@@ -181,25 +165,10 @@ const ModalTitle = styled.div`
 
   height: 10vh;
 
-  // position: relative;
-  // left: 7.1vh;
-  // top: 4.7vh;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
-  // background-color: red;
-
-  // padding-left: 7vh;
-  // padding-right: 7vh;
-  // padding-top: 1vh;
-  // padding-bottom: 1vh;
-
-  @media (max-aspect-ratio: 848/712) {
-    // padding-left: 2vh;
-    // padding-right: 2vh;
-  }
 `
 
 const FormWrapper = styled.div`
@@ -212,16 +181,12 @@ const FormWrapper = styled.div`
   justify-content: space-evenly;
   align-items: center;
 
-  // padding-top: 0.vh;
   padding-bottom: 0.5vh;
   padding-left: 7vh;
   padding-right: 7vh;
-  // background-color: #bada55;
 `
 
 const DatesWrapper = styled.div`
-  // padding-left: 3.6vh;
-  // background-color: pink;
   display: flex;
   align-items: center;
   z-index: 60;
@@ -232,7 +197,6 @@ const TagWrapper = styled.div`
   width: 90vh;
 
   background: #f5f7fc 0% 0% no-repeat padding-box;
-  // background-color: red;
   border-radius: 1.4vh;
   opacity: 1;
 
@@ -246,39 +210,23 @@ const TagWrapper = styled.div`
 `
 
 const SelectCategoryWrapper = styled.div`
-  // line-height: 3.2vh;
-
-  // background-color: green;
-
   display: flex;
   justify-content: center;
   align-items: baseline;
-  // margin-bottom: 2vh;
-
   flex-wrap: wrap;
 `
 
 const SuggestedTags = styled.div``
 
 const LocationJobInfoWrapper = styled.div`
-  // height: 3.3vh;
-  // width: 90%;
-
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
   align-items: center;
-
-  // font-size: 2vh;
-
-  // background-color: #bada55;
-
   align-self: flex-start;
   position: relative;
 
   padding-left: 5vh;
-
-  // background-color: pink;
 
   @media (max-aspect-ratio: 848/712) {
     padding-left: 0;
@@ -287,15 +235,12 @@ const LocationJobInfoWrapper = styled.div`
 `
 
 const DraftSubmitWrapper = styled.div`
-  // height: 4.4vh;
-
   display: flex;
   justify-content: flex-end;
   align-items: center;
 
   align-self: flex-end;
 
-  // background-color: red;
   padding-right: 4.8vh;
 
   @media (max-aspect-ratio: 848/712) {
@@ -316,9 +261,6 @@ const IconButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  // width: 2vh;
-  // height: 2vh;
 
   cursor: pointer;
 `
@@ -341,10 +283,6 @@ const RichEditorWrapper = styled.div`
 `
 
 const TagsListWrapper = styled.div`
-  // height: 2.9vh;
-  // background-color: red;
-  // width: 90%;
-  // font-size: 2vh;
   display: flex;
   align-items: center;
 
@@ -390,7 +328,6 @@ const Tag = styled.text`
   cursor: crosshair;
 
   &:hover {
-    // background-color: gray;
     opacity: 30%;
   }
 `
@@ -437,8 +374,6 @@ const LocationBox = styled.input`
 
 const TagChosenWrapper = styled.div`
   text-align: left;
-  // font: Roman 16px/24px Avenir;
-  // letter-spacing: 0px;
   color: #a9abb4;
   opacity: 1;
   display: flex;

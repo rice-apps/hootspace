@@ -24,8 +24,7 @@ import {
   DDHeaderTitle,
   DDList,
   DDListItem,
-  ArrowI,
-  Statements
+  ArrowI
 } from './MoreInfo.styles'
 import { currentUser, loadToken } from '../utils/apollo'
 
@@ -47,7 +46,7 @@ function MoreInfo () {
   const [filteredMajors, setFilteredMajors] = useState([])
   const [filteredMinors, setFilteredMinors] = useState([])
 
-  const [addInfo, { data: USER_DATA_L }] = useMutation(SET_INFO)
+  const [addInfo] = useMutation(SET_INFO)
   const [
     checkUser,
     { data: userExists, loading: userExistLoading }
@@ -222,7 +221,7 @@ function MoreInfo () {
                 items={majors}
                 setList={setFilteredMajors}
                 setActive={setMajorsActive}
-                placeholder={'search majors'}
+                placeholder='search majors'
               />
               <DDWrapper>
                 <DDHeader onClick={toggleMajor}>
@@ -251,7 +250,7 @@ function MoreInfo () {
                 items={minors}
                 setList={setFilteredMinors}
                 setActive={setMinorsActive}
-                placeholder={'search minors'}
+                placeholder='search minors'
               />
               <DDWrapper>
                 <DDHeader onClick={toggleMinor}>

@@ -280,9 +280,6 @@ function WritePost (props) {
     props.switchVisibility(false)
   }
 
-  // const checkTitleBody = (title, body) =>
-  //   title.length <= 0 || body.length <= 0
-
   const checkPost = {
     Discussion: body => {
       if (title.length > 0 && body.length > 0) {
@@ -694,10 +691,7 @@ function WritePost (props) {
               </TagsListWrapper>
             )}
 
-            {/* {locationJobInfo[postType] || locationJobInfo.default} */}
-
             <DraftSubmitWrapper>
-              {/*<SaveAsDraft onClick={null}>Save As Draft</SaveAsDraft>*/}
               <PostingButton onClick={handleSubmit}>Submit</PostingButton>
             </DraftSubmitWrapper>
           </FormWrapper>

@@ -4,12 +4,28 @@ import http from 'http'
 import jwt from 'jsonwebtoken'
 import log from 'loglevel'
 import cors from 'cors'
+import S3 from 'aws-sdk/clients/s3'
 
 import Schema from './schema'
 
 import './utils/db'
 
-import { CLIENT_TOKEN_SECRET, DEV_PORT, ALLOWED_ORIGINS } from './config'
+import {
+  CLIENT_TOKEN_SECRET,
+  DEV_PORT,
+  REGION,
+  AWS_ACCESS_KEY_ID,
+  AWS_SECRET_ACCESS_KEY
+} from './config'
+
+const s3 = new S3({
+  apiVersion: '2006-03-01',
+  region: REGION,
+  credentials: {
+    accessKeyId: AWS_ACCESS_KEY_ID,
+    secretAccessKey: AWS_SECRET_ACCESS_KEY
+  }
+})
 
 const app = express().use(cors())
 
@@ -26,7 +42,8 @@ const server = new ApolloServer({
         )
 
         return {
-          netID: decoded.netID
+          netID: decoded.netID,
+          s3: s3
         }
       } catch (err) {
         return {

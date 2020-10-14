@@ -27,7 +27,7 @@ import {
 
 import EditUrl from '../images/edit.svg'
 import HeadshotUrl from '../images/headshot.svg'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { currentUser, mainClient } from '../utils/apollo'
 import { SET_INFO } from '../graphql/Mutations'
 import { USER_EXISTS } from '../graphql/Queries'
@@ -42,7 +42,6 @@ import ImageUploader from './ImageUploader'
 const validator = require('validator')
 
 const ProfilePane = props => {
-  const navigate = useNavigate()
   const [userStatement, setStatement] = useState('Valid!')
   const [originalUsername, setOriginal] = useState('')
   const [username, setUsername] = useState('')
@@ -99,13 +98,6 @@ const ProfilePane = props => {
     setImageUrl(currentUrl)
     setSavedPosts(currentSavedPosts)
     log.info(currentSavedPosts)
-    // if (currentUrl) {
-    //   // log.info('hello?', currentUrl)
-    // }
-    // if (currentUrl && HeadshotUrl && currentUrl.toString() !== HeadshotUrl.toString()) {
-    //   // log.info('here')
-    //   setImageUrl(currentUrl)
-    // }
   }
 
   useEffect(getData, [currentUser()])
@@ -117,10 +109,6 @@ const ProfilePane = props => {
       }
     })
   }, [username])
-
-  useEffect(() => {
-    // saveData()
-  }, [imageUrl])
 
   useEffect(() => {
     const isMyUsernameTaken = userExists?.doesUsernameExist
@@ -186,14 +174,6 @@ const ProfilePane = props => {
     }
   }
 
-  // const handleUserChange = useCallback(e => {
-  //   setUsername(document.getElementById('username').innerText)
-  // }, [])
-
-  // const handleBack = () => {
-  //   navigator('/feed')
-  // }
-
   // if I wrap this in useCallback, it breaks
   const handleMajorChange = newValue => {
     const indexOfMajor = major.indexOf(newValue)
@@ -257,18 +237,12 @@ const ProfilePane = props => {
           major,
           minor,
           netID,
-          email: attemptedEmail ? attemptedEmail : '',
-          phone: attemptedPhone ? attemptedPhone : '',
+          email: attemptedEmail || '',
+          phone: attemptedPhone || '',
           isNewUser: false,
           imageUrl
         }
       }).then(() => {
-        // setCollege(returned.data.userUpdateOne.record.college)
-        // setEmail(returned.data.userUpdateOne.record.email)
-        // setPhone(returned.data.userUpdateOne.record.phone)
-        // setMajor(returned.data.userUpdateOne.record.major)
-        // setMinor(returned.data.userUpdateOne.record.minor)
-        // setImageUrl(returned.data.userUpdateOne.record.imageUrl)
         setShowSaveButton(false)
         setShowStatement(false)
         setBeingEdited('none')
@@ -284,7 +258,11 @@ const ProfilePane = props => {
 
   const handleLogout = async () => {
     window.localStorage.clear()
-    mainClient.clearStore().then(() => navigate('/login'))
+    mainClient
+      .clearStore()
+      .then(() =>
+        window.open('https://idp.rice.edu/idp/profile/cas/logout', '_self')
+      )
   }
 
   return props.show ? (
@@ -324,14 +302,6 @@ const ProfilePane = props => {
               setImgUploaderVisible(false)
             }}
           />
-          {/*<b>{username}</b>*/}
-          {/*<FieldSetStyle>*/}
-          {/*  <TextField*/}
-          {/*      type='text'*/}
-          {/*      placeholder='username'*/}
-          {/*      value={username}*/}
-          {/*      onChange={handleUserChange}*/}
-          {/*  />*/}
           <Descriptor
             style={{
               display: 'flex',
@@ -341,8 +311,7 @@ const ProfilePane = props => {
           >
             <UsernameEditable
               contentEditable={beingEdited === 'username'}
-              id={'username'}
-              // onChange={text => handleUserChange(text)}
+              id='username'
               style={
                 beingEdited === 'username'
                   ? { backgroundColor: '#FCE8DA' }
@@ -395,7 +364,6 @@ const ProfilePane = props => {
                 <SearchBar
                   style={{
                     width: '23.5vh',
-                    // maxWidth: '23.5vh', maxHeight: '2vh', lineHeight: '2vh',
                     padding: '0.4vh 0.4vh',
                     fontSize: '2vh',
                     alignSelf: 'flex-end'
@@ -440,7 +408,6 @@ const ProfilePane = props => {
                 <SearchBar
                   style={{
                     width: '23.5vh',
-                    // maxWidth: '23.5vh', maxHeight: '2vh', lineHeight: '2vh',
                     padding: '0.4vh 0.4vh',
                     fontSize: '2vh',
                     alignSelf: 'flex-end'
@@ -483,9 +450,7 @@ const ProfilePane = props => {
                   paddingTop: '1vh'
                 }}
               >
-                <DDList
-                // style={{position: 'relative', top: '1vh'}}
-                >
+                <DDList>
                   {colleges.map(item => (
                     <DDListItem key={item}>
                       <DropDownItem
@@ -506,7 +471,7 @@ const ProfilePane = props => {
               <b> Email: </b>
               <EditableTextBlock
                 contentEditable={beingEdited === 'email'}
-                id={'email'}
+                id='email'
                 onChange={text => setEmail(text)}
                 style={
                   beingEdited === 'email'
@@ -530,7 +495,7 @@ const ProfilePane = props => {
               <b> Phone: </b>
               <EditableTextBlock
                 contentEditable={beingEdited === 'phone'}
-                id={'phone'}
+                id='phone'
                 value={phone}
                 style={
                   beingEdited === 'phone'
@@ -560,7 +525,8 @@ const ProfilePane = props => {
               <div key={post._id} style={{ fontSize: 'inherit' }}>
                 <a
                   href={'/posts/' + post._id}
-                  target={'_blank'}
+                  target='_blank'
+                  rel='noopener noreferrer'
                   style={{ fontSize: 'inherit' }}
                 >
                   {post._id}

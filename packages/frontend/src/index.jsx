@@ -24,9 +24,9 @@ render(
 )
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-  serviceWorker.unregister()
   log.setLevel('TRACE')
+  serviceWorker.unregister()
 } else {
-  serviceWorker.register()
   log.setLevel('SILENT')
+  serviceWorker.register()
 }

@@ -1,24 +1,17 @@
 import { ForbiddenError, UserInputError } from 'apollo-server-express'
-import S3 from 'aws-sdk/clients/s3'
 import log from 'loglevel'
-import { CommentTC, PostDTC, UserTC, Post } from '../models'
+import { CommentTC, PostDTC, UserTC, Post, S3PayloadTC } from '../models'
 import {
   checkLoggedIn,
   userCheckPost,
   userCheckCreate,
   checkHTML,
-  pubsub
+  pubsub,
+  removeTokenFromFindMany,
+  removeTokenFromFindOne
 } from '../utils'
 
-import { S3PayloadTC } from '../models/CustomTypes'
-
-import {
-  AWS_ACCESS_KEY_ID,
-  AWS_SECRET,
-  BUCKET,
-  REGION,
-  MAX_REPORTS
-} from '../config'
+import { BUCKET, MAX_REPORTS } from '../config'
 
 PostDTC.addFields({
   comments: [CommentTC]
@@ -35,7 +28,8 @@ PostDTC.addFields({
     }
   })
   .addRelation('creator', {
-    resolver: () => UserTC.getResolver('findOne'),
+    resolver: () =>
+      UserTC.mongooseResolvers.findOne().wrapResolve(removeTokenFromFindOne),
 
     prepareArgs: {
       filter: source => {
@@ -50,7 +44,8 @@ PostDTC.addFields({
     }
   })
   .addRelation('upvotes', {
-    resolver: () => UserTC.getResolver('findMany'),
+    resolver: () =>
+      UserTC.mongooseResolvers.findMany().wrapResolve(removeTokenFromFindMany),
 
     prepareArgs: {
       filter: source => {
@@ -69,7 +64,8 @@ PostDTC.addFields({
     }
   })
   .addRelation('downvotes', {
-    resolver: () => UserTC.getResolver('findMany'),
+    resolver: () =>
+      UserTC.mongooseResolvers.findMany().wrapResolve(removeTokenFromFindMany),
 
     prepareArgs: {
       filter: source => {
@@ -88,7 +84,8 @@ PostDTC.addFields({
     }
   })
   .addRelation('reports', {
-    resolver: () => UserTC.getResolver('findMany'),
+    resolver: () =>
+      UserTC.mongooseResolvers.findMany().wrapResolve(removeTokenFromFindMany),
 
     prepareArgs: {
       filter: source => {
@@ -219,19 +216,10 @@ PostDTC.addFields({
     name: 'signS3Url',
     type: () => S3PayloadTC,
     args: {
-      filename: `String!`,
-      filetype: `String!`
+      filename: 'String!',
+      filetype: 'String!'
     },
-    resolve: async ({ args }) => {
-      const s3 = new S3({
-        apiVersion: '2006-03-01',
-        region: REGION,
-        credentials: {
-          accessKeyId: AWS_ACCESS_KEY_ID,
-          secretAccessKey: AWS_SECRET
-        }
-      })
-
+    resolve: async ({ args, context }) => {
       const s3Params = {
         Bucket: BUCKET,
         Key: args.filename,
@@ -240,8 +228,11 @@ PostDTC.addFields({
         ACL: 'public-read'
       }
 
-      const signedRequest = s3.getSignedUrl('putObject', s3Params)
+      const signedRequest = context.s3.getSignedUrl('putObject', s3Params)
       const url = `https://${BUCKET}.s3.amazonaws.com/${args.filename}`
+
+      console.log(signedRequest)
+      console.log(url)
 
       return {
         signedRequest,
@@ -367,8 +358,6 @@ const PostQuery = {
   postCount: PostDTC.getResolver('count').withMiddlewares([checkLoggedIn]),
 
   postConnection: PostDTC.getResolver('connection')
-    .addArgs()
-
     .withMiddlewares([checkLoggedIn])
     .wrapResolve(next => async rp => {
       const payload = await next({

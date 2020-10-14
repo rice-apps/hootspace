@@ -1,9 +1,9 @@
 import { RedisPubSub } from 'graphql-redis-subscriptions'
 import { PubSub } from 'apollo-server-express'
 
-const Redis = require('ioredis')
-
 import { REDIS_OPTIONS } from '../config'
+
+const Redis = require('ioredis')
 
 let pubsub
 
@@ -16,4 +16,4 @@ if (process.env.NODE_ENV === 'production') {
   pubsub = new PubSub()
 }
 
-export default pubsub
+export { pubsub }

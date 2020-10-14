@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 
@@ -22,7 +22,6 @@ import TimeAgo from 'react-timeago'
 import Truncate from 'react-truncate'
 
 import { FETCH_COMMENTS_NESTED } from '../graphql/Queries'
-import { COMMENT_CREATED } from '../graphql/Subscriptions'
 import CommentChunk from './CommentChunk'
 
 import {
@@ -80,15 +79,12 @@ function PostChunk (props) {
   // Comments stuff starts
   const navigate = useNavigate()
 
-  const { data, loading, error, subscribeToMore } = useQuery(
-    FETCH_COMMENTS_NESTED,
-    {
-      variables: {
-        post_id: props.post.node._id
-      },
-      fetchPolicy: 'network-only'
-    }
-  )
+  const { data, loading, error } = useQuery(FETCH_COMMENTS_NESTED, {
+    variables: {
+      post_id: props.post.node._id
+    },
+    fetchPolicy: 'network-only'
+  })
 
   // Comments stuff ends
 
@@ -122,8 +118,8 @@ function PostChunk (props) {
   const [isDownvoted, setDownvoted] = useState(
     listOfDownvoters.includes(props.userInfo.username)
   )
-  const [isCommentOpen, setCommentOpen] = useState(false)
-  const [replyID, setReplyID] = useState(null)
+  const [isCommentOpen] = useState(false)
+  const [, setReplyID] = useState(null)
 
   const toggleDD = () => {
     setDDOpen(!isDDOpen)
@@ -143,13 +139,9 @@ function PostChunk (props) {
     setUpvoted(false)
   }
 
-  const toggleComment = () => {
-    setCommentOpen(!isCommentOpen)
-  }
-
   if (loading) {
     // return <p>Loading Comments</p>
-    return <div></div>
+    return <div />
   }
 
   if (error) {
@@ -202,7 +194,7 @@ function PostChunk (props) {
     isClosed: closedString
   }
 
-  //maybe we should put N/A if it wasn't specified hmm...
+  // maybe we should put N/A if it wasn't specified hmm...
   const months = [
     'January',
     'February',
@@ -218,7 +210,7 @@ function PostChunk (props) {
     'December'
   ]
 
-  let postDescriptor = []
+  const postDescriptor = []
   if (calEvent.startTime.length > 0) {
     const startDate = calEvent.startTime.split('T')[0]
     const formattedDate = startDate.split('-')
@@ -226,7 +218,7 @@ function PostChunk (props) {
     postDescriptor.push(
       <NormalSpan>
         <BoldedSpan>From: </BoldedSpan>
-        {month + ' ' + formattedDate[2] + ', ' + formattedDate[0] + `      `}
+        {month + ' ' + formattedDate[2] + ', ' + formattedDate[0] + '      '}
       </NormalSpan>
     )
   }
@@ -239,7 +231,7 @@ function PostChunk (props) {
     postDescriptor.push(
       <NormalSpan>
         <BoldedSpan>End: </BoldedSpan>
-        {month + ' ' + formattedDate[2] + ', ' + formattedDate[0] + `      `}
+        {month + ' ' + formattedDate[2] + ', ' + formattedDate[0] + '      '}
       </NormalSpan>
     )
   }
@@ -279,7 +271,11 @@ function PostChunk (props) {
           <LeftComponent>
             <Upvote className={classes.root}>
               <IconButton
-                style={isUpvoted ? { color: '#7380FF' } : { color: grey[700] }}
+                style={
+                  isUpvoted
+                    ? { color: '#7380FF', width: '3vw' }
+                    : { color: grey[700], width: '3vw' }
+                }
                 onClick={e => {
                   e.preventDefault()
                   toggleUpvoted()
@@ -290,7 +286,7 @@ function PostChunk (props) {
                   })
                 }}
               >
-                <ArrowDropUp fontSize='large' />
+                <ArrowDropUp width='1vw' />
               </IconButton>
             </Upvote>
             <Likes>
@@ -300,7 +296,9 @@ function PostChunk (props) {
             <Downvote className={classes.root}>
               <IconButton
                 style={
-                  isDownvoted ? { color: '#7380FF' } : { color: grey[800] }
+                  isDownvoted
+                    ? { color: '#7380FF', width: '3vw' }
+                    : { color: grey[800], width: '3vw' }
                 }
                 onClick={e => {
                   e.preventDefault()
@@ -312,13 +310,13 @@ function PostChunk (props) {
                   })
                 }}
               >
-                <ArrowDropDown fontSize='large' />
+                <ArrowDropDown width='1vw' />
               </IconButton>
             </Downvote>
           </LeftComponent>
           <TopComponent>
             <OriginalPoster>
-              {/*<a>*/}
+              {/* <a> */}
               <div style={{ display: 'flex', flexDirection: 'row' }}>
                 <Pic src={props.post.node.creator.imageUrl || HeadshotUrl} />
                 <t style={{ alignSelf: 'center', paddingLeft: '1vh' }}>
@@ -333,7 +331,7 @@ function PostChunk (props) {
                   textAlign: 'right'
                 }}
               />
-              {/*</a>*/}
+              {/* </a> */}
             </OriginalPoster>
 
             <Tags>
@@ -478,19 +476,7 @@ function PostChunk (props) {
               )}
             </MoreOptions>
             <DiscussionBody style={{ textAlign: props.post.node.text_align }}>
-              {/*<Truncate*/}
-              {/*  lines={4}*/}
-              {/*  ellipsis={*/}
-              {/*    <span>*/}
-              {/*      ...*/}
-              {/*      <FullPostLink to={myPostLink}>*/}
-              {/*        <ReadMore>Read More</ReadMore>*/}
-              {/*      </FullPostLink>*/}
-              {/*    </span>*/}
-              {/*  }*/}
-              {/*>*/}
               {ReactHtmlParser(remarkable.render(props.post.node.body))}
-              {/*</Truncate>*/}
             </DiscussionBody>
             <ImageDiv>{oneImage}</ImageDiv>
             <DescriptorDiv>{postDescriptor}</DescriptorDiv>
@@ -571,7 +557,7 @@ function PostChunk (props) {
                         postID={props.post.node._id}
                         setParentID={setReplyID}
                         isLeaf={false}
-                      ></CommentChunk>
+                      />
                       {/* <button onClick={() => setReplyID(comment._id)}>Reply</button> */}
                       <ul style={{ listStyleType: 'none' }}>
                         {/* level 2 */}
@@ -584,10 +570,7 @@ function PostChunk (props) {
                               comment={child1}
                               postID={props.post.node._id}
                               isLeaf={false}
-                            ></CommentChunk>
-                            {/* <button onClick={() => setReplyID(child1._id)}>
-                              Reply
-                            </button> */}
+                            />
                             <ul style={{ listStyleType: 'none' }}>
                               {/* level 3 */}
                               {child1.children.map(child2 => (
@@ -598,8 +581,8 @@ function PostChunk (props) {
                                   <CommentChunk
                                     comment={child2}
                                     postID={props.post.node._id}
-                                    isLeaf={true}
-                                  ></CommentChunk>
+                                    isLeaf
+                                  />
                                   {/* dont nest any further */}
                                 </li>
                               ))}

@@ -22,12 +22,13 @@ const MINORS = process.env.MINORS.split(';')
 const MAX_REPORTS = parseInt(process.env.MAX_REPORTS, 10)
 
 const { AWS_ACCESS_KEY_ID } = process.env
-const { AWS_SECRET } = process.env
+const { AWS_SECRET_ACCESS_KEY } = process.env
 const { BUCKET } = process.env
 const { REGION } = process.env
 const { REDISHOST } = process.env
 const REDISPORT = parseInt(process.env.REDISPORT, 10)
 
+/** @type {import('sanitize-html').IOptions} */
 const CHECK_HTML_CONFIG = {
   allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
   allowedAttributes: {
@@ -36,12 +37,14 @@ const CHECK_HTML_CONFIG = {
   }
 }
 
+/** @type {import('mongoose').ConnectionOptions} */
 const MONGOOSE_CONFIG = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true
 }
 
+/** @type {import('ioredis').RedisOptions} */
 const REDIS_OPTIONS = {
   host: REDISHOST,
   port: REDISPORT,
@@ -61,7 +64,7 @@ export {
   MINORS,
   MAX_REPORTS,
   AWS_ACCESS_KEY_ID,
-  AWS_SECRET,
+  AWS_SECRET_ACCESS_KEY,
   BUCKET,
   REGION,
   CHECK_HTML_CONFIG,

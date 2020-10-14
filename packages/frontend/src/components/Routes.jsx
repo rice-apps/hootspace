@@ -42,7 +42,12 @@ function PrivateRoute ({ element, ...rest }) {
 
   window.localStorage.setItem(TOKEN_NAME, data.verifyToken.token)
 
-  currentUser(data.verifyToken)
+  if (
+    typeof data.verifyToken.college !== 'undefined' ||
+    data.verifyToken.majors !== null
+  ) {
+    currentUser(data.verifyToken)
+  }
 
   return <Route {...rest} element={element} />
 }

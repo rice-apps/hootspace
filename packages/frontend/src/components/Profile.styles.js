@@ -8,23 +8,15 @@ export const DashboardContainer = styled.div`
   grid-column-start: 2;
   grid-column-end: 3;
 
-  background-color: orange; //#eff0f8;
-  /* border: 0.16vw solid #ffffff;
-  border-radius: 1.6vw;
-  backdrop-filter: blur(30px); */
-  /* -webkit-backdrop-filter: blur(30px); */
+  background-color: orange;
 `
 
 export const RightSidebarContainer = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  // grid-column-start: 3;
   height: 100vh;
-  // flex: 5;
-  // width: 30vmax;
   width: 55vh;
-  // flex: 3;
 
   background: #ffffff 0% 0% no-repeat padding-box;
 
@@ -44,7 +36,6 @@ export const CloseButton = styled.div`
   height: 100vh;
   width: 5vh;
 
-  // background: #FFFFFF 0% 0% no-repeat padding-box;
   background-color: #7380ff;
 
   display: flex;
@@ -55,7 +46,6 @@ export const CloseButton = styled.div`
   cursor: pointer;
 
   @media (max-aspect-ratio: 848/712) {
-    // order: 2;
     height: 90vh;
     top: 10vh;
   }
@@ -77,7 +67,6 @@ export const RightSidebar = styled.div`
   justify-content: space-evenly;
 
   @media (max-aspect-ratio: 848/712) {
-    // order: 2;
     height: 90vh;
     top: 10vh;
   }
@@ -91,7 +80,6 @@ export const ProfileLogout = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  // background-color: red;
 `
 
 export const LogoutButton = styled.button`
@@ -117,17 +105,13 @@ export const ProfileInner = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-
-  // background-color: #bada55
 `
 
 export const UsernameEditable = styled.div`
-  // margin-left: 0.25em;
   margin-right: 0.25em;
   padding-left: 0.25em;
   padding-right: 0.25em;
 
-  // display: inline-block;
   overflow: hidden;
   white-space: nowrap;
   max-width: 20em;
@@ -140,7 +124,6 @@ export const Divider = styled.div`
 `
 
 export const Descriptor = styled.div`
-  // height: 4vh;
   width: 100%;
   position: relative;
 
@@ -152,13 +135,10 @@ export const Headshot = styled.div`
   width: 13.5vh;
   height: 13.5vh;
   border-radius: 20%;
-  // padding-top: 23.33%;
 
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
-
-  // background-color: red;
 
   display: flex;
   align-items: flex-end;
@@ -244,13 +224,8 @@ export const DDList = styled.ul`
   overflow-x: auto;
   width: 35vh;
   max-height: 25vh;
-  // border: 1px solid rgb(223, 223, 223);
-  // border-top: none;
-  // border-bottom-left-radius: 3px;
-  // border-bottom-right-radius: 3px;
   box-shadow: 0 2px 5px -1px rgb(232, 232, 232);
   background-color: #f4f4f4;
-  // font-weight: 700;
   text-align: left;
   -webkit-overflow-scrolling: touch;
 
@@ -264,8 +239,6 @@ export const DDListItem = styled.li`
   white-space: nowrap;
   text-overflow: ellipsis;
   cursor: pointer;
-
-  // padding-left: 0;
 `
 
 export const SavedPostsContainer = styled.div`

@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components/macro'
-// import { Link } from 'react-router-dom'
 
 // note: PostFull.styles.js is based on this file
 // so please make relevant design updates to both places
@@ -41,9 +40,6 @@ const OriginalPoster = styled.div`
   display: grid;
   grid-template-columns: 20vh 20vh;
   grid-template-rows: auto;
-  // flex-direction: row;
-  // justify-content: flex-start;
-  // align-items: center;
 
   font-size: 2vh;
   grid-area: op;
@@ -84,23 +80,34 @@ const DividerTop = styled.div`
 // contains Upvote, Downvote, Likes
 
 const LeftComponent = styled.div`
-  display: grid;
-  grid-template-rows: 20px 30px 40px 30px 1fr;
   grid-area: left;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
 `
 
 const Upvote = styled.div`
   grid-row: 2/3;
+  width: 4vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const Likes = styled.div`
   grid-row: 3/4;
+  width: 4vw;
+  text-align: center;
 `
 
 const Downvote = styled.div`
   grid-row: 4/5;
+  width: 4vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 // contains DiscussionTitle, MoreOptions, DiscussionBody
@@ -125,6 +132,7 @@ const DiscussionTitle = styled.text`
   font-size: 2.3vh;
   font-weight: bold;
   min-height: 4vh;
+  line-height: 150%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -164,14 +172,11 @@ const MoreOptions = styled.div`
 
 const DDMenu = styled.div`
   position: absolute;
-  // align-self: start;
-  // justify-self: center;
   top: 5vh;
   left: 2vh;
   z-index: 4;
   background-color: white;
   display: grid;
-  // bottom: 25px;
   width: 15vh;
 `
 
@@ -199,10 +204,10 @@ const DiscussionBody = styled.text`
   grid-area: body;
   padding: 1vh 0px;
   font-size: 2vh;
-  // max-height: 10vh;
-  overflow: hidden;
-  // text-overflow: ellipsis;
-  white-space: nowrap;
+  display: inline-block;
+  line-height: 150%;
+  white-space: normal;
+  overflow-wrap: break-word;
 `
 
 const ReadMore = styled.text`
@@ -241,24 +246,6 @@ const ShowCommentsDiv = styled.div`
   grid-area: showcomments;
   padding: 1vh 0px;
 `
-
-/*
-const CommentInput = styled.input`
-  grid-area: commentinput;
-  border: solid;
-  width: 70%;
-  height: auto;
-  background: #f4f4f49a 0% 0% no-repeat padding-box;
-  border-radius: 5px;
-  opacity: 1;
-  text-align: left;
-  vertical-align: middle;
-  align-self: start;
-  font: Roman 21px/24px Avenir;
-  letter-spacing: 0px;
-  color: #a9abb4;
-`
-*/
 
 const CommentInput = styled.input`
   grid-area: commentinput;
@@ -324,25 +311,14 @@ const CommentsDiv = styled.div`
   grid-area: commentsdiv;
 `
 
-const Commentul = styled.ul`
-  list-style-type: none;
-`
-
-const Commentli = styled.li`
-  list-style-type: none;
-`
-
 const Pic = styled.div`
   width: 5.37vh;
   height: 5.37vh;
   border-radius: 20%;
-  // padding-top: 23.33%;
 
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
-
-  // background-color: red;
 
   display: flex;
   align-items: flex-end;

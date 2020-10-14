@@ -68,7 +68,6 @@ const DDHeader = styled.div`
   align-items: center;
   justify-content: flex-end;
   position: relative;
-  /* border: 1px solid rgb(223, 223, 223); */
   background-color: white;
   line-height: 5vh;
   cursor: default;

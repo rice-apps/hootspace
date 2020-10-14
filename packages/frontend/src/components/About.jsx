@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import SideNav from './SideNav'
-import { Navigate, useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
-import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
@@ -31,7 +30,6 @@ import {
   TextDiv,
   PictureDiv,
   DetailText,
-  AcknowledgementText,
   AckDiv,
   PictureText,
   Gap
@@ -102,8 +100,7 @@ const SecondaryAboutCard = ({ name, description, image }) => {
 }
 
 function AboutPage () {
-  const [showProfile, setShowProfile] = useState(false)
-  const [showWritePost, setShowWritePost] = useState(false)
+  const [showProfile] = useState(false)
   const navigator = useNavigate()
   return (
     <Background>

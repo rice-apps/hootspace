@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 
 function Calendar404 () {
   const navigator = useNavigate()
-  // const svgbutton = document.getElementById("button404");
   return (
     <Container404>
       <BackButton

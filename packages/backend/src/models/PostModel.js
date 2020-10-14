@@ -214,7 +214,7 @@ PostDTC.addResolver({
   name: 'findManyByCreator',
 
   args: {
-    creator: `String`
+    creator: 'String'
   },
 
   type: [PostDTC.getDInterface()],
