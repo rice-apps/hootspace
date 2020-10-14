@@ -225,7 +225,7 @@ function PostFeedWithData () {
             {/* <BannerContainer>
               <Banner />
             </BannerContainer> */}
-            <GuidelinesBanner/>
+            <GuidelinesBanner />
             <PostFeed
               {...result}
               // setEarlyDateBound={setEarlyDateBound}

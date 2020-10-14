@@ -39,9 +39,9 @@ const GuidelinesBody = styled.text`
 `
 
 export {
-    GuidelinesBoxSection,
-    GuidelinesBox,
-    GuidelinesTitleDiv,
-    GuidelinesTitle,
-    GuidelinesBody
+  GuidelinesBoxSection,
+  GuidelinesBox,
+  GuidelinesTitleDiv,
+  GuidelinesTitle,
+  GuidelinesBody
 }
