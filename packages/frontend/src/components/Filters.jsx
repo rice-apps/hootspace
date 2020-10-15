@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import IconButton from '@material-ui/core/IconButton'
 import TuneIcon from '@material-ui/icons/Tune'
 import DropDownItem from './DropDownItem'
 import SearchBar from './Search'
@@ -215,9 +216,17 @@ const Filters = props => {
 
           <IconButton
             onClick={submitFilters}
+            style={{
+              background: 'white',
+              borderRadius: '.8vw',
+              height: '2.4vw',
+              width: '2.4vw',
+              marginLeft: '1vw'
+            }}
           >
             <TuneIcon />
           </IconButton>
+          
           <ClearFilter onClick={clearFilters}>Clear</ClearFilter>
         </HorizontalDiv>
         {isTagOpen && (
