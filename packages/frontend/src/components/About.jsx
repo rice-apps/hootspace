@@ -35,6 +35,16 @@ import {
   Gap
 } from './About.styles.js'
 
+import {
+  GuidelinesBoxSection,
+  GuidelinesBox,
+  GuidelinesTitle,
+  GuidelinesTitleDiv,
+  GuidelinesBody,
+  IndividualGuideline,
+  FadedLine
+} from './AboutGuidelines.styles.js'
+
 const AboutCard = ({ name, description, image }) => {
   return (
     <Card style={{ width: '17vw', float: 'left', marginRight: '2vw' }}>
@@ -190,6 +200,20 @@ function AboutPage () {
                 </ListItem>
               </List>
             </AckDiv>
+            <DetailText>Community Guidelines:</DetailText>
+            <GuidelinesBoxSection>
+              <GuidelinesBox>
+                <GuidelinesBody>
+                  <IndividualGuideline>1. Be respectful of one another.</IndividualGuideline>
+                  <FadedLine />
+                  <IndividualGuideline> 2. Hate speech, slurs, discriminatory language targeting specific
+                  groups is strictly banned from our page. </IndividualGuideline>
+                  <FadedLine />
+                  <IndividualGuideline>3. Hate speech, and malicious comments targeting any individuals
+                  and/or organizations on campus is strictly forbidden.</IndividualGuideline>
+                </GuidelinesBody>
+              </GuidelinesBox>
+            </GuidelinesBoxSection>
           </FadeIn>
         </TextDiv>
         <PictureDiv>
