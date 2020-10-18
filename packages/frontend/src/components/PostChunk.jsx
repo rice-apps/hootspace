@@ -414,6 +414,7 @@ function PostChunk (props) {
                       const currentSavedPosts = props.userInfo.savedPosts.map(
                         tup => tup._id
                       )
+
                       props.savePost({
                         variables: {
                           savedPosts: [
@@ -422,6 +423,8 @@ function PostChunk (props) {
                           ]
                         }
                       })
+
+                      alert('Post has been saved! You can view saved posts on your profile.')
                     }}
                   >
                     Save Post
@@ -451,6 +454,9 @@ function PostChunk (props) {
                           _id: props.post.node._id
                         }
                       })
+
+                      alert('Post has been reported. A riceapps member will review the post to determine if it fails' +
+                          ' to meet hootspace\'s community guidelines.')
                     }}
                   >
                     Report Post
