@@ -422,9 +422,12 @@ function PostChunk (props) {
                             props.post.node._id
                           ]
                         }
+                      }).then( truthyIfSuccessful => {
+                        if (truthyIfSuccessful) {
+                          setDDOpen(false)
+                          alert('Post has been saved! You can view saved posts on your profile.')
+                        }
                       })
-
-                      alert('Post has been saved! You can view saved posts on your profile.')
                     }}
                   >
                     Save Post
@@ -453,10 +456,13 @@ function PostChunk (props) {
                         variables: {
                           _id: props.post.node._id
                         }
+                      }).then( truthyIfSuccessful => {
+                        if (truthyIfSuccessful) {
+                          setDDOpen(false)
+                          alert('Post has been reported. A riceapps member will review the post to determine if it ' +
+                              'fails to meet hootspace\'s community guidelines.')
+                        }
                       })
-
-                      alert('Post has been reported. A riceapps member will review the post to determine if it fails' +
-                          ' to meet hootspace\'s community guidelines.')
                     }}
                   >
                     Report Post
