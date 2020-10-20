@@ -60,6 +60,7 @@ const CommentDiv = styled.div`
   position: relative;
   grid-area: commentbody;
   padding: 1vh 0px;
+  font-size: 2vh;
 `
 
 const CommentAuthorDiv = styled.text`

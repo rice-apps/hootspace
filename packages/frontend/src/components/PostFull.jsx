@@ -34,7 +34,10 @@ import TimeAgo from 'react-timeago'
 
 import {
   DiscussionBoxSection,
-  OriginalPoster,
+  OriginalPosterDiv,
+  OriginalPosterPic,
+  OriginalPosterName,
+  TimeAgoDiv,
   DiscussionBox,
   TopComponent,
   DividerTop,
@@ -373,7 +376,7 @@ function PostFull () {
                   })
                 }}
               >
-                <ArrowDropUp fontSize='large' />
+                <ArrowDropUp fontSize='2vw' />
               </IconButton>
             </Upvote>
             <Likes>{thePost.upvotes.length - thePost.downvotes.length}</Likes>
@@ -392,29 +395,38 @@ function PostFull () {
                   })
                 }}
               >
-                <ArrowDropDown fontSize='large' />
+                <ArrowDropDown fontSize='2vw' />
               </IconButton>
             </Downvote>
           </LeftComponent>
           <TopComponent>
-            <OriginalPoster>
+          <OriginalPosterDiv>
+              
               {/* <a> */}
-              <div style={{ display: 'flex', flexDirection: 'row' }}>
-                <Pic src={thePost.creator.imageUrl || HeadshotUrl} />
-                <t style={{ alignSelf: 'center', paddingLeft: '1vh' }}>
-                  {thePost.creator.username}
-                </t>
-              </div>
-              <TimeAgo
-                date={thePost.date_created}
-                style={{
-                  alignSelf: 'center',
-                  width: '15vh',
-                  textAlign: 'right'
-                }}
-              />
+              <OriginalPosterPic>
+                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                  <Pic src={thePost.creator.imageUrl || HeadshotUrl} />
+                </div>
+              </OriginalPosterPic>
+              <OriginalPosterName>
+                <div>
+                  <t style={{ alignSelf: 'center' }}>
+                    {thePost.creator.username}
+                  </t>
+                </div>
+              </OriginalPosterName>
+              <TimeAgoDiv>
+                <TimeAgo
+                  date={thePost.date_created}
+                  style={{
+                    alignSelf: 'center',
+                    justifySelf: 'right',
+                    textAlign: 'right'
+                  }}
+                />
+              </TimeAgoDiv>
               {/* </a> */}
-            </OriginalPoster>
+            </OriginalPosterDiv>
 
             <Tags>
               {thePost.tags.length > 0 && (
@@ -549,6 +561,7 @@ function PostFull () {
                   background: 'none',
                   border: 'none',
                   font: 'Avenir',
+                  fontSize: '1.75vh',
                   textTransform: 'none',
                   display: 'flex'
                 }}

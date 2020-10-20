@@ -16,7 +16,7 @@ const DiscussionBox = styled.section`
   background: #ffffff;
   border-radius: 20px;
   display: grid;
-  grid-template-rows: 4vh 1fr auto;
+  grid-template-rows: 8vh 1fr auto;
   grid-template-columns: 5vw 1fr;
   grid-template-areas:
     'owo top'
@@ -29,22 +29,42 @@ const DiscussionBox = styled.section`
 const TopComponent = styled.div`
   grid-area: top;
   display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: 5vh 1vh;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 6vh 1vh;
   grid-template-areas:
-    'op tags'
-    'line line';
+    'op . tags'
+    'line line line';
   margin-top: 1vh;
 `
-const OriginalPoster = styled.div`
-  display: grid;
-  grid-template-columns: 20vh 20vh;
-  grid-template-rows: auto;
 
-  font-size: 2vh;
+const OriginalPosterDiv = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    'oppic opname'
+    'oppic timeago';
   grid-area: op;
   white-space: nowrap;
-  padding-bottom: 0.5vh;
+
+`
+
+const OriginalPosterPic = styled.div`
+  grid-area: oppic;
+`
+
+const OriginalPosterName = styled.div`
+  grid-area: opname;
+  padding: 0.5vh 0vw 0vh 1vw;
+  font-weight: bold;
+  font-size: 2.1vh;
+`
+
+const TimeAgoDiv = styled.div`
+  grid-area: timeago;
+  padding: 0.5vh 0vw 0vh 1vw;
+  color: #A0A1B6;
+  font-size: 1.9vh;
 `
 
 // contains Tag, ViewTags
@@ -53,19 +73,21 @@ const Tags = styled.div`
   grid-area: tags;
   word-wrap: break-word;
   text-align: right;
-  margin-right: 4vw;
+  margin-top: 1.5vh;
+  margin-right: 7vw;
 `
 
 const Tag = styled.text`
   font-family: 'Avenir';
-  font-size: 1.75vh;
+  font-size: 1.9vh;
   font-weight: bold;
   color: white;
   background-color: gray;
   border: none;
-  border-radius: 5px;
-  margin-right: 7px;
-  padding: 2px 5px;
+  border-radius: 1vw;
+  margin-right: 0.5vw;
+  padding: 1vh 0.5vw;
+  align-items: center;
 `
 
 const ViewTags = styled.button`
@@ -100,6 +122,7 @@ const Likes = styled.div`
   grid-row: 3/4;
   width: 4vw;
   text-align: center;
+  font-size: 2vh;
 `
 
 const Downvote = styled.div`
@@ -127,7 +150,7 @@ const TopMiddleComponent = styled.div`
 
 const DiscussionTitle = styled.text`
   grid-area: title;
-  padding: 3vh 0.1vw 0px 0px;
+  padding: 3vh 0.5vw 0px 0px;
   font-family: 'Avenir';
   font-size: 2.3vh;
   font-weight: bold;
@@ -167,7 +190,8 @@ const MoreOptions = styled.div`
   grid-area: moreoptions;
   align-self: start;
   justify-self: center;
-  margin-top: -4.5vh;
+  margin-top: -9vh;
+  margin-right: 1.5vw;
 `
 
 const DDMenu = styled.div`
@@ -202,7 +226,7 @@ const Delete = styled.button`
 
 const DiscussionBody = styled.text`
   grid-area: body;
-  padding: 1vh 0px;
+  padding: 0vh 0px 1vh 0px;
   font-size: 2vh;
   display: inline-block;
   line-height: 150%;
@@ -332,7 +356,10 @@ const Pic = styled.div`
 
 export {
   DiscussionBoxSection,
-  OriginalPoster,
+  OriginalPosterDiv,
+  OriginalPosterPic,
+  OriginalPosterName,
+  TimeAgoDiv,
   DiscussionBox,
   TopComponent,
   DividerTop,
