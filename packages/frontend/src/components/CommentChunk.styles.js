@@ -62,6 +62,11 @@ const CommentDiv = styled.div`
   padding: 1vh 0px;
 `
 
+const CommentAuthorDiv = styled.text`
+  background:  #e7c6c6;
+  padding: 3px;
+`
+
 const CommentVotes = styled.div`
   grid-area: votes;
   display: grid;
@@ -222,6 +227,7 @@ export {
   CommentListItem,
   CommentWhole,
   CommentDiv,
+  CommentAuthorDiv,
   CommentMenu,
   ReplyStart,
   ReportButton,
