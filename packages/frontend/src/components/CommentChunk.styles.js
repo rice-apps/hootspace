@@ -60,6 +60,12 @@ const CommentDiv = styled.div`
   position: relative;
   grid-area: commentbody;
   padding: 1vh 0px;
+  font-size: 2vh;
+`
+
+const CommentAuthorDiv = styled.text`
+  background:  #e7c6c6;
+  padding: 3px;
 `
 
 const CommentVotes = styled.div`
@@ -222,6 +228,7 @@ export {
   CommentListItem,
   CommentWhole,
   CommentDiv,
+  CommentAuthorDiv,
   CommentMenu,
   ReplyStart,
   ReportButton,

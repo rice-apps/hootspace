@@ -21,6 +21,7 @@ import log from 'loglevel'
 import {
   CommentWhole,
   CommentDiv,
+  CommentAuthorDiv,
   CommentMenu,
   ReplyStart,
   ReportButton,
@@ -106,7 +107,7 @@ function CommentChunk (props) {
               })
             }}
           >
-            <ArrowDropUp fontSize='normal' />
+            <ArrowDropUp fontSize='small' />
           </IconButton>
         </CommentUpvote>
         <CommentDownvote className={classes.root}>
@@ -122,13 +123,13 @@ function CommentChunk (props) {
               })
             }}
           >
-            <ArrowDropDown fontSize='normal' />
+            <ArrowDropDown fontSize='small' />
           </IconButton>
         </CommentDownvote>
       </CommentVotes>
       <CommentDiv>
-        <strong>{props.comment.creator.username}: </strong>
-        {props.comment.body}
+        <CommentAuthorDiv><strong>{props.comment.creator.username}:</strong></CommentAuthorDiv>
+        {' ' + props.comment.body}
       </CommentDiv>
 
       <CommentMenu>

@@ -26,7 +26,10 @@ import CommentChunk from './CommentChunk'
 
 import {
   DiscussionBoxSection,
-  OriginalPoster,
+  OriginalPosterDiv,
+  OriginalPosterPic,
+  OriginalPosterName,
+  TimeAgoDiv,
   DiscussionBox,
   TopComponent,
   DividerTop,
@@ -286,7 +289,7 @@ function PostChunk (props) {
                   })
                 }}
               >
-                <ArrowDropUp width='1vw' />
+                <ArrowDropUp fontSize='2vw' />
               </IconButton>
             </Upvote>
             <Likes>
@@ -310,29 +313,38 @@ function PostChunk (props) {
                   })
                 }}
               >
-                <ArrowDropDown width='1vw' />
+                <ArrowDropDown fontSize='2vw' />
               </IconButton>
             </Downvote>
           </LeftComponent>
           <TopComponent>
-            <OriginalPoster>
+            <OriginalPosterDiv>
+              
               {/* <a> */}
-              <div style={{ display: 'flex', flexDirection: 'row' }}>
-                <Pic src={props.post.node.creator.imageUrl || HeadshotUrl} />
-                <t style={{ alignSelf: 'center', paddingLeft: '1vh' }}>
-                  {props.post.node.creator.username}
-                </t>
-              </div>
-              <TimeAgo
-                date={props.post.node.date_created}
-                style={{
-                  alignSelf: 'center',
-                  justifySelf: 'right',
-                  textAlign: 'right'
-                }}
-              />
+              <OriginalPosterPic>
+                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                  <Pic src={props.post.node.creator.imageUrl || HeadshotUrl} />
+                </div>
+              </OriginalPosterPic>
+              <OriginalPosterName>
+                <div>
+                  <t style={{ alignSelf: 'center' }}>
+                    {props.post.node.creator.username}
+                  </t>
+                </div>
+              </OriginalPosterName>
+              <TimeAgoDiv>
+                <TimeAgo
+                  date={props.post.node.date_created}
+                  style={{
+                    alignSelf: 'center',
+                    justifySelf: 'right',
+                    textAlign: 'right'
+                  }}
+                />
+              </TimeAgoDiv>
               {/* </a> */}
-            </OriginalPoster>
+            </OriginalPosterDiv>
 
             <Tags>
               {props.post.node.tags.length > 0 && (
@@ -496,6 +508,7 @@ function PostChunk (props) {
                   background: 'none',
                   border: 'none',
                   font: 'Avenir',
+                  fontSize: '1.75vh',
                   textTransform: 'none',
                   display: 'flex'
                 }}

@@ -47,21 +47,22 @@ const DiscussionBox = styled.section`
 const LeftComponent = styled.div`
   display: grid;
   grid-template-rows: 20px 30px 40px 30px 1fr;
+  grid-template-areas: '. upvote likes downvote .'
   grid-area: left;
   justify-items: center;
   align-items: center;
 `
 
 const Upvote = styled.div`
-  grid-row: 2/3;
+  grid-area: upvote;
 `
 
 const Likes = styled.div`
-  grid-row: 3/4;
+  grid-area: likes;
 `
 
 const Downvote = styled.div`
-  grid-row: 4/5;
+  grid-area: downvote;
 `
 // contains DiscussionTitle, MoreOptions, DiscussionBody
 
