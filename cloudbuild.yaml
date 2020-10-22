@@ -1,11 +1,13 @@
 timeout: '3600s'
 steps:
   # Backend
-  - name: node
+  # Install backend packages
+  - name: node:12.19.0
     entrypoint: yarn
     args: ['install']
     dir: 'packages/backend'
-  - name: node
+  # Create backend .env
+  - name: node:12.19.0
     entrypoint: yarn
     args: ['run', 'create-env']
     env:
@@ -28,20 +30,24 @@ steps:
       - 'REDISHOST=${_REDISHOST}'
       - 'REDISPORT=${_REDISPORT}'
     dir: 'packages/backend'
-  - name: node
+  # Build the backend
+  - name: node:12.19.0
     entrypoint: yarn
     args: ['run', 'build']
     dir: 'packages/backend'
+  # Deploy the backend to App Engine Flex
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy', "-v", "$_GAE_VERSION"]
     timeout: '1800s'
     dir: 'packages/backend'
   # Frontend
-  - name: 'node'
+  # Install frontend packages
+  - name: node:12.19.0
     entrypoint: yarn
     args: ['install']
     dir: 'packages/frontend'
-  - name: node
+  # Create frontend .env
+  - name: node:12.19.0
     entrypoint: yarn
     args: ['run', 'create-env']
     env:
@@ -53,13 +59,16 @@ steps:
       - 'REACT_APP_WS_URL=${_REACT_APP_WS_URL}'
       - 'REACT_APP_TOKEN_NAME=${_REACT_APP_TOKEN_NAME}'
     dir: 'packages/frontend'
-  - name: node
+  # Build the frontend
+  - name: node:12.19.0
     entrypoint: yarn
     args: ['run', 'build']
     dir: 'packages/frontend'
+  # Deploy the frontend to App Engine
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy', "-v", "$_GAE_VERSION"]
     timeout: '1800s'
     dir: 'packages/frontend'
+  # Set the traffic for the production version of the frontend
   - name: "gcr.io/cloud-builders/gcloud"
     args: ["app", "services", "--project", "$PROJECT_ID", "set-traffic", "--splits", "$_GAE_TRAFFIC"]
