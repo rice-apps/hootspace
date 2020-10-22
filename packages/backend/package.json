@@ -23,12 +23,12 @@
     "url": "https://github.com/rice-apps/RiceDiscuss-backend/issues"
   },
   "homepage": "https://github.com/rice-apps/RiceDiscuss-backend#readme",
+  "engines": {
+    "node": "12.19.0",
+    "yarn": "1.22.10"
+  },
   "dependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/node": "^7.12.1",
-    "@babel/plugin-transform-runtime": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
+    "@babel/runtime": "^7.12.1",
     "apollo-server-express": "^2.18.2",
     "aws-sdk": "^2.777.0",
     "bent": "^7.3.12",

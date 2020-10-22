@@ -64,6 +64,10 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "engines": {
+    "node": "12.19.0",
+    "yarn": "1.22.10"
+  },
   "devDependencies": {
     "@types/react": "^16.9.53",
     "@types/react-helmet": "^6.1.0",
