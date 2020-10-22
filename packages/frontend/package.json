@@ -65,7 +65,7 @@
     "extends": "react-app"
   },
   "engines": {
-    "node": "12.19.0",
+    "node": "12.x",
     "yarn": "1.22.5"
   },
   "devDependencies": {
