@@ -77,64 +77,66 @@ const authLink = setContext((_, { headers }) => {
   }
 })
 
-const mainClient = new ApolloClient({
-  link: authLink.concat(splitLink),
-  cache: new InMemoryCache({
-    possibleTypes,
-    typePolicies: {
-      Query: {
-        fields: {
-          postConnection: relayStylePagination(),
-          currentUser: {
-            read () {
-              return currentUser()
-            }
-          },
-          currentNetID: {
-            read () {
-              return currentUser().netID
-            }
-          },
-          commentByPost: {
-            merge (_existing, incoming) {
-              return incoming
-            }
+const cache = new InMemoryCache({
+  possibleTypes,
+  typePolicies: {
+    Query: {
+      fields: {
+        postConnection: relayStylePagination(),
+        currentUser: {
+          read () {
+            return currentUser()
+          }
+        },
+        currentNetID: {
+          read () {
+            return currentUser().netID
+          }
+        },
+        commentByPost: {
+          merge (_existing, incoming) {
+            return incoming
           }
         }
-      },
-      Subscription: {
-        fields: {
-          postCreated: {
-            merge (_ignored, incoming) {
-              return incoming
-            }
-          },
-          postVoteChanged: {
-            merge (_ignored, incoming) {
-              return incoming
-            }
-          },
-          postRemoved: {
-            merge (_ignored, incoming) {
-              return incoming
-            }
-          }
-        }
-      },
-      Discussion: {
-        fields: postFieldPolicies
-      },
-      Event: {
-        fields: postFieldPolicies
-      },
-      Job: {
-        fields: postFieldPolicies
-      },
-      Notice: {
-        fields: postFieldPolicies
       }
+    },
+    Subscription: {
+      fields: {
+        postCreated: {
+          merge (_ignored, incoming) {
+            return incoming
+          }
+        },
+        postVoteChanged: {
+          merge (_ignored, incoming) {
+            return incoming
+          }
+        },
+        postRemoved: {
+          merge (_ignored, incoming) {
+            return incoming
+          }
+        }
+      }
+    },
+    Discussion: {
+      fields: postFieldPolicies
+    },
+    Event: {
+      fields: postFieldPolicies
+    },
+    Job: {
+      fields: postFieldPolicies
+    },
+    Notice: {
+      fields: postFieldPolicies
     }
-  })
+  }
 })
 
-export { mainClient, currentUser, loadToken }
+const mainClient = new ApolloClient({
+  link: authLink.concat(splitLink),
+  cache: cache
+})
+
+export { mainClient, currentUser, loadToken, cache }

@@ -51,17 +51,33 @@ const IndividualGuideline = styled.p`
 const FadedLine = styled.p`
   height: 1px;
   padding: 0px;
-  background-color: #E6E6E6;
+  background-color: #e6e6e6;
   margin-left: 0%;
   width: auto;
-  background-image: linear-gradient(left , white 2%, #E6E6E6 50%, white 98%);
-  background-image: -o-linear-gradient(left , white 2%, #E6E6E6 50%, white 98%);
-  background-image: -moz-linear-gradient(left , white 2%, #E6E6E6 50%, white 98%);
-  background-image: -webkit-linear-gradient(left , white 2%, #E6E6E6 50%, white 98%);
-  background-image: -ms-linear-gradient(left , white 2%, #E6E6E6 50%, white 98%);
-  background-image: -webkit-gradient( linear, left bottom, right bottom, color-stop(0.02, white), color-stop(0.5, gray), color-stop(0.98, white) );
+  background-image: linear-gradient(left, white 2%, #e6e6e6 50%, white 98%);
+  background-image: -o-linear-gradient(left, white 2%, #e6e6e6 50%, white 98%);
+  background-image: -moz-linear-gradient(
+    left,
+    white 2%,
+    #e6e6e6 50%,
+    white 98%
+  );
+  background-image: -webkit-linear-gradient(
+    left,
+    white 2%,
+    #e6e6e6 50%,
+    white 98%
+  );
+  background-image: -ms-linear-gradient(left, white 2%, #e6e6e6 50%, white 98%);
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    right bottom,
+    color-stop(0.02, white),
+    color-stop(0.5, gray),
+    color-stop(0.98, white)
+  );
 `
-
 
 export {
   GuidelinesBoxSection,

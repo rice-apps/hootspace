@@ -400,8 +400,7 @@ function PostFull () {
             </Downvote>
           </LeftComponent>
           <TopComponent>
-          <OriginalPosterDiv>
-              
+            <OriginalPosterDiv>
               {/* <a> */}
               <OriginalPosterPic>
                 <div style={{ display: 'flex', flexDirection: 'row' }}>

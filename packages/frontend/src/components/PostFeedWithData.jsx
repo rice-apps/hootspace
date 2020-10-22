@@ -222,8 +222,7 @@ function PostFeedWithData () {
                   variables: {
                     after: result.data.postConnection.pageInfo.endCursor
                   }
-                })
-              }
+                })}
               subscribeToNewPosts={() =>
                 subscribeToMore({
                   document: POST_CREATED,
@@ -253,13 +252,11 @@ function PostFeedWithData () {
                       }
                     }
                   }
-                })
-              }
+                })}
               subscribeToNewVotes={() =>
                 subscribeToMore({
                   document: POST_VOTE_CHANGED
-                })
-              }
+                })}
             />
           </PostFeedContainer>
           <ProfilePane show={showProfile} close={() => setShowProfile(false)} />

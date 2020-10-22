@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useMutation } from '@apollo/client'
-import { currentUser } from '../utils/apollo'
+import { cache, currentUser } from '../utils/apollo'
 
 import {
   CREATE_COMMENT,
@@ -128,7 +128,9 @@ function CommentChunk (props) {
         </CommentDownvote>
       </CommentVotes>
       <CommentDiv>
-        <CommentAuthorDiv><strong>{props.comment.creator.username}:</strong></CommentAuthorDiv>
+        <CommentAuthorDiv>
+          <strong>{props.comment.creator.username}:</strong>
+        </CommentAuthorDiv>
         {' ' + props.comment.body}
       </CommentDiv>
 
@@ -155,9 +157,9 @@ function CommentChunk (props) {
           {props.comment.upvotes.length - props.comment.downvotes.length ===
           1 ? (
             <text> hoot</text>
-          ) : (
-            <text> hoots</text>
-          )}
+            ) : (
+              <text> hoots</text>
+            )}
         </CountDiv>
 
         <ReportButton
@@ -187,6 +189,8 @@ function CommentChunk (props) {
                   _id: props.comment._id
                 }
               })
+              cache.evict({ id: props.comment._id })
+              cache.gc()
               window.location.reload(false)
             }}
           >

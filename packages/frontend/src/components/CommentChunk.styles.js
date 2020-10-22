@@ -64,7 +64,7 @@ const CommentDiv = styled.div`
 `
 
 const CommentAuthorDiv = styled.text`
-  background:  #e7c6c6;
+  background: #e7c6c6;
   padding: 3px;
 `
 

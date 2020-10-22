@@ -46,7 +46,6 @@ const OriginalPosterDiv = styled.div`
     'oppic timeago';
   grid-area: op;
   white-space: nowrap;
-
 `
 
 const OriginalPosterPic = styled.div`
@@ -63,7 +62,7 @@ const OriginalPosterName = styled.div`
 const TimeAgoDiv = styled.div`
   grid-area: timeago;
   padding: 0.5vh 0vw 0vh 1vw;
-  color: #A0A1B6;
+  color: #a0a1b6;
   font-size: 1.9vh;
 `
 

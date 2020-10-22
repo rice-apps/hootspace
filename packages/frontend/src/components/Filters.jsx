@@ -53,7 +53,7 @@ const Filters = props => {
   }, [props.filtersClosed])
 
   if (loading) return <h1>Your tags are loading.</h1>
-  if (error) return;
+  if (error) return
 
   const tagList = data.getAllTags
   const finalizedTags = searchActivated ? filteredTags : tagList
@@ -226,7 +226,7 @@ const Filters = props => {
           >
             <TuneIcon />
           </IconButton>
-          
+
           <ClearFilter onClick={clearFilters}>Clear</ClearFilter>
         </HorizontalDiv>
         {isTagOpen && (
