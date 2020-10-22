@@ -2,12 +2,12 @@ timeout: '3600s'
 steps:
   # Backend
   # Install backend packages
-  - name: node:12.19.0
+  - name: node:$_NODE_VERSION
     entrypoint: yarn
     args: ['install']
     dir: 'packages/backend'
   # Create backend .env
-  - name: node:12.19.0
+  - name: node:$_NODE_VERSION
     entrypoint: yarn
     args: ['run', 'create-env']
     env:
@@ -31,7 +31,7 @@ steps:
       - 'REDISPORT=${_REDISPORT}'
     dir: 'packages/backend'
   # Build the backend
-  - name: node:12.19.0
+  - name: node:$_NODE_VERSION
     entrypoint: yarn
     args: ['run', 'build']
     dir: 'packages/backend'
@@ -42,12 +42,12 @@ steps:
     dir: 'packages/backend'
   # Frontend
   # Install frontend packages
-  - name: node
+  - name: node:$_NODE_VERSION
     entrypoint: yarn
     args: ['install']
     dir: 'packages/frontend'
   # Create frontend .env
-  - name: node
+  - name: node:$_NODE_VERSION
     entrypoint: yarn
     args: ['run', 'create-env']
     env:
@@ -60,7 +60,7 @@ steps:
       - 'REACT_APP_TOKEN_NAME=${_REACT_APP_TOKEN_NAME}'
     dir: 'packages/frontend'
   # Build the frontend
-  - name: node
+  - name: node:$_NODE_VERSION
     entrypoint: yarn
     args: ['run', 'build']
     dir: 'packages/frontend'
