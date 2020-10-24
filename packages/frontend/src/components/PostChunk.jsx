@@ -156,10 +156,10 @@ function PostChunk (props) {
 
   var numComments = theComments.length
 
-  theComments.map(comment => {
+  theComments.forEach(comment => {
     numComments += comment.children.length
     if (comment.children) {
-      comment.children.map(child => {
+      comment.children.forEach(child => {
         numComments += child.children.length
       })
     }
@@ -220,7 +220,7 @@ function PostChunk (props) {
     const formattedDate = startDate.split('-')
     const month = months[parseInt(formattedDate[1], 10) - 1]
     postDescriptor.push(
-      <NormalSpan>
+      <NormalSpan key={1}>
         <BoldedSpan>From: </BoldedSpan>
         {month + ' ' + formattedDate[2] + ', ' + formattedDate[0] + '      '}
       </NormalSpan>
@@ -233,7 +233,7 @@ function PostChunk (props) {
     const formattedDate = endDate.split('-')
     const month = months[parseInt(formattedDate[1], 10) - 1]
     postDescriptor.push(
-      <NormalSpan>
+      <NormalSpan key={2}>
         <BoldedSpan>End: </BoldedSpan>
         {month + ' ' + formattedDate[2] + ', ' + formattedDate[0] + '      '}
       </NormalSpan>
@@ -243,7 +243,7 @@ function PostChunk (props) {
     const place =
       calEvent.location.length > 0 ? calEvent.location : calEvent.workplace
     postDescriptor.push(
-      <NormalSpan>
+      <NormalSpan key={3}>
         <BoldedSpan>Location: </BoldedSpan>
         {place}
       </NormalSpan>
@@ -251,7 +251,7 @@ function PostChunk (props) {
   }
   if (jobSpecifics.isPaid.length > 0) {
     postDescriptor.push(
-      <NormalSpan>
+      <NormalSpan key={4}>
         <BoldedSpan>Paid: </BoldedSpan>
         {jobSpecifics.isPaid}
       </NormalSpan>
@@ -259,7 +259,7 @@ function PostChunk (props) {
   }
   if (jobSpecifics.isClosed.length > 0) {
     postDescriptor.push(
-      <NormalSpan>
+      <NormalSpan key={5}>
         <BoldedSpan>Closed: </BoldedSpan>
         {jobSpecifics.isClosed}
       </NormalSpan>
@@ -290,7 +290,7 @@ function PostChunk (props) {
                   })
                 }}
               >
-                <ArrowDropUp fontSize='2vw' />
+                <ArrowDropUp fontSize='default' />
               </IconButton>
             </Upvote>
             <Likes>
@@ -314,7 +314,7 @@ function PostChunk (props) {
                   })
                 }}
               >
-                <ArrowDropDown fontSize='2vw' />
+                <ArrowDropDown fontSize='default' />
               </IconButton>
             </Downvote>
           </LeftComponent>

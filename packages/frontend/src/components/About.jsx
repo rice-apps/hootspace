@@ -12,7 +12,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord'
 import SimpleAccordion from './MaterialAccordion.js'
-import ColorsTimeline from './Timeline.js'
+import ColorsTimeline from './Timeline'
 import FadeIn from 'react-fade-in'
 import wyao from '../images/wyao.jpg'
 import sgoyal from '../images/sgoyal.jpg'
@@ -38,8 +38,6 @@ import {
 import {
   GuidelinesBoxSection,
   GuidelinesBox,
-  GuidelinesTitle,
-  GuidelinesTitleDiv,
   GuidelinesBody,
   IndividualGuideline,
   FadedLine

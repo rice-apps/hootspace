@@ -64,6 +64,7 @@ function SideNav (props) {
         {pages.map((page, i) => {
           return (
             <NavElement
+              key={i}
               first={i === 0}
               selected={selected[page] || selected.false}
               onClick={clickBehavior[page] || clickBehavior.default}

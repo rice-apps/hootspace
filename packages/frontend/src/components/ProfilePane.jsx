@@ -97,7 +97,6 @@ const ProfilePane = props => {
     setPhone(currentPhone)
     setImageUrl(currentUrl)
     setSavedPosts(currentSavedPosts)
-    log.info(currentSavedPosts)
   }
 
   useEffect(getData, [currentUser()])
@@ -150,6 +149,8 @@ const ProfilePane = props => {
       case 'username':
         setUsername(document.getElementById('username').innerText)
         break
+      default:
+        log.info('Not supposed to happen')
     }
   }
 
@@ -165,6 +166,8 @@ const ProfilePane = props => {
           setUsername(document.getElementById('username').innerText)
           setShowStatement(true)
           break
+        default:
+          log.info("This isn't supposed to happen")
       }
 
       setBeingEdited('none')

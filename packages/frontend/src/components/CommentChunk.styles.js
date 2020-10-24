@@ -19,7 +19,6 @@ const CommentInput = styled.div`
 // based off posting button in WritePost styles
 const CommentButton = styled.button`
   position: relative;
-  border: none;
   padding: 15px 20px;
   text-align: center;
   display: inline-block;
@@ -72,10 +71,11 @@ const CommentVotes = styled.div`
   grid-area: votes;
   display: grid;
   grid-template-rows: 1vh 3vh 3.5vh 1fr;
-  grid-template-areas: '.'
-                       'upvote'
-                       'downvote';
-                       '.';
+  grid-template-areas:
+    '.'
+    'upvote'
+    'downvote'
+    '.';
   justify-items: center;
   align-items: center;
 `
@@ -87,9 +87,8 @@ const CommentUpvote = styled.div`
 const CommentDownvote = styled.div`
   grid-area: downvote;
 `
-
+// comment menu of options
 const CommentMenu = styled.div`
-  // comment menu of options
   grid-area: commentmenu;
   display: grid;
   grid-template-areas: 'reply hoots report time delete .';
@@ -99,8 +98,8 @@ const CommentMenu = styled.div`
   grid-column-gap: 1vw;
 `
 
+// contains things to reply to comment
 const ReplyArea = styled.div`
-  // contains things to reply to comment
   grid-area: replyarea;
   display: grid;
   padding: 1vh 0px;
@@ -127,9 +126,9 @@ const ReplyStart = styled.button`
 `
 
 const CountDiv = styled.text`
-  grid-area: hoots
+  grid-area: hoots;
   font-size: 1.7vh;
-  color: #A9ABB4;
+  color: #a9abb4;
   opacity: 1;
   min-width: 4vw;
 `
@@ -149,13 +148,13 @@ const ReportButton = styled.button`
 `
 
 const DeleteButton = styled.button`
-  grid-area: delete
+  grid-area: delete;
   text-decoration: none;
   border: none;
   background: none;
   font-size: 1.7vh;
   text-align: left;
-  color: #A9ABB4;
+  color: #a9abb4;
   opacity: 1;
   cursor: pointer;
   &:hover {
@@ -164,11 +163,10 @@ const DeleteButton = styled.button`
 `
 
 const TimestampDiv = styled.text`
-  grid-area: time
+  grid-area: time;
   font-size: 1.7vh;
-  color: #A9ABB4;
+  color: #a9abb4;
   opacity: 1;
-  // padding: 5px;
 `
 
 const ReplyInput = styled.input`

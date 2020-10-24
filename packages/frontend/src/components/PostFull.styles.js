@@ -47,7 +47,7 @@ const DiscussionBox = styled.section`
 const LeftComponent = styled.div`
   display: grid;
   grid-template-rows: 20px 30px 40px 30px 1fr;
-  grid-template-areas: '. upvote likes downvote .'
+  grid-template-areas: '. upvote likes downvote .';
   grid-area: left;
   justify-items: center;
   align-items: center;
