@@ -427,19 +427,23 @@ function PostChunk (props) {
                         tup => tup._id
                       )
 
-                      props.savePost({
-                        variables: {
-                          savedPosts: [
-                            ...currentSavedPosts,
-                            props.post.node._id
-                          ]
-                        }
-                      }).then( truthyIfSuccessful => {
-                        if (truthyIfSuccessful) {
-                          setDDOpen(false)
-                          alert('Post has been saved! You can view saved posts on your profile.')
-                        }
-                      })
+                      props
+                        .savePost({
+                          variables: {
+                            savedPosts: [
+                              ...currentSavedPosts,
+                              props.post.node._id
+                            ]
+                          }
+                        })
+                        .then(truthyIfSuccessful => {
+                          if (truthyIfSuccessful) {
+                            setDDOpen(false)
+                            alert(
+                              'Post has been saved! You can view saved posts on your profile.'
+                            )
+                          }
+                        })
                     }}
                   >
                     Save Post
@@ -464,17 +468,21 @@ function PostChunk (props) {
                     onClick={e => {
                       e.preventDefault()
 
-                      props.reportPost({
-                        variables: {
-                          _id: props.post.node._id
-                        }
-                      }).then( truthyIfSuccessful => {
-                        if (truthyIfSuccessful) {
-                          setDDOpen(false)
-                          alert('Post has been reported. A riceapps member will review the post to determine if it ' +
-                              'fails to meet hootspace\'s community guidelines.')
-                        }
-                      })
+                      props
+                        .reportPost({
+                          variables: {
+                            _id: props.post.node._id
+                          }
+                        })
+                        .then(truthyIfSuccessful => {
+                          if (truthyIfSuccessful) {
+                            setDDOpen(false)
+                            alert(
+                              'Post has been reported. A riceapps member will review the post to determine if it ' +
+                                "fails to meet hootspace's community guidelines."
+                            )
+                          }
+                        })
                     }}
                   >
                     Report Post

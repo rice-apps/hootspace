@@ -172,10 +172,12 @@ function CommentChunk (props) {
               variables: {
                 _id: props.comment._id
               }
-            }).then( truthyIfSuccessful => {
+            }).then(truthyIfSuccessful => {
               if (truthyIfSuccessful) {
-                alert('Comment has been reported. A riceapps member will review the post to determine if it ' +
-                    'fails to meet hootspace\'s community guidelines.')
+                alert(
+                  'Comment has been reported. A riceapps member will review the post to determine if it ' +
+                    "fails to meet hootspace's community guidelines."
+                )
               }
             })
           }}
