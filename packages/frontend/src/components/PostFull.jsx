@@ -309,7 +309,7 @@ function PostFull () {
     const formattedDate = startDate.split('-')
     const month = months[parseInt(formattedDate[1], 10) - 1]
     postDescriptor.push(
-      <NormalSpan>
+      <NormalSpan key={1}>
         <BoldedSpan>From: </BoldedSpan>
         {month + ' ' + formattedDate[2] + ', ' + formattedDate[0] + '      '}
       </NormalSpan>
@@ -322,7 +322,7 @@ function PostFull () {
     const formattedDate = endDate.split('-')
     const month = months[parseInt(formattedDate[1], 10) - 1]
     postDescriptor.push(
-      <NormalSpan>
+      <NormalSpan key={2}>
         <BoldedSpan>End: </BoldedSpan>
         {month + ' ' + formattedDate[2] + ', ' + formattedDate[0] + '      '}
       </NormalSpan>
@@ -332,7 +332,7 @@ function PostFull () {
     const place =
       calEvent.location.length > 0 ? calEvent.location : calEvent.workplace
     postDescriptor.push(
-      <NormalSpan>
+      <NormalSpan key={3}>
         <BoldedSpan>Location: </BoldedSpan>
         {place}
       </NormalSpan>
@@ -340,7 +340,7 @@ function PostFull () {
   }
   if (jobSpecifics.isPaid.length > 0) {
     postDescriptor.push(
-      <NormalSpan>
+      <NormalSpan key={4}>
         <BoldedSpan>Paid: </BoldedSpan>
         {jobSpecifics.isPaid}
       </NormalSpan>
@@ -348,7 +348,7 @@ function PostFull () {
   }
   if (jobSpecifics.isClosed.length > 0) {
     postDescriptor.push(
-      <NormalSpan>
+      <NormalSpan key={5}>
         <BoldedSpan>Closed: </BoldedSpan>
         {jobSpecifics.isClosed}
       </NormalSpan>
@@ -376,7 +376,7 @@ function PostFull () {
                   })
                 }}
               >
-                <ArrowDropUp fontSize='2vw' />
+                <ArrowDropUp fontSize='default' />
               </IconButton>
             </Upvote>
             <Likes>{thePost.upvotes.length - thePost.downvotes.length}</Likes>
@@ -395,7 +395,7 @@ function PostFull () {
                   })
                 }}
               >
-                <ArrowDropDown fontSize='2vw' />
+                <ArrowDropDown fontSize='default' />
               </IconButton>
             </Downvote>
           </LeftComponent>

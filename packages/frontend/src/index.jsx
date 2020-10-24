@@ -1,6 +1,8 @@
 import { StrictMode } from 'react'
 import { render } from 'react-dom'
 
+import { HelmetProvider } from 'react-helmet-async'
+
 import { ApolloProvider } from '@apollo/client'
 
 import log from 'loglevel'
@@ -17,7 +19,9 @@ render(
   <StrictMode>
     <GlobalStyle />
     <ApolloProvider client={client}>
-      <App />
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>
     </ApolloProvider>
   </StrictMode>,
   document.getElementById('root')
