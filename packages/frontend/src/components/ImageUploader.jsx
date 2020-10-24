@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import moment from 'moment'
 import log from 'loglevel'
 import { useMutation } from '@apollo/client'

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useMutation, useQuery } from '@apollo/client'
 import { GET_POST, FETCH_COMMENTS_NESTED } from '../graphql/Queries'

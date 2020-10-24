@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import SideNav from './SideNav'
 import { useNavigate } from 'react-router-dom'
 import Card from '@material-ui/core/Card'

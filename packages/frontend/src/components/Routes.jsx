@@ -1,4 +1,3 @@
-import React from 'react'
 import { Navigate, Route, useRoutes } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 

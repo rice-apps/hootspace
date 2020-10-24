@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useMutation, useLazyQuery } from '@apollo/client'
 import { Helmet } from 'react-helmet'

@@ -1,4 +1,4 @@
-import React from 'react'
+import { StrictMode } from 'react'
 import { render } from 'react-dom'
 
 import { ApolloProvider } from '@apollo/client'
@@ -14,12 +14,12 @@ import 'react-datepicker/dist/react-datepicker.css'
 import * as serviceWorker from './serviceWorker'
 
 render(
-  <React.StrictMode>
+  <StrictMode>
     <GlobalStyle />
     <ApolloProvider client={client}>
       <App />
     </ApolloProvider>
-  </React.StrictMode>,
+  </StrictMode>,
   document.getElementById('root')
 )
 

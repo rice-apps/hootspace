@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { cache, currentUser } from '../utils/apollo'
 

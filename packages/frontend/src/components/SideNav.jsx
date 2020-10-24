@@ -1,4 +1,3 @@
-import React from 'react'
 import ChatIcon from '@material-ui/icons/Chat'
 import MailOutlineIcon from '@material-ui/icons/MailOutline'
 import AccountBoxIcon from '@material-ui/icons/AccountBox'

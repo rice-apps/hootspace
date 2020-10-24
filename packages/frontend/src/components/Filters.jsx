@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import IconButton from '@material-ui/core/IconButton'
 import TuneIcon from '@material-ui/icons/Tune'
 import DropDownItem from './DropDownItem'

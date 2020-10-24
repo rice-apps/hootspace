@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 
 function SearchBar ({ items, setList, setActive, style, placeholder }) {
   const [searchText, setSearchText] = useState('')

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Helmet } from 'react-helmet'
 import { Image404, Container404, BackButton } from './Calendar404.styles'
 import { useNavigate } from 'react-router-dom'
