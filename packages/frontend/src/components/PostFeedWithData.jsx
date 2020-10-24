@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 import { useQuery } from '@apollo/client'
 
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
 // import log from 'loglevel'
 import GuidelinesBanner from './GuidelinesBanner'

@@ -29,7 +29,7 @@ import ImageIcon from '@material-ui/icons/Image'
 import CloseIcon from '@material-ui/icons/Close'
 
 import { Navigate } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import log from 'loglevel'
 import { POST_CREATE } from '../graphql/Mutations'
 // import ImageUploader from './ImageUploader'

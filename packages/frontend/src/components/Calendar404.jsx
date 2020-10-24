@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { Image404, Container404, BackButton } from './Calendar404.styles'
 import { useNavigate } from 'react-router-dom'
 

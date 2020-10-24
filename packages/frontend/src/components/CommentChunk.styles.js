@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 // based off title box in WritePost styles
 const CommentInput = styled.div`

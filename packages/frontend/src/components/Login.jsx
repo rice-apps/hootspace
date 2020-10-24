@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import Auth from './Auth'
 import { LoginButton, LoginContainer, LoginImage } from './Login.styles'
 

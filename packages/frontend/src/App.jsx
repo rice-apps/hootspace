@@ -1,11 +1,14 @@
 import { BrowserRouter as Router } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
 import CustomRoutes from './components/Routes'
 
 function App () {
   return (
-    <Router>
-      <CustomRoutes />
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <CustomRoutes />
+      </Router>
+    </HelmetProvider>
   )
 }
 

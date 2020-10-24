@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useMutation, useLazyQuery } from '@apollo/client'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import log from 'loglevel'
 import { SET_INFO } from '../graphql/Mutations'
 import { USER_EXISTS, VERIFY_USER } from '../graphql/Queries'
