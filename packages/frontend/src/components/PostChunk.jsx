@@ -426,12 +426,18 @@ function PostChunk (props) {
                       const currentSavedPosts = props.userInfo.savedPosts.map(
                         tup => tup._id
                       )
+
                       props.savePost({
                         variables: {
                           savedPosts: [
                             ...currentSavedPosts,
                             props.post.node._id
                           ]
+                        }
+                      }).then( truthyIfSuccessful => {
+                        if (truthyIfSuccessful) {
+                          setDDOpen(false)
+                          alert('Post has been saved! You can view saved posts on your profile.')
                         }
                       })
                     }}
@@ -461,6 +467,12 @@ function PostChunk (props) {
                       props.reportPost({
                         variables: {
                           _id: props.post.node._id
+                        }
+                      }).then( truthyIfSuccessful => {
+                        if (truthyIfSuccessful) {
+                          setDDOpen(false)
+                          alert('Post has been reported. A riceapps member will review the post to determine if it ' +
+                              'fails to meet hootspace\'s community guidelines.')
                         }
                       })
                     }}

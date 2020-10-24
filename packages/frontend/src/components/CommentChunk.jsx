@@ -167,9 +167,15 @@ function CommentChunk (props) {
             e.preventDefault()
 
             // TODO doesn't work yet (bad request errors)
+            // I do not know if the above comment is still relevant
             reportComment({
               variables: {
                 _id: props.comment._id
+              }
+            }).then( truthyIfSuccessful => {
+              if (truthyIfSuccessful) {
+                alert('Comment has been reported. A riceapps member will review the post to determine if it ' +
+                    'fails to meet hootspace\'s community guidelines.')
               }
             })
           }}

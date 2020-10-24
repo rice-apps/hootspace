@@ -205,10 +205,12 @@ const DDMenu = styled.div`
 
 const Save = styled.button`
   padding: 0.5vh;
+  cursor: pointer;
 `
 
 const Expand = styled.button`
   padding: 0.5vh;
+  cursor: pointer;
 `
 
 const AddTo = styled.button`
@@ -217,6 +219,7 @@ const AddTo = styled.button`
 
 const Report = styled.button`
   padding: 0.5vh;
+  cursor: pointer;
 `
 
 const Delete = styled.button`
