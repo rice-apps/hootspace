@@ -157,9 +157,9 @@ function CommentChunk (props) {
           {props.comment.upvotes.length - props.comment.downvotes.length ===
           1 ? (
             <text> hoot</text>
-            ) : (
-              <text> hoots</text>
-            )}
+          ) : (
+            <text> hoots</text>
+          )}
         </CountDiv>
 
         <ReportButton

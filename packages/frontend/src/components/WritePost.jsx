@@ -163,10 +163,10 @@ function WritePost (props) {
           style={
             tooltipVisible
               ? {
-                display: 'inline',
-                backgroundColor: '#f4efef',
-                position: 'absolute'
-              }
+                  display: 'inline',
+                  backgroundColor: '#f4efef',
+                  position: 'absolute'
+                }
               : { display: 'none' }
           }
         >
@@ -515,14 +515,14 @@ function WritePost (props) {
                   style={
                     postType === 'Notice'
                       ? {
-                        borderTopLeftRadius: '1.4vh',
-                        borderBottomLeftRadius: '1.4vh',
-                        fontWeight: 'bold'
-                      }
+                          borderTopLeftRadius: '1.4vh',
+                          borderBottomLeftRadius: '1.4vh',
+                          fontWeight: 'bold'
+                        }
                       : {
-                        borderTopLeftRadius: '1.4vh',
-                        borderBottomLeftRadius: '1.4vh'
-                  }
+                          borderTopLeftRadius: '1.4vh',
+                          borderBottomLeftRadius: '1.4vh'
+                        }
                   }
                 >
                   NOTICE
@@ -547,14 +547,14 @@ function WritePost (props) {
                   style={
                     postType === 'Discussion'
                       ? {
-                        borderTopRightRadius: '1.4vh',
-                        borderBottomRightRadius: '1.4vh',
-                        fontWeight: 'bold'
-                      }
+                          borderTopRightRadius: '1.4vh',
+                          borderBottomRightRadius: '1.4vh',
+                          fontWeight: 'bold'
+                        }
                       : {
-                        borderTopRightRadius: '1.4vh',
-                        borderBottomRightRadius: '1.4vh'
-                  }
+                          borderTopRightRadius: '1.4vh',
+                          borderBottomRightRadius: '1.4vh'
+                        }
                   }
                 >
                   DISCUSSION

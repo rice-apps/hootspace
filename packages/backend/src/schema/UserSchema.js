@@ -65,21 +65,21 @@ UserTC.addFields({
 
         return isNewUser
           ? User.create({ netID: res.netID, username: res.netID })
-            .then(doc => {
-              doc.token = createToken(doc)
-
-              return doc.save()
-            })
-            .catch(err => new ApolloError(`User creation failed: ${err}`))
-          : User.findOne({ netID: res.netID })
-            .then(doc => {
-              if (isTokenExpired(doc)) {
+              .then(doc => {
                 doc.token = createToken(doc)
-              }
 
-              return doc.save()
-            })
-            .catch(err => new ApolloError(`User search failed: ${err}`))
+                return doc.save()
+              })
+              .catch(err => new ApolloError(`User creation failed: ${err}`))
+          : User.findOne({ netID: res.netID })
+              .then(doc => {
+                if (isTokenExpired(doc)) {
+                  doc.token = createToken(doc)
+                }
+
+                return doc.save()
+              })
+              .catch(err => new ApolloError(`User search failed: ${err}`))
       }
 
       return new AuthenticationError(

@@ -441,13 +441,13 @@ function PostChunk (props) {
                   {(props.post.node.kind === 'Event' ||
                     props.post.node.kind === 'Job') && (
                     <AddTo>
-                        <AddToCalendar
+                      <AddToCalendar
                         event={calEvent}
                         buttonLabel='Add to '
                         buttonTemplate={calIcon}
                         listItems={calDropDown}
                       />
-                      </AddTo>
+                    </AddTo>
                   )}
 
                   <Expand onClick={() => navigate(myPostLink)}>
@@ -471,7 +471,7 @@ function PostChunk (props) {
                   {props.post.node.creator.username ===
                     props.userInfo.username && (
                     <Delete
-                        onClick={e => {
+                      onClick={e => {
                         e.preventDefault()
                         props.removePost({
                           variables: {
@@ -482,9 +482,9 @@ function PostChunk (props) {
                         cache.gc()
                         window.location.reload(false)
                       }}
-                      >
+                    >
                       Delete Post
-                      </Delete>
+                    </Delete>
                   )}
                 </DDMenu>
               )}
