@@ -48,6 +48,8 @@ function SideNav (props) {
     '/feed': location.pathname === '/feed' && !props.showProfile,
     '/profile': location.pathname === '/feed' && props.showProfile,
     '/about': location.pathname === '/about',
+    '/calendar': location.pathname === '/calendar',
+    '/mail': location.pathname === '/mail',
     default: false
   }
 

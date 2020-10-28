@@ -34,4 +34,35 @@ const BackButton = styled.button`
   border-radius: 2vw;
 `
 
-export { Image404, Container404, BackButton }
+const Background = styled.div`
+  display: flex;
+  flex-direction: row;
+  // background-color: #eff0f8;
+  width: 100vw;
+  height: 100vh;
+  background-color: red;
+  @media (max-aspect-ratio: 848/712) {
+    flex-direction: column;
+  }
+`
+
+const CalendarContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    background-color: #eff0f8;
+    z-index: 365;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
+const InnerContainer = styled.div`
+    width: 80%;
+    height: 90%;
+    border-color: #9a9a9a;
+    border-width: medium;
+    border-style: solid;
+`
+
+export { Image404, Container404, BackButton, CalendarContainer, Background, InnerContainer }
