@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/rice-apps/RiceDiscuss-backend#readme",
   "engines": {
-    "node": "12.19.0"
+    "node": "14.15.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.1",
