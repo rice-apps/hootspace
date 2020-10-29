@@ -313,6 +313,35 @@ function WritePost (props) {
     }
   }
 
+  const checkDates = {
+    // or equal to???
+    Event: (start, end) => {
+      if (end - start >= 0) {
+        return true
+      } else {
+        alert('End date must be after start date.')
+        return false
+      }
+    },
+    Job: (start, end) => {
+      if (end - start >= 0) {
+        return true
+      } else {
+        alert('End date must be after start date.')
+        return false
+      }
+    },
+    Notice: end => {
+      const now = new Date()
+      if (end - now >= 0) {
+        return true
+      } else {
+        alert('End date must be in the future.')
+        return false
+      }
+    }
+  }
+
   const togglePaid = () => setPaid(!isPaid)
 
   const toggleClosed = () => setClosed(!isClosed)
@@ -421,6 +450,12 @@ function WritePost (props) {
 
     // if (checkTitleBody(title, body)) return
     if (!checkPost[postType](body)) return
+    if (postType === "Event" || postType === "Job") {
+      if (!checkDates[postType](startDate, endDate)) return
+    }
+    if (postType === "Notice") {
+      if (!checkDates[postType](endDate)) return
+    }
 
     const postToCreate = {
       Discussion: {
