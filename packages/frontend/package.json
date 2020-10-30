@@ -64,9 +64,6 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "engines": {
-    "node": "14.x"
-  },
   "devDependencies": {
     "@types/react": "^16.9.53",
     "@types/react-helmet": "^6.1.0",

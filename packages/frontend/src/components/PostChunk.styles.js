@@ -104,7 +104,6 @@ const LeftComponent = styled.div`
   grid-area: left;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
 `
 

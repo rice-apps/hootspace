@@ -419,6 +419,10 @@ function PostChunk (props) {
               </IconButton>
               {isDDOpen && (
                 <DDMenu>
+                  <Expand onClick={() => navigate(myPostLink)}>
+                    <FullPostLink>Full Post</FullPostLink>
+                  </Expand>
+
                   <Save
                     onClick={e => {
                       e.preventDefault()
@@ -459,10 +463,6 @@ function PostChunk (props) {
                       />
                     </AddTo>
                   )}
-
-                  <Expand onClick={() => navigate(myPostLink)}>
-                    <FullPostLink>Expand</FullPostLink>
-                  </Expand>
 
                   <Report
                     onClick={e => {
