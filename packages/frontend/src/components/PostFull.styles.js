@@ -9,12 +9,24 @@ import { Link } from 'react-router-dom'
 // doesnt have or need expand and fullpostlink
 // has back button
 
+const Background = styled.div`
+  display: flex;
+  flex-direction: row;
+  background-color: #eff0f8;
+  height: 100vh;
+
+  @media (max-aspect-ratio: 848/712) {
+    flex-direction: column;
+  }
+`
+
 const BackToFeed = styled(Link)`
+  margin: 20px 100px;
   color: black;
 `
 // Contains Discussion Box
 const DiscussionBoxSection = styled.section`
-  padding: 20px 70px;
+  padding: 15vh 70px;
   min-width: 55vw;
   max-width: 65vw;
 `
@@ -142,7 +154,8 @@ const Tags = styled.div`
   grid-area: tags;
   word-wrap: break-word;
   text-align: right;
-  margin-right: 8vw;
+  margin-top: 1.5vh;
+  margin-right: 7vw;
 `
 
 const Tag = styled.text`
@@ -219,6 +232,7 @@ const CommentButton = styled.button`
 `
 
 export {
+  Background,
   DiscussionBoxSection,
   OriginalPoster,
   Time,
