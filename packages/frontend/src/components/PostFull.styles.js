@@ -9,14 +9,29 @@ import { Link } from 'react-router-dom'
 // doesnt have or need expand and fullpostlink
 // has back button
 
+const Background = styled.div`
+  background-color: #eff0f8;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 5vh 1fr;
+`
+
+const BackToFeedDiv = styled.div`
+  padding: 5vh 70px;
+  min-width: 55vw;
+  max-width: 65vw;
+  justify-self: center;
+`
+
 const BackToFeed = styled(Link)`
   color: black;
 `
 // Contains Discussion Box
 const DiscussionBoxSection = styled.section`
-  padding: 20px 70px;
+  padding: 10vh 70px;
   min-width: 55vw;
   max-width: 65vw;
+  justify-self: center;
 `
 
 const OriginalPoster = styled.div`
@@ -142,7 +157,8 @@ const Tags = styled.div`
   grid-area: tags;
   word-wrap: break-word;
   text-align: right;
-  margin-right: 8vw;
+  margin-top: 1.5vh;
+  margin-right: 7vw;
 `
 
 const Tag = styled.text`
@@ -219,6 +235,9 @@ const CommentButton = styled.button`
 `
 
 export {
+  Background,
+  BackToFeed,
+  BackToFeedDiv,
   DiscussionBoxSection,
   OriginalPoster,
   Time,
@@ -244,7 +263,6 @@ export {
   ShareFacebook,
   ShareTwitter,
   Share,
-  BackToFeed,
   CommentInput,
   CommentButton
 }

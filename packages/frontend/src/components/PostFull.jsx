@@ -19,6 +19,9 @@ import Divider from '@material-ui/core/Divider'
 
 import AddToCalendar from 'react-add-to-calendar'
 
+import ForwardIcon from '@material-ui/icons/Forward'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace'
 import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
 import ArrowDropUp from '@material-ui/icons/ArrowDropUp'
@@ -33,7 +36,6 @@ import remarkable from '../utils/remarkable'
 import TimeAgo from 'react-timeago'
 
 import {
-  DiscussionBoxSection,
   OriginalPosterDiv,
   OriginalPosterPic,
   OriginalPosterName,
@@ -71,7 +73,7 @@ import {
   NormalSpan,
   Pic
 } from './PostChunk.styles'
-import { BackToFeed, Tags } from './PostFull.styles'
+import { BackToFeed, BackToFeedDiv, Background, DiscussionBoxSection, Tags } from './PostFull.styles'
 import { tagColors } from './tagColors'
 import { COMMENT_CREATED } from '../graphql/Subscriptions'
 import CommentChunk from './CommentChunk'
@@ -358,8 +360,12 @@ function PostFull () {
   const checkComment = comment => comment.length <= 0
 
   return (
-    <>
-      <BackToFeed to='/feed'>Back To Feed</BackToFeed>
+    <Background>
+      <BackToFeedDiv>
+        <BackToFeed to='/feed'>
+          <KeyboardBackspaceIcon fontSize='large'/>
+        </BackToFeed>
+      </BackToFeedDiv>
       <DiscussionBoxSection>
         <DiscussionBox>
           <LeftComponent>
@@ -663,7 +669,7 @@ function PostFull () {
           </CommentComponent>
         </DiscussionBox>
       </DiscussionBoxSection>
-    </>
+    </Background>
   )
 }
 
