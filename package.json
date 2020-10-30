@@ -3,5 +3,11 @@
   "private": true,
   "devDependencies": {
     "lerna": "^3.22.1"
+  },
+  "dependencies": {
+    "@types/react-transition-group": "^1.1.6",
+    "react-slidedown": "^2.4.5",
+    "react-transition-group": "^4.4.1",
+    "react-transition-group-v1": "npm:react-transition-group@^1.2.1"
   }
 }

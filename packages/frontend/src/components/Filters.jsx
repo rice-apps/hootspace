@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-import IconButton from '@material-ui/core/IconButton'
-import TuneIcon from '@material-ui/icons/Tune'
+import { CSSTransition } from 'react-transition-group';
 import DropDownItem from './DropDownItem'
 import SearchBar from './Search'
 import { GET_TAGS } from '../graphql/Queries'
 import { useQuery } from '@apollo/client'
+import './Transitions.css'
 
 import {
   HorizontalDiv,
@@ -14,7 +14,8 @@ import {
   DDList,
   DDListItem,
   ArrowI,
-  ClearFilter
+  ClearFilter,
+  HorizontalSearchDiv
 } from './Filters.styles'
 
 const Filters = props => {
@@ -41,7 +42,7 @@ const Filters = props => {
     setUpvotes(props.upvoteFilter)
     setTags(props.tagFilter)
     if (!props.kindInactive) setPostType(props.kindFilter)
-  }, [])
+  }, [props.dateFilter, props.upvoteFilter, props.tagFilter])
 
   useEffect(() => {
     if (props.filtersClosed) {
@@ -111,6 +112,9 @@ const Filters = props => {
     props.setKindFilter('Discussion')
 
     props.setTypeofFilter('')
+    // setPostMenuOpen(false);
+    // setTagOpen(false);
+    // setDateOpen(false);
   }
 
   const submitFilters = () => {
@@ -142,10 +146,25 @@ const Filters = props => {
       ? props.setKindFilter('Discussion')
       : props.setKindFilter(postType)
     props.setTagFilter(tags)
+    setPostMenuOpen(false);
+    setTagOpen(false);
+    setDateOpen(false);
   }
 
   return (
     <>
+    <HorizontalSearchDiv style = {{
+      "left": '0px',
+    }}>
+        {isTagOpen && (
+          <SearchBar
+            items={tagList}
+            setList={setFilteredTags}
+            setActive={setActive}
+            placeholder='search tags'
+          />
+        )}
+    </HorizontalSearchDiv>
       <div style={{}}>
         <HorizontalDiv>
           <DDWrapper>
@@ -156,7 +175,7 @@ const Filters = props => {
               </DDHeaderTitle>
             </DDHeader>
             {isPostTypeOpen && (
-              <DDList>
+              <DDList >
                 {POST_TYPES.map(item => (
                   <DDListItem key={item}>
                     <DropDownItem
@@ -177,6 +196,7 @@ const Filters = props => {
                 <ArrowI open={isTagOpen} />
               </DDHeaderTitle>
             </DDHeader>
+
             {isTagOpen && (
               <DDList>
                 {finalizedTags.map(item => (
@@ -190,6 +210,7 @@ const Filters = props => {
                 ))}
               </DDList>
             )}
+
           </DDWrapper>
 
           <DDWrapper>
@@ -214,30 +235,42 @@ const Filters = props => {
             )}
           </DDWrapper>
 
-          <IconButton
+          <ClearFilter
             onClick={submitFilters}
             style={{
               background: 'white',
               borderRadius: '.8vw',
               height: '2.4vw',
-              width: '2.4vw',
-              marginLeft: '1vw'
+              width: 'auto',
+              'font-size': '1rem',
+              'font-weight': 'bold',
+              'font-color': 'black',
+              marginLeft: '1vw',
+              'max-width': '20em',
+              'height': '2.4em',
+              'border-color': 'white',
+              'font-weight': '600',
             }}
           >
-            <TuneIcon />
-          </IconButton>
+            Filter!
+          </ClearFilter>
 
-          <ClearFilter onClick={clearFilters}>Clear</ClearFilter>
+          <ClearFilter onClick={clearFilters}
+                      style={{
+                        background: 'white',
+                        borderRadius: '.8vw',
+                        height: '2.4vw',
+                        width: 'auto',
+                        'font-size': '1rem',
+                        'font-weight': 'bold',
+                        'font-color': 'black',
+                        marginLeft: '1vw',
+                        'max-width': '20em',
+                        'height': '2.4em',
+                      }}
+          >Clear</ClearFilter>
         </HorizontalDiv>
-        {isTagOpen && (
-          <SearchBar
-            items={tagList}
-            setList={setFilteredTags}
-            setActive={setActive}
-            placeholder='search tags'
-            style={{}}
-          />
-        )}
+        
       </div>
     </>
   )

@@ -580,6 +580,7 @@ function PostFull () {
 
             {isCommentOpen && (
               <CommentInput
+                id = "comment"
                 placeholder='Comment here...'
                 onChange={e => setComment(e.target.value)}
               />
@@ -587,6 +588,7 @@ function PostFull () {
             {isCommentOpen && (
               <CommentButton
                 onClick={e => {
+ 
                   e.preventDefault()
                   if (checkComment(comment)) return
                   try {
@@ -599,7 +601,7 @@ function PostFull () {
                       }
                     })
                     setComment('')
-                    e.target.value = ''
+                    document.getElementById("comment").value = ''
                   } catch (error) {
                     console.error(error)
                   }

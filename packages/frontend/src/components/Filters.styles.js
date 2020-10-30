@@ -7,6 +7,14 @@ const HorizontalDiv = styled.div`
   left: 100px;
 `
 
+const HorizontalSearchDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-right: 0px;
+  left: 100px;
+  padding-bottom: 1%;
+`
+
 const TextField = styled.input`
   padding: 0.3vw;
   width: 10vw;
@@ -76,28 +84,36 @@ const DDHeader = styled.div`
   margin-left: 0.75vw;
   max-width: 20em;
   max-height: 2.5em;
+  :hover {
+    text-decoration: underline;
+    box-shadow: 2px 8px 5px -5px #B19CD9;
+  }
 `
 
 const DDHeaderTitle = styled.div`
   margin: 0 1.5vw;
-  margin-right: 0.5vw;
+  // margin-right: 0.5vw;
   font-weight: 600;
 `
 
 const DDList = styled.ul`
   position: absolute;
   z-index: 10;
+  padding-left: 1em;
   overflow-y: scroll;
   overflow-x: auto;
-  width: 100%;
+  width: auto;
   max-height: 215px;
+
   border: 1px solid rgb(223, 223, 223);
   border-top: none;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+
   box-shadow: 0 2px 5px -1px rgb(230, 230, 230);
   background-color: white;
-  top: 16px;
+  top: 80%;
+  
   font-weight: 700;
   text-align: left;
   -webkit-overflow-scrolling: touch;
@@ -109,29 +125,39 @@ const DDListItem = styled.li`
   line-height: 1.4rem;
   white-space: nowrap;
   text-overflow: ellipsis;
+  width: auto;
   cursor: pointer;
-  left: -100px;
+  list-style-position: outside;
+  :hover {
+    text-decoration: underline;
+    background: #ccffff;
+  }
 `
 
 const ArrowI = styled.i`
   border: solid black;
   border-width: 0 3px 3px 0;
   display: inline-block;
-  padding: 2.5px;
+  padding: 2px;
   margin: 2.5px;
-  margin-left: 13px;
-
+  margin-left: 8px;
   transform: ${props => (props.open ? 'rotate(-135deg)' : 'rotate(45deg)')};
 `
 
 const ClearFilter = styled.button`
   line-height: 5vh;
-  max-height: 2.25em;
+  max-height: 2.5em;
   background-color: #e5daf5;
   border-color: white;
   font-weight: 600;
   margin-left: 10px;
   text-align: center;
+  cursor: pointer;
+  outline:none;
+  :hover {
+    text-decoration: underline;
+    box-shadow: 2px 8px 5px -5px #B19CD9;
+  }
 `
 
 export {
@@ -147,5 +173,6 @@ export {
   DDListItem,
   ArrowI,
   HorizontalDiv,
-  ClearFilter
+  ClearFilter,
+  HorizontalSearchDiv
 }
