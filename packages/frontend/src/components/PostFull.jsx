@@ -73,7 +73,7 @@ import {
   NormalSpan,
   Pic
 } from './PostChunk.styles'
-import { BackToFeed, Background, DiscussionBoxSection, Tags } from './PostFull.styles'
+import { BackToFeed, BackToFeedDiv, Background, DiscussionBoxSection, Tags } from './PostFull.styles'
 import { tagColors } from './tagColors'
 import { COMMENT_CREATED } from '../graphql/Subscriptions'
 import CommentChunk from './CommentChunk'
@@ -361,9 +361,11 @@ function PostFull () {
 
   return (
     <Background>
-      <BackToFeed to='/feed'>
-        <KeyboardBackspaceIcon fontSize='large'/>
-      </BackToFeed>
+      <BackToFeedDiv>
+        <BackToFeed to='/feed'>
+          <KeyboardBackspaceIcon fontSize='large'/>
+        </BackToFeed>
+      </BackToFeedDiv>
       <DiscussionBoxSection>
         <DiscussionBox>
           <LeftComponent>

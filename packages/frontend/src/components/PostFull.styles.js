@@ -10,25 +10,28 @@ import { Link } from 'react-router-dom'
 // has back button
 
 const Background = styled.div`
-  display: flex;
-  flex-direction: row;
   background-color: #eff0f8;
   height: 100vh;
+  display: grid;
+  grid-template-rows: 5vh 1fr;
+`
 
-  @media (max-aspect-ratio: 848/712) {
-    flex-direction: column;
-  }
+const BackToFeedDiv = styled.div`
+  padding: 5vh 70px;
+  min-width: 55vw;
+  max-width: 65vw;
+  justify-self: center;
 `
 
 const BackToFeed = styled(Link)`
-  margin: 20px 100px;
   color: black;
 `
 // Contains Discussion Box
 const DiscussionBoxSection = styled.section`
-  padding: 15vh 70px;
+  padding: 10vh 70px;
   min-width: 55vw;
   max-width: 65vw;
+  justify-self: center;
 `
 
 const OriginalPoster = styled.div`
@@ -233,6 +236,8 @@ const CommentButton = styled.button`
 
 export {
   Background,
+  BackToFeed,
+  BackToFeedDiv,
   DiscussionBoxSection,
   OriginalPoster,
   Time,
@@ -258,7 +263,6 @@ export {
   ShareFacebook,
   ShareTwitter,
   Share,
-  BackToFeed,
   CommentInput,
   CommentButton
 }
