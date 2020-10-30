@@ -553,6 +553,7 @@ function PostChunk (props) {
 
             {isCommentOpen && (
               <CommentInput
+                id = "comment"
                 placeholder='Comment here...'
                 onChange={e => setComment(e.target.value)}
               />
@@ -572,7 +573,7 @@ function PostChunk (props) {
                       }
                     })
                     setComment('')
-                    e.target.value = ''
+                    console.log(document.getElementById("comment").value);
                   } catch (error) {
                     console.error(error)
                   }
