@@ -31,7 +31,13 @@ const BackButton = styled.button`
   font-size: 1vw;
   padding: 1vw 4vw;
   border: 0.2vw solid #272848;
+  outline: none;
   border-radius: 2vw;
+  cursor: pointer;
+  :hover {
+    text-decoration: underline;
+    box-shadow: 2px 8px 5px -5px #B19CD9;
+  }
 `
 
 export { Image404, Container404, BackButton }

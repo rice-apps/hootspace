@@ -205,24 +205,63 @@ const DDMenu = styled.div`
 const Save = styled.button`
   padding: 0.5vh;
   cursor: pointer;
+  overflow: hidden;
+  background-color: #e6f2ff;
+  :hover {
+    text-decoration: underline;
+    box-shadow: 2px 8px 5px -5px #B19CD9;
+    background-color: #80ff80;
+    font-weight: bold;
+  }
 `
 
 const Expand = styled.button`
   padding: 0.5vh;
   cursor: pointer;
+  background-color: #e6f2ff;
+
+  :hover {
+    text-decoration: underline;
+    box-shadow: 2px 8px 5px -5px #B19CD9;
+    background-color: #66ccff;
+    font-weight: bold;
+  }
 `
 
 const AddTo = styled.button`
   padding: 0.5vh;
+  cursor: pointer;
+  background-color: #e6f2ff;
+  :hover {
+    text-decoration: underline;
+    box-shadow: 2px 8px 5px -5px #B19CD9;
+    background-color: #66ccff;
+    font-weight: bold;
+  }
 `
 
 const Report = styled.button`
   padding: 0.5vh;
   cursor: pointer;
+  background-color: #e6f2ff;
+  :hover {
+    text-decoration: underline;
+    box-shadow: 2px 8px 5px -5px #B19CD9;
+    background-color: #ff6666;
+    font-weight: bold;
+  }
 `
 
 const Delete = styled.button`
   padding: 0.5vh;
+  background-color: #e6f2ff;
+  cursor: pointer;
+  :hover {
+    text-decoration: underline;
+    box-shadow: 2px 8px 5px -5px #B19CD9;
+    background-color: #ff6666;
+    font-weight: bold;
+  }
 `
 
 const DiscussionBody = styled.text`
@@ -270,6 +309,12 @@ const DividerBottom = styled.div`
 const ShowCommentsDiv = styled.div`
   grid-area: showcomments;
   padding: 1vh 0px;
+  width: 30%;
+  :hover {
+    text-decoration: underline;
+    box-shadow: 2px 8px 5px -5px #B19CD9;
+    font-weight: bold;
+  }
 `
 
 const CommentInput = styled.input`
@@ -354,7 +399,6 @@ const Pic = styled.div`
       background-image: url(${props.src});
     `}
 `
-
 export {
   DiscussionBoxSection,
   OriginalPosterDiv,

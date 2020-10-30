@@ -373,9 +373,9 @@ function PostChunk (props) {
               {props.post.node.tags.length > 3 && (
                 <ViewTags onClick={toggleTags}>
                   {isTagsOpen ? (
-                    <text>(View Less)</text>
+                    <text style = {{"cursor": "pointer", "outline": "none",}}>(View Less)</text>
                   ) : (
-                    <text>(View All)</text>
+                    <text style = {{"cursor": "pointer", "outline": "0 none", "border": "none",}}>(View All Tags)</text>
                   )}
                 </ViewTags>
               )}
