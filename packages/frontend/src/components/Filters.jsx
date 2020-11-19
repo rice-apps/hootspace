@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { CSSTransition } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group'
 import DropDownItem from './DropDownItem'
 import SearchBar from './Search'
 import { GET_TAGS } from '../graphql/Queries'
@@ -146,16 +146,18 @@ const Filters = props => {
       ? props.setKindFilter('Discussion')
       : props.setKindFilter(postType)
     props.setTagFilter(tags)
-    setPostMenuOpen(false);
-    setTagOpen(false);
-    setDateOpen(false);
+    setPostMenuOpen(false)
+    setTagOpen(false)
+    setDateOpen(false)
   }
 
   return (
     <>
-    <HorizontalSearchDiv style = {{
-      "left": '0px',
-    }}>
+      <HorizontalSearchDiv
+        style={{
+          left: '0px'
+        }}
+      >
         {isTagOpen && (
           <SearchBar
             items={tagList}
@@ -164,7 +166,7 @@ const Filters = props => {
             placeholder='search tags'
           />
         )}
-    </HorizontalSearchDiv>
+      </HorizontalSearchDiv>
       <div style={{}}>
         <HorizontalDiv>
           <DDWrapper>
@@ -175,7 +177,7 @@ const Filters = props => {
               </DDHeaderTitle>
             </DDHeader>
             {isPostTypeOpen && (
-              <DDList >
+              <DDList>
                 {POST_TYPES.map(item => (
                   <DDListItem key={item}>
                     <DropDownItem
@@ -210,7 +212,6 @@ const Filters = props => {
                 ))}
               </DDList>
             )}
-
           </DDWrapper>
 
           <DDWrapper>
@@ -247,30 +248,32 @@ const Filters = props => {
               'font-color': 'black',
               marginLeft: '1vw',
               'max-width': '20em',
-              'height': '2.4em',
+              height: '2.4em',
               'border-color': 'white',
-              'font-weight': '600',
+              'font-weight': '600'
             }}
           >
             Filter!
           </ClearFilter>
 
-          <ClearFilter onClick={clearFilters}
-                      style={{
-                        background: 'white',
-                        borderRadius: '.8vw',
-                        height: '2.4vw',
-                        width: 'auto',
-                        'font-size': '1rem',
-                        'font-weight': 'bold',
-                        'font-color': 'black',
-                        marginLeft: '1vw',
-                        'max-width': '20em',
-                        'height': '2.4em',
-                      }}
-          >Clear</ClearFilter>
+          <ClearFilter
+            onClick={clearFilters}
+            style={{
+              background: 'white',
+              borderRadius: '.8vw',
+              height: '2.4vw',
+              width: 'auto',
+              'font-size': '1rem',
+              'font-weight': 'bold',
+              'font-color': 'black',
+              marginLeft: '1vw',
+              'max-width': '20em',
+              height: '2.4em'
+            }}
+          >
+            Clear
+          </ClearFilter>
         </HorizontalDiv>
-        
       </div>
     </>
   )

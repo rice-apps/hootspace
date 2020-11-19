@@ -209,7 +209,7 @@ const Save = styled.button`
   background-color: #e6f2ff;
   :hover {
     text-decoration: underline;
-    box-shadow: 2px 8px 5px -5px #B19CD9;
+    box-shadow: 2px 8px 5px -5px #b19cd9;
     background-color: #80ff80;
     font-weight: bold;
   }
@@ -222,7 +222,7 @@ const Expand = styled.button`
 
   :hover {
     text-decoration: underline;
-    box-shadow: 2px 8px 5px -5px #B19CD9;
+    box-shadow: 2px 8px 5px -5px #b19cd9;
     background-color: #66ccff;
     font-weight: bold;
   }
@@ -234,7 +234,7 @@ const AddTo = styled.button`
   background-color: #e6f2ff;
   :hover {
     text-decoration: underline;
-    box-shadow: 2px 8px 5px -5px #B19CD9;
+    box-shadow: 2px 8px 5px -5px #b19cd9;
     background-color: #66ccff;
     font-weight: bold;
   }
@@ -246,7 +246,7 @@ const Report = styled.button`
   background-color: #e6f2ff;
   :hover {
     text-decoration: underline;
-    box-shadow: 2px 8px 5px -5px #B19CD9;
+    box-shadow: 2px 8px 5px -5px #b19cd9;
     background-color: #ff6666;
     font-weight: bold;
   }
@@ -258,7 +258,7 @@ const Delete = styled.button`
   cursor: pointer;
   :hover {
     text-decoration: underline;
-    box-shadow: 2px 8px 5px -5px #B19CD9;
+    box-shadow: 2px 8px 5px -5px #b19cd9;
     background-color: #ff6666;
     font-weight: bold;
   }
@@ -312,7 +312,7 @@ const ShowCommentsDiv = styled.div`
   width: 30%;
   :hover {
     text-decoration: underline;
-    box-shadow: 2px 8px 5px -5px #B19CD9;
+    box-shadow: 2px 8px 5px -5px #b19cd9;
     font-weight: bold;
   }
 `

@@ -1,21 +1,21 @@
 .dropdown-enter {
-    opacity: 0.01;
-    height: 0;
-  }
-  
+  opacity: 0.01;
+  height: 0;
+}
+
 .dropdown-enter.customer-enter-active {
-    opacity: 1;
-    transition: height 3s ease;
-    height: 215px;
+  opacity: 1;
+  transition: height 3s ease;
+  height: 215px;
 }
 
 .dropdown-exit {
-    opacity: 1;
-    height: 215px;
+  opacity: 1;
+  height: 215px;
 }
 
 .dropdown-exit.customer-exit-active {
-    opacity: 0.01;
-    transition: height 1s ease;
-    height: 0px;
+  opacity: 0.01;
+  transition: height 1s ease;
+  height: 0px;
 }

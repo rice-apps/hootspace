@@ -86,13 +86,12 @@ const DDHeader = styled.div`
   max-height: 2.5em;
   :hover {
     text-decoration: underline;
-    box-shadow: 2px 8px 5px -5px #B19CD9;
+    box-shadow: 2px 8px 5px -5px #b19cd9;
   }
 `
 
 const DDHeaderTitle = styled.div`
   margin: 0 1.5vw;
-  // margin-right: 0.5vw;
   font-weight: 600;
 `
 
@@ -113,7 +112,7 @@ const DDList = styled.ul`
   box-shadow: 0 2px 5px -1px rgb(230, 230, 230);
   background-color: white;
   top: 80%;
-  
+
   font-weight: 700;
   text-align: left;
   -webkit-overflow-scrolling: touch;
@@ -153,10 +152,10 @@ const ClearFilter = styled.button`
   margin-left: 10px;
   text-align: center;
   cursor: pointer;
-  outline:none;
+  outline: none;
   :hover {
     text-decoration: underline;
-    box-shadow: 2px 8px 5px -5px #B19CD9;
+    box-shadow: 2px 8px 5px -5px #b19cd9;
   }
 `
 

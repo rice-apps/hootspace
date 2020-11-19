@@ -36,7 +36,7 @@ const BackButton = styled.button`
   cursor: pointer;
   :hover {
     text-decoration: underline;
-    box-shadow: 2px 8px 5px -5px #B19CD9;
+    box-shadow: 2px 8px 5px -5px #b19cd9;
   }
 `
 

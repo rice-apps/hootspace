@@ -450,10 +450,10 @@ function WritePost (props) {
 
     // if (checkTitleBody(title, body)) return
     if (!checkPost[postType](body)) return
-    if (postType === "Event" || postType === "Job") {
+    if (postType === 'Event' || postType === 'Job') {
       if (!checkDates[postType](startDate, endDate)) return
     }
-    if (postType === "Notice") {
+    if (postType === 'Notice') {
       if (!checkDates[postType](endDate)) return
     }
 

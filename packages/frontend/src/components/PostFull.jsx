@@ -73,7 +73,13 @@ import {
   NormalSpan,
   Pic
 } from './PostChunk.styles'
-import { BackToFeed, BackToFeedDiv, Background, DiscussionBoxSection, Tags } from './PostFull.styles'
+import {
+  BackToFeed,
+  BackToFeedDiv,
+  Background,
+  DiscussionBoxSection,
+  Tags
+} from './PostFull.styles'
 import { tagColors } from './tagColors'
 import { COMMENT_CREATED } from '../graphql/Subscriptions'
 import CommentChunk from './CommentChunk'
@@ -236,7 +242,7 @@ function PostFull () {
 
   const theComments = data.commentByPost
 
-  var numComments = theComments.length
+  let numComments = theComments.length
 
   theComments.forEach(comment => {
     numComments += comment.children.length
@@ -363,7 +369,7 @@ function PostFull () {
     <Background>
       <BackToFeedDiv>
         <BackToFeed to='/feed'>
-          <KeyboardBackspaceIcon fontSize='large'/>
+          <KeyboardBackspaceIcon fontSize='large' />
         </BackToFeed>
       </BackToFeedDiv>
       <DiscussionBoxSection>
@@ -586,7 +592,7 @@ function PostFull () {
 
             {isCommentOpen && (
               <CommentInput
-                id = "comment"
+                id='comment'
                 placeholder='Comment here...'
                 onChange={e => setComment(e.target.value)}
               />
@@ -594,7 +600,6 @@ function PostFull () {
             {isCommentOpen && (
               <CommentButton
                 onClick={e => {
- 
                   e.preventDefault()
                   if (checkComment(comment)) return
                   try {
@@ -607,7 +612,7 @@ function PostFull () {
                       }
                     })
                     setComment('')
-                    document.getElementById("comment").value = ''
+                    document.getElementById('comment').value = ''
                   } catch (error) {
                     console.error(error)
                   }

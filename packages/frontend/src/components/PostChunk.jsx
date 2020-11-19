@@ -154,7 +154,7 @@ function PostChunk (props) {
 
   const theComments = data.commentByPost // array
 
-  var numComments = theComments.length
+  let numComments = theComments.length
 
   theComments.forEach(comment => {
     numComments += comment.children.length
@@ -373,9 +373,19 @@ function PostChunk (props) {
               {props.post.node.tags.length > 3 && (
                 <ViewTags onClick={toggleTags}>
                   {isTagsOpen ? (
-                    <text style = {{"cursor": "pointer", "outline": "none",}}>(View Less)</text>
+                    <text style={{ cursor: 'pointer', outline: 'none' }}>
+                      (View Less)
+                    </text>
                   ) : (
-                    <text style = {{"cursor": "pointer", "outline": "0 none", "border": "none",}}>(View All Tags)</text>
+                    <text
+                      style={{
+                        cursor: 'pointer',
+                        outline: '0 none',
+                        border: 'none'
+                      }}
+                    >
+                      (View All Tags)
+                    </text>
                   )}
                 </ViewTags>
               )}
@@ -553,7 +563,7 @@ function PostChunk (props) {
 
             {isCommentOpen && (
               <CommentInput
-                id = "comment"
+                id='comment'
                 placeholder='Comment here...'
                 onChange={e => setComment(e.target.value)}
               />
@@ -573,7 +583,7 @@ function PostChunk (props) {
                       }
                     })
                     setComment('')
-                    console.log(document.getElementById("comment").value);
+                    console.log(document.getElementById('comment').value)
                   } catch (error) {
                     console.error(error)
                   }
