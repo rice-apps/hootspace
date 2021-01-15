@@ -9,10 +9,10 @@
   dependencies:
     tslib "^1.9.0"
 
-"@apollo/client@^3.3.6":
-  version "3.3.6"
-  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.3.6.tgz#f359646308167f38d5bc498dfc2344c888400093"
-  integrity sha512-XSm/STyNS8aHdDigLLACKNMHwI0qaQmEHWHtTP+jHe/E1wZRnn66VZMMgwKLy2V4uHISHfmiZ4KpUKDPeJAKqg==
+"@apollo/client@^3.3.7":
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.3.7.tgz#f15bf961dc0c2bee37a47bf86b8881fdc6183810"
+  integrity sha512-Cb0OqqvlehlRHtHIXRIS/Pe5WYU4hHl1FznXTRSxBAN42WmBUM3zy/Unvw183RdWMyV6Kc2pFKOEuaG1K7JTAQ==
   dependencies:
     "@graphql-typed-document-node/core" "^3.0.0"
     "@types/zen-observable" "^0.8.0"
@@ -21,7 +21,7 @@
     fast-json-stable-stringify "^2.0.0"
     graphql-tag "^2.11.0"
     hoist-non-react-statics "^3.3.2"
-    optimism "^0.13.1"
+    optimism "^0.14.0"
     prop-types "^15.7.2"
     symbol-observable "^2.0.0"
     ts-invariant "^0.6.0"
@@ -1969,18 +1969,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*":
+"@types/react@*", "@types/react@^17.0.0":
   version "17.0.0"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.0.tgz#5af3eb7fad2807092f0046a1302b7823e27919b8"
   integrity sha512-aj/L7RIMsRlWML3YB6KZiXB3fV2t41+5RBGYF8z+tAKU43Px8C3cYUZsDvf1/+Bm4FK21QWBrDutu8ZJ/70qOw==
-  dependencies:
-    "@types/prop-types" "*"
-    csstype "^3.0.2"
-
-"@types/react@^16.9.56":
-  version "16.14.2"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.14.2.tgz#85dcc0947d0645349923c04ccef6018a1ab7538c"
-  integrity sha512-BzzcAlyDxXl2nANlabtT4thtvbbnhee8hMmH/CcJrISDBVcJS1iOsP1f0OAgSdGE0MsY9tqcrb9YoZcOFv9dbQ==
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
@@ -2347,6 +2339,13 @@
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@wry/equality/-/equality-0.3.1.tgz#81080cdc2e0d8265cd303faa0c64b38a77884e06"
   integrity sha512-8/Ftr3jUZ4EXhACfSwPIfNsE8V6WKesdjp+Dxi78Bej6qlasAxiz0/F8j0miACRj9CL4vC5Y5FsfwwEYAuhWbg==
+  dependencies:
+    tslib "^1.14.1"
+
+"@wry/trie@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@wry/trie/-/trie-0.2.1.tgz#4191e1d4a85dd77dfede383d65563138ed82fc47"
+  integrity sha512-sYkuXZqArky2MLQCv4tLW6hX3N8AfTZ5ZMBc8jC6Yy35WYr82UYLLtjS7k/uRGHOA0yTSjuNadG6QQ6a5CS5hQ==
   dependencies:
     tslib "^1.14.1"
 
@@ -9231,12 +9230,13 @@ opn@^5.5.0:
   dependencies:
     is-wsl "^1.1.0"
 
-optimism@^0.13.1:
-  version "0.13.2"
-  resolved "https://registry.yarnpkg.com/optimism/-/optimism-0.13.2.tgz#002a438b69652bfe8f8754a4493ed35c2e9d9821"
-  integrity sha512-kJkpDUEs/Rp8HsAYYlDzyvQHlT6YZa95P+2GGNR8p/VvsIkt6NilAk7oeTvMRKCq7BeclB7+bmdIexog2859GQ==
+optimism@^0.14.0:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/optimism/-/optimism-0.14.0.tgz#256fb079a3428585b40a3a8462f907e0abd2fc49"
+  integrity sha512-ygbNt8n4DOCVpkwiLF+IrKKeNHOjtr9aXLWGP9HNJGoblSGsnVbJLstcH6/nE9Xy5ZQtlkSioFQNnthmENW6FQ==
   dependencies:
     "@wry/context" "^0.5.2"
+    "@wry/trie" "^0.2.1"
 
 optimize-css-assets-webpack-plugin@5.0.4:
   version "5.0.4"
@@ -10822,10 +10822,10 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
-react-datepicker@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-3.3.0.tgz#38dec531fd7c8e0de6860a55dfbc3a8ff803d43c"
-  integrity sha512-QnIlBxDSWEGBi2X5P1BqWzvfnPFRKhtrsgAcujUVwyWeID/VatFaAOEjEjfD1bXR9FuSYVLlLR3j/vbG19hWOA==
+react-datepicker@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-3.4.1.tgz#3c8e8989f1ab31a767c17170a2d1318aa3c3b9ef"
+  integrity sha512-ASyVb7UmVx1vzeITidD7Cr/EXRXhKyjjbSkBndPc1MipYq4rqQ3eMFgvRQzpsXc3JmIMFgICm7nmN6Otc1GE/Q==
   dependencies:
     classnames "^2.2.6"
     date-fns "^2.0.1"
@@ -10893,10 +10893,10 @@ react-error-overlay@^6.0.8:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.8.tgz#474ed11d04fc6bda3af643447d85e9127ed6b5de"
   integrity sha512-HvPuUQnLp5H7TouGq3kzBeioJmXms1wHy9EGjz2OURWBp4qZO6AfGEcnxts1D/CbwPLRAgTMPCEgYhA3sEM4vw==
 
-react-fade-in@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/react-fade-in/-/react-fade-in-1.1.1.tgz#826570835bf2bc5362390df49d98a795f3d1e9fb"
-  integrity sha512-HQjLCQbpPg7sR1INtArpKfTvB6U7197nG9JvmsCExkZnjvAgOdJY2gW4x0ggu5uH2WRNOgfB4TS0ATe2fwnoEg==
+react-fade-in@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-fade-in/-/react-fade-in-2.0.0.tgz#5b68110475ee211f264328f959e7a792f496a55a"
+  integrity sha512-cU3exOHVwtvkyOSSsn4PIcFQJ8Q243AIy78cbO31v2Lp1p7rK9lMiA9D1nXAf9mZ5EcOOo4huNA/yd1ci6agVA==
 
 react-fast-compare@^3.2.0:
   version "3.2.0"
@@ -11057,10 +11057,10 @@ react-transition-group@^4.4.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react-truncate-markup@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/react-truncate-markup/-/react-truncate-markup-5.0.1.tgz#5c52bda712f7e185e84969b2b79440ec8b422441"
-  integrity sha512-WG1E9FLyTrq5ERaDbIq0DjWVs3JrAdr93fasdQqbVlEifBUp27kGM7ws4xCBIh2keDjumTPjw3iiHNNmD+YtcQ==
+react-truncate-markup@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-truncate-markup/-/react-truncate-markup-5.1.0.tgz#632f263a7d70925ab6368d5620ef32f066c2857a"
+  integrity sha512-TTp8gj63w/o5jQC7HnLMEeAHp9jjSxFlA5lzklvPzcSubcurkEI4g0YjW67YG1yNAJHqQwCadj4mTUvz58S1wQ==
   dependencies:
     line-height "0.3.1"
     memoize-one "^5.1.1"
